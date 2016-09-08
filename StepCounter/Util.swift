@@ -10,6 +10,11 @@ import Foundation
 
 class Util {
     
+    /**
+     This function is called every time the application starts up. It checks to see whether
+     the NSUserDefaults variables and CoreData have been established. If they haven't been,
+     then they are initialized; if they have been, then the function does nothing.
+     */
     class func initiateDataStructure() {
         // check if data structure has been established
         let established = NSUserDefaults.standardUserDefaults().objectForKey("dataStructureInPlace")
