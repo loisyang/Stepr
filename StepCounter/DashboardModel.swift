@@ -21,7 +21,8 @@ class DashboardModel {
         // first make sure that Apple HealthKit is authorized by the user
         self.authorizeHealthKit { (authorized,  error) -> Void in
             if authorized {
-                print("HealthKit authorization received.")
+                print("HealthKit authorization accepted!")
+                self.updateSteps()
             } else {
                 print("HealthKit authorization denied!")
                 if error != nil {
@@ -35,7 +36,7 @@ class DashboardModel {
      This function requests reading access from Apple HealthKit. It only requests reading access
      for step count; no writing requests are made.
      */
-    func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!) {
+    private func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!) {
         
         let healthKitTypesToRead : Set<HKObjectType> = [
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
@@ -56,6 +57,52 @@ class DashboardModel {
             if completion != nil {
                 completion(success:success,error:error)
             }
+        }
+    }
+    
+    private func updateSteps() {
+        
+        // Get the lastUpdateDateObject
+        let lastDateObject = NSUserDefaults.standardUserDefaults().objectForKey("lastUpdateDate")
+        if lastDateObject != nil {
+            let lastDate = lastDateObject as! NSDate
+            
+            let type = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount) // The type of data we are requesting
+            
+            //  Set the Predicates & Interval
+            let interval: NSDateComponents = NSDateComponents()
+            interval.day = 1
+            
+            //  Perform the Query
+            let query = HKStatisticsCollectionQuery(quantityType: type!, quantitySamplePredicate: nil, options: [.CumulativeSum], anchorDate: lastDate, intervalComponents:interval)
+            
+            query.initialResultsHandler = { query, results, error in
+                
+                if error != nil {
+                    
+                    //  Something went Wrong
+                    return
+                }
+                
+                results?.enumerateStatisticsFromDate(lastDate, toDate: NSDate(), withBlock: {
+                    results, error in
+                    
+                    if let quantity = results.sumQuantity() {
+                        
+                        let steps = quantity.doubleValueForUnit(HKUnit.countUnit())
+                        
+                        print("Steps = \(steps)")
+                        
+                    }
+                    
+                })
+            }
+
+            print("executing")
+            self.healthKitStore.executeQuery(query)
+            
+        } else {
+            print("no last update date")
         }
     }
     
