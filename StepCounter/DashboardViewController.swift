@@ -9,10 +9,14 @@
 import UIKit
 
 class DashboardViewController: UIViewController {
+    
+    let dashboard = DashboardModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.dashboard.pullStepsAndUpdate()
     }
 
     override func didReceiveMemoryWarning() {
