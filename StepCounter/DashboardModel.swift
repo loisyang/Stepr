@@ -64,18 +64,23 @@ class DashboardModel {
         
         // Get the lastUpdateDateObject
         let lastDateObject = NSUserDefaults.standardUserDefaults().objectForKey("lastUpdateDate")
+        
         if lastDateObject != nil {
+            // Convert it to an NSDate
             let lastDate = lastDateObject as! NSDate
+            let currentDate = NSDate()
             
-            let type = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount) // The type of data we are requesting
+            // The type of data we are requesting
+            let type = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
             
-            //  Set the Predicates & Interval
+            //  Set the Interval
             let interval: NSDateComponents = NSDateComponents()
             interval.day = 1
             
-            //  Perform the Query
+            // Build the query
             let query = HKStatisticsCollectionQuery(quantityType: type!, quantitySamplePredicate: nil, options: [.CumulativeSum], anchorDate: lastDate, intervalComponents:interval)
             
+            // Give the query a callback function
             query.initialResultsHandler = { query, results, error in
                 
                 if error != nil {
@@ -84,21 +89,37 @@ class DashboardModel {
                     return
                 }
                 
-                results?.enumerateStatisticsFromDate(lastDate, toDate: NSDate(), withBlock: {
+                results?.enumerateStatisticsFromDate(lastDate, toDate: currentDate, withBlock: {
                     results, error in
                     
+                    // TODO: add in the edge case where the lastDate and currentDate pass through midnight (2 days)
+                    
                     if let quantity = results.sumQuantity() {
+                        // The query was successful!
                         
                         let steps = quantity.doubleValueForUnit(HKUnit.countUnit())
                         
-                        print("Steps = \(steps)")
+                        // Update the NSUserDefault variables
+                        
+                        // Update lastUpdateDate
+                        NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: "lastUpdateDate")
+                        
+                        // TODO: call function from Gadgets Model to convert steps to points
+                        // NSUserDefaults.standardUserDefaults().setValue(0, forKey: "totalPointsSinceStart")
+                        // NSUserDefaults.standardUserDefaults().setValue(0, forKey: "pointsInWallet")
+                        // NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "dayPoints")
+                        
+                        // Update the day steps
+                        let daySteps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as! Int
+                        NSUserDefaults.standardUserDefaults().setValue(daySteps + Int(steps), forKey: "daySteps")
+                        
                         
                     }
                     
                 })
             }
 
-            print("executing")
+            // Execute the query
             self.healthKitStore.executeQuery(query)
             
         } else {
