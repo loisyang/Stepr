@@ -10,7 +10,7 @@
 		81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */; };
 		81889E261D7A5EAB00A17BF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E251D7A5EAB00A17BF7 /* ViewController.swift */; };
 		81889E291D7A5EAB00A17BF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E271D7A5EAB00A17BF7 /* Main.storyboard */; };
-		81889E2C1D7A5EAB00A17BF7 /* StepCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81889E2A1D7A5EAB00A17BF7 /* StepCounter.xcdatamodeld */; };
+		81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81889E2A1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld */; };
 		81889E2E1D7A5EAB00A17BF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */; };
 		81889E311D7A5EAB00A17BF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E2F1D7A5EAB00A17BF7 /* LaunchScreen.storyboard */; };
 		81EF73E71D81ADD4007C97C0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF73E61D81ADD4007C97C0 /* Util.swift */; };
@@ -19,11 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		81889E201D7A5EAB00A17BF7 /* StepCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81889E201D7A5EAB00A17BF7 /* Stepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81889E251D7A5EAB00A17BF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		81889E281D7A5EAB00A17BF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		81889E2B1D7A5EAB00A17BF7 /* StepCounter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StepCounter.xcdatamodel; sourceTree = "<group>"; };
+		81889E2B1D7A5EAB00A17BF7 /* Stepr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stepr.xcdatamodel; sourceTree = "<group>"; };
 		81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81889E301D7A5EAB00A17BF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81889E321D7A5EAB00A17BF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		81889E171D7A5EAB00A17BF7 = {
 			isa = PBXGroup;
 			children = (
-				81889E221D7A5EAB00A17BF7 /* StepCounter */,
+				81889E221D7A5EAB00A17BF7 /* Stepr */,
 				81889E211D7A5EAB00A17BF7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +54,12 @@
 		81889E211D7A5EAB00A17BF7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				81889E201D7A5EAB00A17BF7 /* StepCounter.app */,
+				81889E201D7A5EAB00A17BF7 /* Stepr.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		81889E221D7A5EAB00A17BF7 /* StepCounter */ = {
+		81889E221D7A5EAB00A17BF7 /* Stepr */ = {
 			isa = PBXGroup;
 			children = (
 				81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */,
@@ -69,9 +69,10 @@
 				81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */,
 				81889E2F1D7A5EAB00A17BF7 /* LaunchScreen.storyboard */,
 				81889E321D7A5EAB00A17BF7 /* Info.plist */,
-				81889E2A1D7A5EAB00A17BF7 /* StepCounter.xcdatamodeld */,
+				81889E2A1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld */,
 				81EF73EC1D81B1F2007C97C0 /* Gadget */,
 			);
+			name = Stepr;
 			path = StepCounter;
 			sourceTree = "<group>";
 		};
@@ -87,9 +88,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		81889E1F1D7A5EAB00A17BF7 /* StepCounter */ = {
+		81889E1F1D7A5EAB00A17BF7 /* Stepr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 81889E351D7A5EAB00A17BF7 /* Build configuration list for PBXNativeTarget "StepCounter" */;
+			buildConfigurationList = 81889E351D7A5EAB00A17BF7 /* Build configuration list for PBXNativeTarget "Stepr" */;
 			buildPhases = (
 				81889E1C1D7A5EAB00A17BF7 /* Sources */,
 				81889E1D1D7A5EAB00A17BF7 /* Frameworks */,
@@ -99,9 +100,9 @@
 			);
 			dependencies = (
 			);
-			name = StepCounter;
+			name = Stepr;
 			productName = StepCounter;
-			productReference = 81889E201D7A5EAB00A17BF7 /* StepCounter.app */;
+			productReference = 81889E201D7A5EAB00A17BF7 /* Stepr.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -119,7 +120,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 81889E1B1D7A5EAB00A17BF7 /* Build configuration list for PBXProject "StepCounter" */;
+			buildConfigurationList = 81889E1B1D7A5EAB00A17BF7 /* Build configuration list for PBXProject "Stepr" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -132,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				81889E1F1D7A5EAB00A17BF7 /* StepCounter */,
+				81889E1F1D7A5EAB00A17BF7 /* Stepr */,
 			);
 		};
 /* End PBXProject section */
@@ -155,7 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81889E2C1D7A5EAB00A17BF7 /* StepCounter.xcdatamodeld in Sources */,
+				81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */,
 				81EF73EA1D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift in Sources */,
 				81889E261D7A5EAB00A17BF7 /* ViewController.swift in Sources */,
 				81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */,
@@ -276,7 +277,7 @@
 				INFOPLIST_FILE = StepCounter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmsormond.StepCounter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Stepr;
 			};
 			name = Debug;
 		};
@@ -287,14 +288,14 @@
 				INFOPLIST_FILE = StepCounter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmsormond.StepCounter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Stepr;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		81889E1B1D7A5EAB00A17BF7 /* Build configuration list for PBXProject "StepCounter" */ = {
+		81889E1B1D7A5EAB00A17BF7 /* Build configuration list for PBXProject "Stepr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81889E331D7A5EAB00A17BF7 /* Debug */,
@@ -303,7 +304,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		81889E351D7A5EAB00A17BF7 /* Build configuration list for PBXNativeTarget "StepCounter" */ = {
+		81889E351D7A5EAB00A17BF7 /* Build configuration list for PBXNativeTarget "Stepr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81889E361D7A5EAB00A17BF7 /* Debug */,
@@ -315,13 +316,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		81889E2A1D7A5EAB00A17BF7 /* StepCounter.xcdatamodeld */ = {
+		81889E2A1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				81889E2B1D7A5EAB00A17BF7 /* StepCounter.xcdatamodel */,
+				81889E2B1D7A5EAB00A17BF7 /* Stepr.xcdatamodel */,
 			);
-			currentVersion = 81889E2B1D7A5EAB00A17BF7 /* StepCounter.xcdatamodel */;
-			path = StepCounter.xcdatamodeld;
+			currentVersion = 81889E2B1D7A5EAB00A17BF7 /* Stepr.xcdatamodel */;
+			path = Stepr.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

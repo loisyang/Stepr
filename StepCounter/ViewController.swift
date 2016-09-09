@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  StepCounter
+//  Stepr
 //
 //  Created by James Ormond on 9/2/16.
 //  Copyright © 2016 James Ormond. All rights reserved.
