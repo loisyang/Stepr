@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177072A1D834DED001EAE12 /* DashboardModel.swift */; };
 		81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */; };
-		81889E261D7A5EAB00A17BF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E251D7A5EAB00A17BF7 /* ViewController.swift */; };
+		81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */; };
 		81889E291D7A5EAB00A17BF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E271D7A5EAB00A17BF7 /* Main.storyboard */; };
 		81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81889E2A1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld */; };
 		81889E2E1D7A5EAB00A17BF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */; };
@@ -19,9 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8177072A1D834DED001EAE12 /* DashboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		81889E201D7A5EAB00A17BF7 /* Stepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81889E251D7A5EAB00A17BF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		81889E281D7A5EAB00A17BF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81889E2B1D7A5EAB00A17BF7 /* Stepr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stepr.xcdatamodel; sourceTree = "<group>"; };
 		81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,7 +66,8 @@
 			children = (
 				81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */,
 				81EF73E61D81ADD4007C97C0 /* Util.swift */,
-				81889E251D7A5EAB00A17BF7 /* ViewController.swift */,
+				8177072A1D834DED001EAE12 /* DashboardModel.swift */,
+				81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */,
 				81889E271D7A5EAB00A17BF7 /* Main.storyboard */,
 				81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */,
 				81889E2F1D7A5EAB00A17BF7 /* LaunchScreen.storyboard */,
@@ -156,9 +159,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */,
 				81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */,
 				81EF73EA1D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift in Sources */,
-				81889E261D7A5EAB00A17BF7 /* ViewController.swift in Sources */,
+				81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */,
 				81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */,
 				81EF73E71D81ADD4007C97C0 /* Util.swift in Sources */,
 				81EF73EB1D81B1D7007C97C0 /* Gadget.swift in Sources */,
