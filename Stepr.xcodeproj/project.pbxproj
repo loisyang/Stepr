@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177072A1D834DED001EAE12 /* DashboardModel.swift */; };
+		8177072D1D83548A001EAE12 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8177072C1D83548A001EAE12 /* HealthKit.framework */; };
 		81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */; };
 		81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */; };
 		81889E291D7A5EAB00A17BF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E271D7A5EAB00A17BF7 /* Main.storyboard */; };
@@ -21,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		8177072A1D834DED001EAE12 /* DashboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+		8177072C1D83548A001EAE12 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		8177072E1D83548A001EAE12 /* Stepr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Stepr.entitlements; sourceTree = SOURCE_ROOT; };
 		81889E201D7A5EAB00A17BF7 /* Stepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8177072D1D83548A001EAE12 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +52,7 @@
 		81889E171D7A5EAB00A17BF7 = {
 			isa = PBXGroup;
 			children = (
+				8177072C1D83548A001EAE12 /* HealthKit.framework */,
 				81889E221D7A5EAB00A17BF7 /* Stepr */,
 				81889E211D7A5EAB00A17BF7 /* Products */,
 			);
@@ -64,6 +69,7 @@
 		81889E221D7A5EAB00A17BF7 /* Stepr */ = {
 			isa = PBXGroup;
 			children = (
+				8177072E1D83548A001EAE12 /* Stepr.entitlements */,
 				81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */,
 				81EF73E61D81ADD4007C97C0 /* Util.swift */,
 				8177072A1D834DED001EAE12 /* DashboardModel.swift */,
@@ -120,6 +126,12 @@
 				TargetAttributes = {
 					81889E1F1D7A5EAB00A17BF7 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = S4362VH5CT;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -278,10 +290,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Stepr.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = StepCounter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jmsormond.StepCounter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmsormond.Stepr;
 				PRODUCT_NAME = Stepr;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -289,10 +305,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Stepr.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = StepCounter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jmsormond.StepCounter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmsormond.Stepr;
 				PRODUCT_NAME = Stepr;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

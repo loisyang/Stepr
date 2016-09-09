@@ -23,9 +23,15 @@ class Util {
             // data structure has not been established
             
             // Step 1: Build all NSUserDefaults variables
-            let currentDate = NSDate()
-            NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: "downloadDate")
-            NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: "lastUpdateDate")
+            
+            // let currentDate = NSDate()
+            
+            // use yesterday's data for testing purposes
+            let calendar = NSCalendar.currentCalendar()
+            let yesterday = calendar.dateByAddingUnit(.Day, value: -1, toDate: NSDate(), options: [])
+            
+            NSUserDefaults.standardUserDefaults().setObject(yesterday, forKey: "downloadDate")
+            NSUserDefaults.standardUserDefaults().setObject(yesterday, forKey: "lastUpdateDate")
             
             NSUserDefaults.standardUserDefaults().setValue(0, forKey: "totalPointsSinceStart")
             NSUserDefaults.standardUserDefaults().setValue(0, forKey: "pointsInWallet")
