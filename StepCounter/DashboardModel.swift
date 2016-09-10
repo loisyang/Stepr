@@ -148,6 +148,19 @@ class DashboardModel {
     }
     
     /**
+     This function queries the NSUserDefault variable daypoints and returns the number of points
+     the user has achieved that day. This function floors the number of points, because some Gadgets have
+     decimal values in their bonus, so its possible that the actual value for dayPoints is not a
+     whole number. It returns the points as a Double.
+     */
+    func getPointsForToday() -> Double {
+        if let points = NSUserDefaults.standardUserDefaults().objectForKey("dayPoints") as? Double {
+            return floor(points)
+        }
+        return 0
+    }
+    
+    /**
      This function queries the NSUserDefault variable pointsInWallet and returns the number of points
      the user has in their wallet. This function floors the number of points, because some Gadgets have
      decimal values in their bonus, so its possible that the actual value for pointsInWallet is not a
