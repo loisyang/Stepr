@@ -9,10 +9,17 @@
 import UIKit
 
 class StepsInWalletTableViewCell: UITableViewCell {
+    
+    var dashboard : DashboardModel?
 
+    @IBOutlet weak var pointsInWalletLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        let pointsInWallet = self.dashboard!.getPointsInWallet()
+        self.pointsInWalletLabel.text = "\(pointsInWallet) points in your wallet"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
