@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 import HealthKit
 
 class DashboardModel {
@@ -146,6 +148,19 @@ class DashboardModel {
     }
     
     /**
+     This function queries the NSUserDefault variable daypoints and returns the number of points
+     the user has achieved that day. This function floors the number of points, because some Gadgets have
+     decimal values in their bonus, so its possible that the actual value for dayPoints is not a
+     whole number. It returns the points as a Double.
+     */
+    func getPointsForToday() -> Double {
+        if let points = NSUserDefaults.standardUserDefaults().objectForKey("dayPoints") as? Double {
+            return floor(points)
+        }
+        return 0
+    }
+    
+    /**
      This function queries the NSUserDefault variable pointsInWallet and returns the number of points
      the user has in their wallet. This function floors the number of points, because some Gadgets have
      decimal values in their bonus, so its possible that the actual value for pointsInWallet is not a
@@ -186,7 +201,7 @@ class DashboardModel {
      Level 19: 5 quadril - 1 pentil
      Level 20: 1 pentil -
      */
-    func getUserLevel() -> (Int, Double) {
+    func getUserLevel() -> (steps: Int, points: Double) {
         let pointsRanges : [[Int]] = []
         
         if let totalPoints = NSUserDefaults.standardUserDefaults().valueForKey("totalPointsSinceStart") {
@@ -196,12 +211,44 @@ class DashboardModel {
                     let range = pointsRanges[level]
                     let userLevel = level + 1
                     let percentage = Double((points - range.first!)) / Double(range.last!)
-                    return (userLevel, percentage)
+                    return (steps: userLevel, points: percentage)
                 }
             }
         }
         return (0, 0.0)
         
+    }
+    
+    /**
+     This function queries the CoreData for all History objects, determines the History object with
+     the highest score, and then returns that obeject as a History object. The returned History object
+     is an optional, because it is possible that there are no objects in the History CoreData.
+     */
+    func getHighScore() -> History? {
+        
+        // Create the context
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let request = NSFetchRequest(entityName: "History")
+        
+        // Add the sortDescriptor so that CoreData returns them ordered by points
+        // This makes results[0] the highest score
+        let sortDescriptor = NSSortDescriptor(key: "points", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        
+        var results : [AnyObject]?
+        
+        do {
+            // Execute the request
+            try results = context.executeFetchRequest(request)
+        } catch _ {
+            results = nil
+        }
+        
+        if results != nil {
+            return results?.first as? History
+        } else {
+            return nil
+        }
     }
     
 }
