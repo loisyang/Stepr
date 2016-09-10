@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 import HealthKit
 
 class DashboardModel {
@@ -204,8 +206,36 @@ class DashboardModel {
         
     }
     
-    func getHighScore() -> (Int, Double) {
-        <#function body#>
+    /**
+     This function queries the CoreData for all History objects, determines the History object with
+     the highest score, and then returns that obeject as a History object. The returned History object
+     is an optional, because it is possible that there are no objects in the History CoreData.
+     */
+    func getHighScore() -> History? {
+        
+        // Create the context
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let request = NSFetchRequest(entityName: "History")
+        
+        // Add the sortDescriptor so that CoreData returns them ordered by points
+        // This makes results[0] the highest score
+        let sortDescriptor = NSSortDescriptor(key: "points", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        
+        var results : [AnyObject]?
+        
+        do {
+            // Execute the request
+            try results = context.executeFetchRequest(request)
+        } catch _ {
+            results = nil
+        }
+        
+        if results != nil {
+            return results?.first as? History
+        } else {
+            return nil
+        }
     }
     
 }
