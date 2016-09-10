@@ -133,4 +133,15 @@ class DashboardModel {
         }
     }
     
+    /**
+     This function queries the NSUserDefault variable daySteps and returns the number of steps
+     the user has taken that day. It returns the steps as an Int.
+     */
+    func getStepsForToday() -> Int {
+        if let steps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as? Int {
+            return steps
+        }
+        return 0
+    }
+    
 }
