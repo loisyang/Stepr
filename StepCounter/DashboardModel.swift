@@ -60,6 +60,11 @@ class DashboardModel {
         }
     }
     
+    /**
+     This function makes the call to Apple HealthKit and gets all the steps taken since the
+     lastUpdateDate. It then updates the appropriate NSUserDefault variables to reflect the
+     new data.
+     */
     private func updateSteps() {
         
         // Get the lastUpdateDateObject
@@ -98,6 +103,7 @@ class DashboardModel {
                         // The query was successful!
                         
                         let steps = quantity.doubleValueForUnit(HKUnit.countUnit())
+                        print(steps)
                         
                         // Update the NSUserDefault variables
                         
@@ -118,7 +124,7 @@ class DashboardModel {
                     
                 })
             }
-
+            
             // Execute the query
             self.healthKitStore.executeQuery(query)
             
