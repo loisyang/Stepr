@@ -186,7 +186,7 @@ class DashboardModel {
      Level 19: 5 quadril - 1 pentil
      Level 20: 1 pentil -
      */
-    func getUserLevel() -> (Int, Double) {
+    func getUserLevel() -> (steps: Int, points: Double) {
         let pointsRanges : [[Int]] = []
         
         if let totalPoints = NSUserDefaults.standardUserDefaults().valueForKey("totalPointsSinceStart") {
@@ -196,12 +196,16 @@ class DashboardModel {
                     let range = pointsRanges[level]
                     let userLevel = level + 1
                     let percentage = Double((points - range.first!)) / Double(range.last!)
-                    return (userLevel, percentage)
+                    return (steps: userLevel, points: percentage)
                 }
             }
         }
         return (0, 0.0)
         
+    }
+    
+    func getHighScore() -> (Int, Double) {
+        <#function body#>
     }
     
 }
