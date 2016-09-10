@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177072A1D834DED001EAE12 /* DashboardModel.swift */; };
 		8177072D1D83548A001EAE12 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8177072C1D83548A001EAE12 /* HealthKit.framework */; };
+		817707311D8474E6001EAE12 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177072F1D8474E6001EAE12 /* History+CoreDataProperties.swift */; };
+		817707321D8474E6001EAE12 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707301D8474E6001EAE12 /* History.swift */; };
 		81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */; };
 		81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */; };
 		81889E291D7A5EAB00A17BF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E271D7A5EAB00A17BF7 /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 		8177072A1D834DED001EAE12 /* DashboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		8177072C1D83548A001EAE12 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		8177072E1D83548A001EAE12 /* Stepr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Stepr.entitlements; sourceTree = SOURCE_ROOT; };
+		8177072F1D8474E6001EAE12 /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "History+CoreDataProperties.swift"; path = "../History+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		817707301D8474E6001EAE12 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = History.swift; path = ../History.swift; sourceTree = "<group>"; };
 		81889E201D7A5EAB00A17BF7 /* Stepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		817707331D8474EB001EAE12 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				8177072F1D8474E6001EAE12 /* History+CoreDataProperties.swift */,
+				817707301D8474E6001EAE12 /* History.swift */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
 		81889E171D7A5EAB00A17BF7 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +93,7 @@
 				81889E321D7A5EAB00A17BF7 /* Info.plist */,
 				81889E2A1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld */,
 				81EF73EC1D81B1F2007C97C0 /* Gadget */,
+				817707331D8474EB001EAE12 /* History */,
 			);
 			name = Stepr;
 			path = StepCounter;
@@ -171,6 +185,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817707321D8474E6001EAE12 /* History.swift in Sources */,
+				817707311D8474E6001EAE12 /* History+CoreDataProperties.swift in Sources */,
 				8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */,
 				81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */,
 				81EF73EA1D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift in Sources */,
