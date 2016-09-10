@@ -34,7 +34,7 @@ class Util {
             NSUserDefaults.standardUserDefaults().setObject(yesterday, forKey: "lastUpdateDate")
             
             NSUserDefaults.standardUserDefaults().setValue(0, forKey: "totalPointsSinceStart")
-            NSUserDefaults.standardUserDefaults().setValue(0, forKey: "pointsInWallet")
+            NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "pointsInWallet")
             NSUserDefaults.standardUserDefaults().setValue(0, forKey: "daySteps")
             NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "dayPoints")
             

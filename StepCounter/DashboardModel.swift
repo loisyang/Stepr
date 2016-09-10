@@ -145,4 +145,17 @@ class DashboardModel {
         return 0
     }
     
+    /**
+     This function queries the NSUserDefault variable pointsInWallet and returns the number of points
+     the user has in their wallet. This function floors the number of points, because some Gadgets have
+     decimal values in their bonus, so its possible that the actual value for pointsInWallet is not a
+     whole number. It returns the points as a Double.
+     */
+    func getPointsInWallet() -> Double {
+        if let points = NSUserDefaults.standardUserDefaults().objectForKey("pointsInWallet") as? Double {
+            return floor(points)
+        }
+        return 0
+    }
+    
 }
