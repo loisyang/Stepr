@@ -32,7 +32,19 @@
                     <view key="view" contentMode="scaleToFill" id="3PH-0K-lnS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IHQ-Cv-FnI">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IHQ-Cv-FnI" firstAttribute="top" secondItem="Nq1-Nb-mjH" secondAttribute="bottom" id="2iq-Jc-qJD"/>
+                            <constraint firstItem="GTn-1v-utY" firstAttribute="top" secondItem="IHQ-Cv-FnI" secondAttribute="bottom" id="RFf-lZ-1fF"/>
+                            <constraint firstItem="IHQ-Cv-FnI" firstAttribute="leading" secondItem="3PH-0K-lnS" secondAttribute="leading" id="SaN-f5-Xa5"/>
+                            <constraint firstAttribute="trailing" secondItem="IHQ-Cv-FnI" secondAttribute="trailing" id="s1d-TW-wzH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CpT-dr-4zN"/>
                 </viewController>
