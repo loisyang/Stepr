@@ -9,10 +9,18 @@
 import UIKit
 
 class LevelTableViewCell: UITableViewCell {
+    
+    var dashboard : DashboardModel?
 
+    @IBOutlet weak var levelLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        // Set data to label
+        let level = self.dashboard!.getUserLevel()
+        self.levelLabel.text = "Level \(level)"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
