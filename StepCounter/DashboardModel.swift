@@ -129,6 +129,7 @@ class DashboardModel {
             self.healthKitStore.executeQuery(query)
             
         } else {
+            // TODO: handle this situation
             print("no last update date")
         }
     }
