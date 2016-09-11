@@ -45,6 +45,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.steps = self.dashboard.getStepsForToday()
             cell.points = self.dashboard.getPointsForToday()
             return cell
+        case 2:
+            let cell = tableView.dequeueReusableCellWithIdentifier("LevelTableViewCell") as! LevelTableViewCell
+            let levelInfo = self.dashboard.getUserLevel()
+            cell.level = levelInfo.level
+            cell.percentage = levelInfo.percentage
+            return cell
         default: break
         }
         let cell = UITableViewCell()

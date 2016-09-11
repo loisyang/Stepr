@@ -11,6 +11,7 @@ import UIKit
 class LevelTableViewCell: UITableViewCell {
     
     var level : Int = 0
+    var percentage : Double = 0
 
     @IBOutlet weak var levelLabel: UILabel!
     
