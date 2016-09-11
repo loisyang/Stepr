@@ -10,7 +10,7 @@ import UIKit
 
 class StepsInWalletTableViewCell: UITableViewCell {
     
-    var dashboard : DashboardModel?
+    var pointsInWallet : Double = 0
 
     @IBOutlet weak var pointsInWalletLabel: UILabel!
     
@@ -18,8 +18,7 @@ class StepsInWalletTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        let pointsInWallet = self.dashboard!.getPointsInWallet()
-        self.pointsInWalletLabel.text = "\(pointsInWallet) points in your wallet"
+        self.pointsInWalletLabel.text = "\(self.pointsInWallet) points in your wallet"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -10,7 +10,7 @@ import UIKit
 
 class LevelTableViewCell: UITableViewCell {
     
-    var dashboard : DashboardModel?
+    var level : Int = 0
 
     @IBOutlet weak var levelLabel: UILabel!
     
@@ -19,8 +19,7 @@ class LevelTableViewCell: UITableViewCell {
         // Initialization code
         
         // Set data to label
-        let level = self.dashboard!.getUserLevel()
-        self.levelLabel.text = "Level \(level)"
+        self.levelLabel.text = "Level \(self.level)"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

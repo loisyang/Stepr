@@ -10,7 +10,7 @@ import UIKit
 
 class HighScoreTableViewCell: UITableViewCell {
     
-    var dashboard : DashboardModel?
+    var historyObject : History?
 
     @IBOutlet weak var highScoreLabel: UILabel!
     
@@ -19,7 +19,7 @@ class HighScoreTableViewCell: UITableViewCell {
         // Initialization code
         
         // Set data to label
-        if let highScoreObject = self.dashboard!.getHighScore() {
+        if let highScoreObject = self.historyObject {
             self.highScoreLabel.text = "High score: \(highScoreObject.points) points"
         }
     }

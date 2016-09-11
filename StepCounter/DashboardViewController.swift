@@ -37,11 +37,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("totalStepsCellIdentifier") as! TotalStepsTableViewCell
-        default:
-            <#code#>
+            let cell = tableView.dequeueReusableCellWithIdentifier("StepsInWalletTableViewCell") as! StepsInWalletTableViewCell
+            cell.pointsInWallet = self.dashboard.getPointsInWallet()
+            return cell
+        default: break
         }
         let cell = UITableViewCell()
+        cell.textLabel?.text = "Normal Cell"
         return cell
     }
 

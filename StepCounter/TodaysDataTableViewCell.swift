@@ -10,7 +10,8 @@ import UIKit
 
 class TodaysDataTableViewCell: UITableViewCell {
     
-    var dashboard : DashboardModel?
+    var steps : Int = 0
+    var points : Double = 0
 
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
@@ -20,11 +21,9 @@ class TodaysDataTableViewCell: UITableViewCell {
         // Initialization code
         
         // Apply data to labels
-        let steps = self.dashboard!.getStepsForToday()
-        self.stepsLabel.text = "\(steps) steps"
+        self.stepsLabel.text = "\(self.steps) steps"
         
-        let points = self.dashboard!.getPointsForToday()
-        self.pointsLabel.text = "\(points) points"
+        self.pointsLabel.text = "\(self.points) points"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
