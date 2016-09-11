@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "81889E1F1D7A5EAB00A17BF7"
-               BuildableName = "Stepr.temp_caseinsensitive_rename.temp_caseinsensitive_rename.app"
+               BuildableName = "Stepr.app"
                BlueprintName = "Stepr"
                ReferencedContainer = "container:Stepr.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "81889E1F1D7A5EAB00A17BF7"
-            BuildableName = "Stepr.temp_caseinsensitive_rename.temp_caseinsensitive_rename.app"
+            BuildableName = "Stepr.app"
             BlueprintName = "Stepr"
             ReferencedContainer = "container:Stepr.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "81889E1F1D7A5EAB00A17BF7"
-            BuildableName = "Stepr.temp_caseinsensitive_rename.temp_caseinsensitive_rename.app"
+            BuildableName = "Stepr.app"
             BlueprintName = "Stepr"
             ReferencedContainer = "container:Stepr.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "81889E1F1D7A5EAB00A17BF7"
-            BuildableName = "Stepr.temp_caseinsensitive_rename.temp_caseinsensitive_rename.app"
+            BuildableName = "Stepr.app"
             BlueprintName = "Stepr"
             ReferencedContainer = "container:Stepr.xcodeproj">
          </BuildableReference>

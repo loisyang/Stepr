@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177072A1D834DED001EAE12 /* DashboardModel.swift */; };
 		8177072D1D83548A001EAE12 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8177072C1D83548A001EAE12 /* HealthKit.framework */; };
+		817707311D8474E6001EAE12 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177072F1D8474E6001EAE12 /* History+CoreDataProperties.swift */; };
+		817707321D8474E6001EAE12 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707301D8474E6001EAE12 /* History.swift */; };
+		817707361D84CF80001EAE12 /* StepsInWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707351D84CF80001EAE12 /* StepsInWalletTableViewCell.swift */; };
+		817707381D84CFB5001EAE12 /* TodaysDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707371D84CFB5001EAE12 /* TodaysDataTableViewCell.swift */; };
+		8177073A1D84CFDB001EAE12 /* LevelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707391D84CFDB001EAE12 /* LevelTableViewCell.swift */; };
+		8177073C1D84CFFF001EAE12 /* HighScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177073B1D84CFFF001EAE12 /* HighScoreTableViewCell.swift */; };
+		8177073E1D84D022001EAE12 /* GadgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177073D1D84D022001EAE12 /* GadgetTableViewCell.swift */; };
 		81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */; };
 		81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */; };
 		81889E291D7A5EAB00A17BF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E271D7A5EAB00A17BF7 /* Main.storyboard */; };
@@ -24,6 +31,13 @@
 		8177072A1D834DED001EAE12 /* DashboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		8177072C1D83548A001EAE12 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		8177072E1D83548A001EAE12 /* Stepr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Stepr.entitlements; sourceTree = SOURCE_ROOT; };
+		8177072F1D8474E6001EAE12 /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "History+CoreDataProperties.swift"; path = "../History+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		817707301D8474E6001EAE12 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = History.swift; path = ../History.swift; sourceTree = "<group>"; };
+		817707351D84CF80001EAE12 /* StepsInWalletTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsInWalletTableViewCell.swift; sourceTree = "<group>"; };
+		817707371D84CFB5001EAE12 /* TodaysDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysDataTableViewCell.swift; sourceTree = "<group>"; };
+		817707391D84CFDB001EAE12 /* LevelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTableViewCell.swift; sourceTree = "<group>"; };
+		8177073B1D84CFFF001EAE12 /* HighScoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreTableViewCell.swift; sourceTree = "<group>"; };
+		8177073D1D84D022001EAE12 /* GadgetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetTableViewCell.swift; sourceTree = "<group>"; };
 		81889E201D7A5EAB00A17BF7 /* Stepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +63,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		817707331D8474EB001EAE12 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				8177072F1D8474E6001EAE12 /* History+CoreDataProperties.swift */,
+				817707301D8474E6001EAE12 /* History.swift */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		817707341D84CF45001EAE12 /* Dashboard Prototype Cells */ = {
+			isa = PBXGroup;
+			children = (
+				817707351D84CF80001EAE12 /* StepsInWalletTableViewCell.swift */,
+				817707371D84CFB5001EAE12 /* TodaysDataTableViewCell.swift */,
+				817707391D84CFDB001EAE12 /* LevelTableViewCell.swift */,
+				8177073B1D84CFFF001EAE12 /* HighScoreTableViewCell.swift */,
+				8177073D1D84D022001EAE12 /* GadgetTableViewCell.swift */,
+			);
+			name = "Dashboard Prototype Cells";
+			sourceTree = "<group>";
+		};
 		81889E171D7A5EAB00A17BF7 = {
 			isa = PBXGroup;
 			children = (
@@ -74,12 +109,14 @@
 				81EF73E61D81ADD4007C97C0 /* Util.swift */,
 				8177072A1D834DED001EAE12 /* DashboardModel.swift */,
 				81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */,
+				817707341D84CF45001EAE12 /* Dashboard Prototype Cells */,
 				81889E271D7A5EAB00A17BF7 /* Main.storyboard */,
 				81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */,
 				81889E2F1D7A5EAB00A17BF7 /* LaunchScreen.storyboard */,
 				81889E321D7A5EAB00A17BF7 /* Info.plist */,
 				81889E2A1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld */,
 				81EF73EC1D81B1F2007C97C0 /* Gadget */,
+				817707331D8474EB001EAE12 /* History */,
 			);
 			name = Stepr;
 			path = StepCounter;
@@ -171,10 +208,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817707361D84CF80001EAE12 /* StepsInWalletTableViewCell.swift in Sources */,
+				817707321D8474E6001EAE12 /* History.swift in Sources */,
+				8177073A1D84CFDB001EAE12 /* LevelTableViewCell.swift in Sources */,
+				817707311D8474E6001EAE12 /* History+CoreDataProperties.swift in Sources */,
 				8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */,
 				81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */,
 				81EF73EA1D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift in Sources */,
 				81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */,
+				8177073C1D84CFFF001EAE12 /* HighScoreTableViewCell.swift in Sources */,
+				8177073E1D84D022001EAE12 /* GadgetTableViewCell.swift in Sources */,
+				817707381D84CFB5001EAE12 /* TodaysDataTableViewCell.swift in Sources */,
 				81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */,
 				81EF73E71D81ADD4007C97C0 /* Util.swift in Sources */,
 				81EF73EB1D81B1D7007C97C0 /* Gadget.swift in Sources */,
