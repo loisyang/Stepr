@@ -27,11 +27,10 @@ class Util {
             // let currentDate = NSDate()
             
             // use yesterday's data for testing purposes
-            let calendar = NSCalendar.currentCalendar()
-            let yesterday = calendar.dateByAddingUnit(.Day, value: -1, toDate: NSDate(), options: [])
+            let startOfDay = NSCalendar.currentCalendar().startOfDayForDate(NSDate())
             
-            NSUserDefaults.standardUserDefaults().setObject(yesterday, forKey: "downloadDate")
-            NSUserDefaults.standardUserDefaults().setObject(yesterday, forKey: "lastUpdateDate")
+            NSUserDefaults.standardUserDefaults().setObject(startOfDay, forKey: "downloadDate")
+            NSUserDefaults.standardUserDefaults().setObject(startOfDay, forKey: "lastUpdateDate")
             
             NSUserDefaults.standardUserDefaults().setValue(0, forKey: "totalPointsSinceStart")
             NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "pointsInWallet")
