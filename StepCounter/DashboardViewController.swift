@@ -40,11 +40,25 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             let cell = tableView.dequeueReusableCellWithIdentifier("StepsInWalletTableViewCell") as! StepsInWalletTableViewCell
             cell.pointsInWallet = self.dashboard.getPointsInWallet()
             return cell
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("TodaysDataTableViewCell") as! TodaysDataTableViewCell
+            cell.steps = self.dashboard.getStepsForToday()
+            cell.points = self.dashboard.getPointsForToday()
+            return cell
         default: break
         }
         let cell = UITableViewCell()
         cell.textLabel?.text = "Normal Cell"
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 1:
+            return CGFloat(100)
+        default:
+            return CGFloat(44)
+        }
     }
 
 

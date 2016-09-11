@@ -84,12 +84,12 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="SV2-W9-60z" firstAttribute="leading" secondItem="n36-CB-2U9" secondAttribute="leadingMargin" id="Cj9-aX-45V"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="SV2-W9-60z" secondAttribute="trailing" id="FM8-9L-pes"/>
-                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="leading" secondItem="n36-CB-2U9" secondAttribute="leadingMargin" id="HNs-fh-dK7"/>
-                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="top" secondItem="n36-CB-2U9" secondAttribute="topMargin" constant="8" id="h9V-J3-Tvg"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="SV2-W9-60z" secondAttribute="bottom" constant="12.5" id="lcy-tA-4zc"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vLr-h3-FmH" secondAttribute="trailing" id="mtw-tE-rrg"/>
+                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="top" secondItem="n36-CB-2U9" secondAttribute="topMargin" constant="8" id="K83-8f-A2X"/>
+                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="leading" secondItem="n36-CB-2U9" secondAttribute="leadingMargin" id="LkJ-iX-jvh"/>
+                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="trailing" secondItem="n36-CB-2U9" secondAttribute="trailingMargin" id="fU7-H9-nwi"/>
+                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="leading" secondItem="SV2-W9-60z" secondAttribute="leading" id="gAX-VI-hlm"/>
+                                                <constraint firstItem="SV2-W9-60z" firstAttribute="top" secondItem="vLr-h3-FmH" secondAttribute="bottom" constant="1" id="kGJ-Oq-1vV"/>
+                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="trailing" secondItem="SV2-W9-60z" secondAttribute="trailing" id="uRs-o4-lX7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -154,6 +154,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
