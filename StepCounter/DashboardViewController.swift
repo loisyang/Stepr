@@ -51,11 +51,15 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.level = levelInfo.level
             cell.percentage = levelInfo.percentage
             return cell
-        default: break
+        case 3:
+            let cell = tableView.dequeueReusableCellWithIdentifier("HighScoreTableViewCell") as! HighScoreTableViewCell
+            cell.historyObject = self.dashboard.getHighScore()
+            return cell
+        default:
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "Normal Cell"
+            return cell
         }
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "Normal Cell"
-        return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

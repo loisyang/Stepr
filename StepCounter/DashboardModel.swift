@@ -227,7 +227,8 @@ class DashboardModel {
     func getHighScore() -> History? {
         
         // Create the context
-        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let context = app.managedObjectContext
         let request = NSFetchRequest(entityName: "History")
         
         // Add the sortDescriptor so that CoreData returns them ordered by points

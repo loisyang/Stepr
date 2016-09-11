@@ -19,9 +19,13 @@ class HighScoreTableViewCell: UITableViewCell {
         // Initialization code
         
         // Set data to label
+        print("hi")
         if let highScoreObject = self.historyObject {
             self.highScoreLabel.text = "High score: \(highScoreObject.points) points"
+        } else {
+            self.highScoreLabel.text = "No high score"
         }
+        print("yo")
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
