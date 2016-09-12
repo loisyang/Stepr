@@ -62,12 +62,7 @@ class DashboardModel {
         }
     }
     
-    /**
-     This function makes the call to Apple HealthKit and gets all the steps taken since the
-     lastUpdateDate. It then updates the appropriate NSUserDefault variables to reflect the
-     new data.
-     */
-    private func updateSteps() {
+    func executeHealthKitRequest() {
         
         // Get the lastUpdateDateObject
         let lastDateObject = NSUserDefaults.standardUserDefaults().objectForKey("lastUpdateDate")
@@ -113,13 +108,26 @@ class DashboardModel {
                         NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: "lastUpdateDate")
                         
                         // TODO: call function from Gadgets Model to convert steps to points
-                        // NSUserDefaults.standardUserDefaults().setValue(0, forKey: "totalPointsSinceStart")
-                        // NSUserDefaults.standardUserDefaults().setValue(0, forKey: "pointsInWallet")
+                        // let points = GadgetModel.calculatePoints(steps)
+                        // let dayPoints = NSUserDefaults.standardUserDefaults().objectForKey("dayPoints") as! Double
                         // NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "dayPoints")
+                        // let totalPointsSinceStart = NSUserDefaults.standardUserDefaults().objectForKey("totalPointsSinceStart") as! Double
+                        // NSUserDefaults.standardUserDefaults().setValue(totalPointsSinceStart + points, forKey: "totalPointsSinceStart")
+                        // let pointsInWallet = NSUserDefaults.standardUserDefaults().objectForKey("pointsInWallet") as! Double
+                        // NSUserDefaults.standardUserDefaults().setValue(0, forKey: "pointsInWallet")
                         
                         // Update the day steps
                         let daySteps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as! Int
                         NSUserDefaults.standardUserDefaults().setValue(daySteps + Int(steps), forKey: "daySteps")
+                        
+                        // Send the notification to the user
+                        let notification = UILocalNotification()
+                        notification.alertBody = "\(steps) new steps from HealthKit"
+                        notification.alertAction = "open"
+                        notification.fireDate = NSDate(timeIntervalSinceNow: 10)
+                        notification.soundName = UILocalNotificationDefaultSoundName
+                        
+                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
                         
                         
                     }
@@ -134,6 +142,42 @@ class DashboardModel {
             // TODO: handle this situation
             print("no last update date")
         }
+
+    }
+    
+    func stepChangedHandler(query: HKObserverQuery, completionHandler: HKObserverQueryCompletionHandler, error: NSError?) {
+        
+        // Here you need to call a function to query the step change
+        self.executeHealthKitRequest()
+        
+        completionHandler()
+        
+    }
+    
+    /**
+     This function makes the call to Apple HealthKit and gets all the steps taken since the
+     lastUpdateDate. It then updates the appropriate NSUserDefault variables to reflect the
+     new data.
+     */
+    private func updateSteps() {
+        
+        let sampleType =  HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+        
+        let query: HKObserverQuery = HKObserverQuery(sampleType: sampleType!, predicate: nil, updateHandler: self.stepChangedHandler)
+        
+        self.healthKitStore.executeQuery(query)
+        self.healthKitStore.enableBackgroundDeliveryForType(sampleType!, frequency: .Immediate, withCompletion: {(succeeded: Bool, error: NSError?) in
+            
+            if succeeded {
+                print("Enabled background delivery of step changes")
+            } else {
+                if let theError = error {
+                    print("Failed to enable background delivery of step changes. ")
+                    print("Error = \(theError)")
+                }
+            }
+        })
+        
     }
     
     /**
@@ -189,20 +233,40 @@ class DashboardModel {
      Level 7: 500000 - 1 mil
      Level 8: 1 mil - 2 mil
      Level 9: 2 mil - 5 mil
-     Level 10: 5 mil - 1 bil
-     Level 11: 1 bil - 2 bil
-     Level 12: 2 bil - 5 bil
-     Level 13: 5 bil - 1 tril
-     Level 14: 1 tril - 2 tril
-     Level 15: 2 tril - 5 tril
-     Level 16: 5 tril - 1 quadril
-     Level 17: 1 quadril - 2 quadril
-     Level 18: 2 quadril - 5 quadril
-     Level 19: 5 quadril - 1 pentil
-     Level 20: 1 pentil -
+     Level 10: 5 mil - 10 mil
+     Level 11: 10 mil - 20 mil
+     Level 12: 20 mil - 50 mil
+     Level 13: 50 mil - 100 mil
+     Level 14: 100 mil - 500 mil
+     Level 15: 500 mil - 1 bil
+     Level 16: 1 bil - 10 bil
+     Level 17: 10 bil - 100 bil
+     Level 18: 100 bil - 1 tril
+     Level 19: 1 tril - 1 quad
+     Level 20: 1 quad -
      */
     func getUserLevel() -> (level: Int, percentage: Double) {
-        let pointsRanges : [[Int]] = []
+        let pointsRanges : [Range<Int>] = [
+            0..<5000,
+            5000..<20000,
+            20000..<50000,
+            50000..<100000,
+            100000..<200000,
+            200000..<500000,
+            500000..<1000000, // 1 mil
+            1000000..<2000000, // 2 mil
+            2000000..<5000000, // 5 mil
+            5000000..<10000000, // 10 mil
+            10000000..<20000000, // 20 mil
+            20000000..<50000000, // 50 mil
+            50000000..<100000000, // 100 mil
+            100000000..<500000000, // 500 mil
+            500000000..<1000000000, // 1 bil
+            1000000000..<10000000000, // 10 bil
+            10000000000..<100000000000, // 100 bil
+            100000000000..<1000000000000, // 1 tril
+            1000000000000..<1000000000000000, // 1 quad
+        ]
         
         if let totalPoints = NSUserDefaults.standardUserDefaults().valueForKey("totalPointsSinceStart") {
             let points = totalPoints as! Int
@@ -214,6 +278,7 @@ class DashboardModel {
                     return (level: userLevel, percentage: percentage)
                 }
             }
+            return (20, 100)
         }
         return (0, 0.0)
         
