@@ -229,20 +229,40 @@ class DashboardModel {
      Level 7: 500000 - 1 mil
      Level 8: 1 mil - 2 mil
      Level 9: 2 mil - 5 mil
-     Level 10: 5 mil - 1 bil
-     Level 11: 1 bil - 2 bil
-     Level 12: 2 bil - 5 bil
-     Level 13: 5 bil - 1 tril
-     Level 14: 1 tril - 2 tril
-     Level 15: 2 tril - 5 tril
-     Level 16: 5 tril - 1 quadril
-     Level 17: 1 quadril - 2 quadril
-     Level 18: 2 quadril - 5 quadril
-     Level 19: 5 quadril - 1 pentil
-     Level 20: 1 pentil -
+     Level 10: 5 mil - 10 mil
+     Level 11: 10 mil - 20 mil
+     Level 12: 20 mil - 50 mil
+     Level 13: 50 mil - 100 mil
+     Level 14: 100 mil - 500 mil
+     Level 15: 500 mil - 1 bil
+     Level 16: 1 bil - 10 bil
+     Level 17: 10 bil - 100 bil
+     Level 18: 100 bil - 1 tril
+     Level 19: 1 tril - 1 quad
+     Level 20: 1 quad -
      */
     func getUserLevel() -> (level: Int, percentage: Double) {
-        let pointsRanges : [[Int]] = []
+        let pointsRanges : [Range<Int>] = [
+            0..<5000,
+            5000..<20000,
+            20000..<50000,
+            50000..<100000,
+            100000..<200000,
+            200000..<500000,
+            500000..<1000000, // 1 mil
+            1000000..<2000000, // 2 mil
+            2000000..<5000000, // 5 mil
+            5000000..<10000000, // 10 mil
+            10000000..<20000000, // 20 mil
+            20000000..<50000000, // 50 mil
+            50000000..<100000000, // 100 mil
+            100000000..<500000000, // 500 mil
+            500000000..<1000000000, // 1 bil
+            1000000000..<10000000000, // 10 bil
+            10000000000..<100000000000, // 100 bil
+            100000000000..<1000000000000, // 1 tril
+            1000000000000..<1000000000000000, // 1 quad
+        ]
         
         if let totalPoints = NSUserDefaults.standardUserDefaults().valueForKey("totalPointsSinceStart") {
             let points = totalPoints as! Int
@@ -254,6 +274,7 @@ class DashboardModel {
                     return (level: userLevel, percentage: percentage)
                 }
             }
+            return (20, 100)
         }
         return (0, 0.0)
         
