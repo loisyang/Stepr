@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -23,6 +24,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.dataSource = self
         
         self.dashboard.pullStepsAndUpdate()
+        
+        //FOR TESTING:
+        //let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        //let context:NSManagedObjectContext = appDel.managedObjectContext
+        //let points:Double = Gadget.calculatePoints(context, newSteps: 200)
+        //print(points)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +78,5 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             return CGFloat(44)
         }
     }
-
-
 }
 

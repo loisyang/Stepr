@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tcq-2q-oOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-108" y="251"/>
+            <point key="canvasLocation" x="13" y="216"/>
         </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="0Sf-6M-C01">
@@ -151,6 +151,15 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ueF-w8-PZQ" id="MEQ-8n-LCs">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fql-R0-OXU">
+                                                    <rect key="frame" x="271" y="7" width="58" height="30"/>
+                                                    <state key="normal" title="Gadgets"/>
+                                                    <connections>
+                                                        <segue destination="CGy-8G-1F5" kind="presentation" id="vNa-9z-lY9"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -172,7 +181,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5s-ai-bfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744" y="251"/>
+            <point key="canvasLocation" x="760" y="216"/>
+        </scene>
+        <!--Gadgets View Controller-->
+        <scene sceneID="5j9-lA-Xsh">
+            <objects>
+                <viewController id="CGy-8G-1F5" customClass="GadgetsViewController" customModule="Stepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H6l-4f-0Dr"/>
+                        <viewControllerLayoutGuide type="bottom" id="VRV-IB-8xZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ngb-1b-cNH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Bg-v2-PEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457" y="234"/>
         </scene>
     </scenes>
 </document>
