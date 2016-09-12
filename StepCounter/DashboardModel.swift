@@ -62,12 +62,7 @@ class DashboardModel {
         }
     }
     
-    /**
-     This function makes the call to Apple HealthKit and gets all the steps taken since the
-     lastUpdateDate. It then updates the appropriate NSUserDefault variables to reflect the
-     new data.
-     */
-    private func updateSteps() {
+    func executeHealthKitRequest() {
         
         // Get the lastUpdateDateObject
         let lastDateObject = NSUserDefaults.standardUserDefaults().objectForKey("lastUpdateDate")
@@ -121,6 +116,15 @@ class DashboardModel {
                         let daySteps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as! Int
                         NSUserDefaults.standardUserDefaults().setValue(daySteps + Int(steps), forKey: "daySteps")
                         
+                        // Send the notification to the user
+                        let notification = UILocalNotification()
+                        notification.alertBody = "\(steps) new steps from HealthKit"
+                        notification.alertAction = "open"
+                        notification.fireDate = NSDate(timeIntervalSinceNow: 10)
+                        notification.soundName = UILocalNotificationDefaultSoundName
+                        
+                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                        
                         
                     }
                     
@@ -134,6 +138,42 @@ class DashboardModel {
             // TODO: handle this situation
             print("no last update date")
         }
+
+    }
+    
+    func stepChangedHandler(query: HKObserverQuery, completionHandler: HKObserverQueryCompletionHandler, error: NSError?) {
+        
+        // Here you need to call a function to query the step change
+        self.executeHealthKitRequest()
+        
+        completionHandler()
+        
+    }
+    
+    /**
+     This function makes the call to Apple HealthKit and gets all the steps taken since the
+     lastUpdateDate. It then updates the appropriate NSUserDefault variables to reflect the
+     new data.
+     */
+    private func updateSteps() {
+        
+        let sampleType =  HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+        
+        let query: HKObserverQuery = HKObserverQuery(sampleType: sampleType!, predicate: nil, updateHandler: self.stepChangedHandler)
+        
+        self.healthKitStore.executeQuery(query)
+        self.healthKitStore.enableBackgroundDeliveryForType(sampleType!, frequency: .Immediate, withCompletion: {(succeeded: Bool, error: NSError?) in
+            
+            if succeeded {
+                print("Enabled background delivery of step changes")
+            } else {
+                if let theError = error {
+                    print("Failed to enable background delivery of step changes. ")
+                    print("Error = \(theError)")
+                }
+            }
+        })
+        
     }
     
     /**
