@@ -25,7 +25,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         self.dashboard.pullStepsAndUpdate()
         
         // Set a timer to reload the tableView data
-        // This must be done because of the asynchronicity of the requests to HealthKit 
+        // This must be done because of the asynchronicity of the requests to HealthKit
         NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(DashboardViewController.updateTableData), userInfo: nil, repeats: true)
         
     }
