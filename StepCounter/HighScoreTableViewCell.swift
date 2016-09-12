@@ -31,7 +31,7 @@ class HighScoreTableViewCell: UITableViewCell {
     
     func updateLabels() {
         if let highScoreObject = self.historyObject {
-            self.highScoreLabel.text = "High score: \(highScoreObject.points!) points"
+            self.highScoreLabel.text = "High score: \(Int(floor(Double(highScoreObject.points!)))) points"
         } else {
             self.highScoreLabel.text = "No high score"
         }

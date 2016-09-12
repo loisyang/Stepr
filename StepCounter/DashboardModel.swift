@@ -156,7 +156,7 @@ class DashboardModel {
                                 let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
                                 history.date = NSDate()
                                 history.steps = Int(steps)
-                                history.points = 0
+                                history.points = Double(steps)
                                 // history.points = Double(points)
                             }
                             
@@ -170,7 +170,7 @@ class DashboardModel {
                             let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
                             history.date = NSDate()
                             history.steps = Int(steps)
-                            history.points = 0
+                            history.points = Double(steps)
                             // history.points = Double(points)
                             
                             do {
