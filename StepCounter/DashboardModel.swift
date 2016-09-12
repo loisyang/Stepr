@@ -280,8 +280,33 @@ class DashboardModel {
      whole number. It returns the points as a Double.
      */
     func getPointsForToday() -> Double {
-        if let points = NSUserDefaults.standardUserDefaults().objectForKey("dayPoints") as? Double {
-            return floor(points)
+//        if let points = NSUserDefaults.standardUserDefaults().objectForKey("dayPoints") as? Double {
+//            return floor(points)
+//        }
+//        return 0
+        
+        // Create the context
+        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let context = app.managedObjectContext
+        let request = NSFetchRequest(entityName: "History")
+        
+        // Add the sortDescriptor so that CoreData returns them ordered by points
+        // This makes results[0] the highest score
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        
+        var results : [AnyObject]?
+        
+        do {
+            // Execute the request
+            try results = context.executeFetchRequest(request)
+        } catch _ {
+            results = nil
+        }
+        
+        if results != nil && results!.count > 0 {
+            let today = results!.first as! History
+            return today.points as! Double
         }
         return 0
     }
