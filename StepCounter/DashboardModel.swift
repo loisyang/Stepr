@@ -62,6 +62,13 @@ class DashboardModel {
         }
     }
     
+    /**
+     This function is what actually calls HealthKit and request thes users steps for that day.
+     It uses the start of the day as the anchor point, and requests steps until the current
+     moment.
+     If there is no History object for the current day, it creates a new one and populates it
+     appropriately. If one exists, it updates it appropriately.
+     */
     func executeHealthKitRequest() {
         // Get NSDate for start of current day
         let startOfDay = NSCalendar.currentCalendar().startOfDayForDate(NSDate())
@@ -186,9 +193,15 @@ class DashboardModel {
         
     }
     
+    /**
+     This function is used by HealthKit as the callback for the HKObserverQuery.
+     Whenever HealthKit tells this app that there is new data to be requested,
+     this function gets called. It calls self.executeHealthKitRequest() to make
+     the actual request for the data.
+     */
     func stepChangedHandler(query: HKObserverQuery, completionHandler: HKObserverQueryCompletionHandler, error: NSError?) {
         
-        // Here you need to call a function to query the step change
+        // Call the function to actually query HealthKit for the new data
         self.executeHealthKitRequest()
         
         completionHandler()
