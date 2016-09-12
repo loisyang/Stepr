@@ -417,7 +417,7 @@ class DashboardModel {
             results = nil
         }
         
-        if results != nil {
+        if results != nil && results!.count > 0 {
             return results?.first as? History
         } else {
             return nil
