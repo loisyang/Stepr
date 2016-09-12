@@ -30,12 +30,9 @@ class Util {
             let startOfDay = NSCalendar.currentCalendar().startOfDayForDate(NSDate())
             
             NSUserDefaults.standardUserDefaults().setObject(startOfDay, forKey: "downloadDate")
-            NSUserDefaults.standardUserDefaults().setObject(startOfDay, forKey: "lastUpdateDate")
             
             NSUserDefaults.standardUserDefaults().setValue(0, forKey: "totalPointsSinceStart")
             NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "pointsInWallet")
-            NSUserDefaults.standardUserDefaults().setValue(0, forKey: "daySteps")
-            NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "dayPoints")
             
             // Step 2: Build all gadgets into CoreData
             

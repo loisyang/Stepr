@@ -63,144 +63,127 @@ class DashboardModel {
     }
     
     func executeHealthKitRequest() {
+        // Get NSDate for start of current day
+        let startOfDay = NSCalendar.currentCalendar().startOfDayForDate(NSDate())
+        let currentDate = NSDate()
         
-        // Get the lastUpdateDateObject
-        let lastDateObject = NSUserDefaults.standardUserDefaults().objectForKey("lastUpdateDate")
+        // The type of data we are requesting
+        let type = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
         
-        if lastDateObject != nil {
-            // Convert it to an NSDate
-            let lastDate = lastDateObject as! NSDate
-            let currentDate = NSDate()
+        //  Set the Interval
+        let interval: NSDateComponents = NSDateComponents()
+        interval.day = 1
+        
+        // Build the query
+        let query = HKStatisticsCollectionQuery(quantityType: type!, quantitySamplePredicate: nil, options: [.CumulativeSum], anchorDate: startOfDay, intervalComponents:interval)
+        
+        // Give the query a callback function
+        query.initialResultsHandler = { query, results, error in
             
-            // The type of data we are requesting
-            let type = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
-            
-            //  Set the Interval
-            let interval: NSDateComponents = NSDateComponents()
-            interval.day = 1
-            
-            // Build the query
-            let query = HKStatisticsCollectionQuery(quantityType: type!, quantitySamplePredicate: nil, options: [.CumulativeSum], anchorDate: lastDate, intervalComponents:interval)
-            
-            // Give the query a callback function
-            query.initialResultsHandler = { query, results, error in
+            if error != nil {
                 
-                if error != nil {
-                    
-                    //  Something went Wrong
-                    return
-                }
+                //  Something went Wrong
+                return
+            }
+            
+            results?.enumerateStatisticsFromDate(startOfDay, toDate: currentDate, withBlock: {
+                results, error in
                 
-                results?.enumerateStatisticsFromDate(lastDate, toDate: currentDate, withBlock: {
-                    results, error in
+                // TODO: add in the edge case where the lastDate and currentDate pass through midnight (2 days)
+                
+                if let quantity = results.sumQuantity() {
+                    // The query was successful!
                     
-                    // TODO: add in the edge case where the lastDate and currentDate pass through midnight (2 days)
+                    let steps = quantity.doubleValueForUnit(HKUnit.countUnit())
+                    print(steps)
                     
-                    if let quantity = results.sumQuantity() {
-                        // The query was successful!
+                    // Update the NSUserDefault variables
+                    
+                    // Update lastUpdateDate
+                    NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: "lastUpdateDate")
+                    
+                    // TODO: call function from Gadgets Model to convert steps to points
+                    // let points = GadgetModel.calculatePoints(steps)
+                    
+                    // Update the day steps
+                    
+                    // Create the context
+                    let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+                    let context = app.managedObjectContext
+                    let request = NSFetchRequest(entityName: "History")
+                    
+                    // Add the sortDescriptor so that CoreData returns them ordered by points
+                    // This makes results[0] the highest score
+                    let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+                    request.sortDescriptors = [sortDescriptor]
+                    
+                    var results : [AnyObject]?
+                    
+                    do {
+                        // Execute the request
+                        try results = context.executeFetchRequest(request)
+                    } catch _ {
+                        results = nil
+                    }
+                    
+                    if results != nil && results!.count > 0 {
+                        // There already exists a History object, so check if its for this date
                         
-                        let steps = quantity.doubleValueForUnit(HKUnit.countUnit())
-                        print(steps)
+                        let today = results!.first as! History
+                        let current = NSCalendar.currentCalendar()
                         
-                        // Update the NSUserDefault variables
-                        
-                        // Update lastUpdateDate
-                        NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: "lastUpdateDate")
-                        
-                        // TODO: call function from Gadgets Model to convert steps to points
-                        // let points = GadgetModel.calculatePoints(steps)
-                        // let dayPoints = NSUserDefaults.standardUserDefaults().objectForKey("dayPoints") as! Double
-                        // NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "dayPoints")
-                        // let totalPointsSinceStart = NSUserDefaults.standardUserDefaults().objectForKey("totalPointsSinceStart") as! Double
-                        // NSUserDefaults.standardUserDefaults().setValue(totalPointsSinceStart + points, forKey: "totalPointsSinceStart")
-                        // let pointsInWallet = NSUserDefaults.standardUserDefaults().objectForKey("pointsInWallet") as! Double
-                        // NSUserDefaults.standardUserDefaults().setValue(0, forKey: "pointsInWallet")
-                        
-                        // Update the day steps
-                        // let daySteps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as! Int
-                        // NSUserDefaults.standardUserDefaults().setValue(daySteps + Int(steps), forKey: "daySteps")
-                        
-                        // Create the context
-                        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
-                        let context = app.managedObjectContext
-                        let request = NSFetchRequest(entityName: "History")
-                        
-                        // Add the sortDescriptor so that CoreData returns them ordered by points
-                        // This makes results[0] the highest score
-                        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
-                        request.sortDescriptors = [sortDescriptor]
-                        
-                        var results : [AnyObject]?
-                        
-                        do {
-                            // Execute the request
-                            try results = context.executeFetchRequest(request)
-                        } catch _ {
-                            results = nil
-                        }
-                        
-                        if results != nil && results!.count > 0 {
-                            // There already exists a History object, so check if its for this date
+                        if current.isDateInToday(today.date!) {
+                            // History object is for today, so update that object
                             
-                            let today = results!.first as! History
-                            let current = NSCalendar.currentCalendar()
-                            
-                            if current.isDateInToday(today.date!) {
-                                // History object is for today, so update that object
-                                
-                                today.setValue(Int(today.steps!) + Int(steps), forKey: "steps")
-                                // today.setValue(Double(today.points!) + Double(points), forKey: "points")
-                            } else {
-                                // History object is not for today, so create a new object for today
-                                
-                                let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
-                                history.date = NSDate()
-                                history.steps = Int(steps)
-                                history.points = Double(steps)
-                                // history.points = Double(points)
-                            }
-                            
-                            do {
-                                try context.save()
-                            } catch _ {}
-                            
+                            today.setValue(Int(steps), forKey: "steps")
+                            today.setValue(Double(steps), forKey: "points")
+                            // today.setValue(Double(points), forKey: "points")
                         } else {
-                            // There does not exist a History object for this date, so create it
+                            // History object is not for today, so create a new object for today
                             
                             let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
                             history.date = NSDate()
                             history.steps = Int(steps)
                             history.points = Double(steps)
                             // history.points = Double(points)
-                            
-                            do {
-                                try context.save()
-                            } catch _ {}
                         }
                         
-                        // Send the notification to the user
-                        let notification = UILocalNotification()
-                        notification.alertBody = "\(steps) new steps from HealthKit"
-                        notification.alertAction = "open"
-                        notification.fireDate = NSDate(timeIntervalSinceNow: 10)
-                        notification.soundName = UILocalNotificationDefaultSoundName
+                        do {
+                            try context.save()
+                        } catch _ {}
                         
-                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                    } else {
+                        // There does not exist a History object for this date, so create it
                         
+                        let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
+                        history.date = NSDate()
+                        history.steps = Int(steps)
+                        history.points = Double(steps)
+                        // history.points = Double(points)
                         
+                        do {
+                            try context.save()
+                        } catch _ {}
                     }
                     
-                })
-            }
-            
-            // Execute the query
-            self.healthKitStore.executeQuery(query)
-            
-        } else {
-            // TODO: handle this situation
-            print("no last update date")
+                    // Send the notification to the user
+                    let notification = UILocalNotification()
+                    notification.alertBody = "\(steps) steps so far today!"
+                    notification.alertAction = "open"
+                    notification.fireDate = NSDate(timeIntervalSinceNow: 1)
+                    notification.soundName = UILocalNotificationDefaultSoundName
+                    
+                    UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                    
+                    
+                }
+                
+            })
         }
-
+        
+        // Execute the query
+        self.healthKitStore.executeQuery(query)
+        
     }
     
     func stepChangedHandler(query: HKObserverQuery, completionHandler: HKObserverQueryCompletionHandler, error: NSError?) {
@@ -243,9 +226,9 @@ class DashboardModel {
      the user has taken that day. It returns the steps as an Int.
      */
     func getStepsForToday() -> Int {
-//        if let steps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as? Int {
-//            return steps
-//        }
+        //        if let steps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as? Int {
+        //            return steps
+        //        }
         
         // Create the context
         let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -280,10 +263,10 @@ class DashboardModel {
      whole number. It returns the points as a Double.
      */
     func getPointsForToday() -> Double {
-//        if let points = NSUserDefaults.standardUserDefaults().objectForKey("dayPoints") as? Double {
-//            return floor(points)
-//        }
-//        return 0
+        //        if let points = NSUserDefaults.standardUserDefaults().objectForKey("dayPoints") as? Double {
+        //            return floor(points)
+        //        }
+        //        return 0
         
         // Create the context
         let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
