@@ -13,12 +13,9 @@ class GadgetsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-
-        // Do any additional setup after loading the view.
     }
+    
+    //populate the view with gadgets
     func loadGadgets(){
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -27,11 +24,11 @@ class GadgetsViewController: UIViewController {
         do {
             let result = try context.executeFetchRequest(request)
             // success ...
+            // create views by looping through the array
         } catch let error as NSError {
             // failure
             print("Fetch failed: \(error.localizedDescription)")
         }
-        //populate the view with gadgets
     }
 
     override func didReceiveMemoryWarning() {
