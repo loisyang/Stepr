@@ -117,8 +117,66 @@ class DashboardModel {
                         // NSUserDefaults.standardUserDefaults().setValue(0, forKey: "pointsInWallet")
                         
                         // Update the day steps
-                        let daySteps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as! Int
-                        NSUserDefaults.standardUserDefaults().setValue(daySteps + Int(steps), forKey: "daySteps")
+                        // let daySteps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as! Int
+                        // NSUserDefaults.standardUserDefaults().setValue(daySteps + Int(steps), forKey: "daySteps")
+                        
+                        // Create the context
+                        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+                        let context = app.managedObjectContext
+                        let request = NSFetchRequest(entityName: "History")
+                        
+                        // Add the sortDescriptor so that CoreData returns them ordered by points
+                        // This makes results[0] the highest score
+                        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+                        request.sortDescriptors = [sortDescriptor]
+                        
+                        var results : [AnyObject]?
+                        
+                        do {
+                            // Execute the request
+                            try results = context.executeFetchRequest(request)
+                        } catch _ {
+                            results = nil
+                        }
+                        
+                        if results != nil && results!.count > 0 {
+                            // There already exists a History object, so check if its for this date
+                            
+                            let today = results!.first as! History
+                            let current = NSCalendar.currentCalendar()
+                            
+                            if current.isDateInToday(today.date!) {
+                                // History object is for today, so update that object
+                                
+                                today.setValue(Int(today.steps!) + Int(steps), forKey: "steps")
+                                // today.setValue(Double(today.points!) + Double(points), forKey: "points")
+                            } else {
+                                // History object is not for today, so create a new object for today
+                                
+                                let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
+                                history.date = NSDate()
+                                history.steps = Int(steps)
+                                history.points = 0
+                                // history.points = Double(points)
+                            }
+                            
+                            do {
+                                try context.save()
+                            } catch _ {}
+                            
+                        } else {
+                            // There does not exist a History object for this date, so create it
+                            
+                            let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
+                            history.date = NSDate()
+                            history.steps = Int(steps)
+                            history.points = 0
+                            // history.points = Double(points)
+                            
+                            do {
+                                try context.save()
+                            } catch _ {}
+                        }
                         
                         // Send the notification to the user
                         let notification = UILocalNotification()
@@ -185,8 +243,32 @@ class DashboardModel {
      the user has taken that day. It returns the steps as an Int.
      */
     func getStepsForToday() -> Int {
-        if let steps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as? Int {
-            return steps
+//        if let steps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as? Int {
+//            return steps
+//        }
+        
+        // Create the context
+        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let context = app.managedObjectContext
+        let request = NSFetchRequest(entityName: "History")
+        
+        // Add the sortDescriptor so that CoreData returns them ordered by points
+        // This makes results[0] the highest score
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        
+        var results : [AnyObject]?
+        
+        do {
+            // Execute the request
+            try results = context.executeFetchRequest(request)
+        } catch _ {
+            results = nil
+        }
+        
+        if results != nil && results!.count > 0 {
+            let today = results!.first as! History
+            return today.steps as! Int
         }
         return 0
     }
