@@ -108,9 +108,13 @@ class DashboardModel {
                         NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: "lastUpdateDate")
                         
                         // TODO: call function from Gadgets Model to convert steps to points
-                        // NSUserDefaults.standardUserDefaults().setValue(0, forKey: "totalPointsSinceStart")
-                        // NSUserDefaults.standardUserDefaults().setValue(0, forKey: "pointsInWallet")
+                        // let points = GadgetModel.calculatePoints(steps)
+                        // let dayPoints = NSUserDefaults.standardUserDefaults().objectForKey("dayPoints") as! Double
                         // NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "dayPoints")
+                        // let totalPointsSinceStart = NSUserDefaults.standardUserDefaults().objectForKey("totalPointsSinceStart") as! Double
+                        // NSUserDefaults.standardUserDefaults().setValue(totalPointsSinceStart + points, forKey: "totalPointsSinceStart")
+                        // let pointsInWallet = NSUserDefaults.standardUserDefaults().objectForKey("pointsInWallet") as! Double
+                        // NSUserDefaults.standardUserDefaults().setValue(0, forKey: "pointsInWallet")
                         
                         // Update the day steps
                         let daySteps = NSUserDefaults.standardUserDefaults().objectForKey("daySteps") as! Int
