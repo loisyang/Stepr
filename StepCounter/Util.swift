@@ -71,19 +71,7 @@ class Util {
             }
         }
     }
-    
-    class func updatePointsInWallet(change: Double) {
-        let walletPoints = NSUserDefaults.standardUserDefaults().valueForKey("pointsInWallet") as! Double
-        // NSUserDefaults.standardUserDefaults().setValue(walletPoints + Double(points), forKey: "pointsInWallet")
-        NSUserDefaults.standardUserDefaults().setValue(walletPoints + change, forKey: "pointsInWallet")
-    }
-    
-    class func updateTotalPointsSinceStart(change: Double) {
-        let totalPoints = NSUserDefaults.standardUserDefaults().valueForKey("totalPointsSinceStart") as! Double
-        // NSUserDefaults.standardUserDefaults().setValue(totalPoints + Double(points), forKey: "totalPointsSinceStart")
-        NSUserDefaults.standardUserDefaults().setValue(totalPoints + change, forKey: "totalPointsSinceStart")
-    }
-    
+
     /**
      This function is what actually calls HealthKit and request thes users steps for that day.
      It uses the start of the day as the anchor point, and requests steps until the current
@@ -217,16 +205,6 @@ class Util {
                         } catch _ {}
                     }
                     
-                    // Send the notification to the user
-                    let notification = UILocalNotification()
-                    notification.alertBody = "\(steps) steps so far today!"
-                    notification.alertAction = "open"
-                    notification.fireDate = NSDate(timeIntervalSinceNow: 60)
-                    notification.soundName = UILocalNotificationDefaultSoundName
-                    
-                    UIApplication.sharedApplication().scheduleLocalNotification(notification)
-                    
-                    
                 }
                 
             })
@@ -276,6 +254,59 @@ class Util {
             }
         })
         
+    }
+    
+    class func updatePointsInWallet(change: Double) {
+        
+        let walletPoints = NSUserDefaults.standardUserDefaults().valueForKey("pointsInWallet") as! Double
+        let newWalletTotal = walletPoints + change
+        
+        NSUserDefaults.standardUserDefaults().setValue(newWalletTotal, forKey: "pointsInWallet")
+    }
+    
+    class func updateTotalPointsSinceStart(change: Double) {
+        let dashboard = DashboardModel()
+        let oldUserLevel = dashboard.getUserLevel()
+        
+        let totalPoints = NSUserDefaults.standardUserDefaults().valueForKey("totalPointsSinceStart") as! Double
+        let newTotal = totalPoints + change
+        
+        NSUserDefaults.standardUserDefaults().setValue(newTotal, forKey: "totalPointsSinceStart")
+        
+        print("updating \(totalPoints) to \(newTotal)")
+        
+        let newUserLevel = dashboard.getUserLevel()
+        
+        print("comparing \(oldUserLevel) with \(newUserLevel)")
+        
+        if newUserLevel.level > oldUserLevel.level {
+            // Create a notification that a new level has been reached!
+            
+            let notification = UILocalNotification()
+            notification.alertBody = "Congrats! You just leveled up to Level 2! Check out the Gadget store to see what you have unlocked!"
+            notification.alertAction = "open"
+            notification.fireDate = NSDate(timeIntervalSinceNow: 60)
+            notification.soundName = UILocalNotificationDefaultSoundName
+            
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            
+            print("level update notification sent")
+            
+        } else if oldUserLevel.percentage < 0.5 && newUserLevel.percentage >= 0.5 {
+            // Create a notification that they just passed 50% completion of the current level
+            
+            // Send the notification to the user
+            let notification = UILocalNotification()
+            notification.alertBody = "You're on a roll! You just reached the half way point to Level \(newUserLevel.level + 1). Keep up the good work!"
+            notification.alertAction = "open"
+            notification.fireDate = NSDate(timeIntervalSinceNow: 60)
+            notification.soundName = UILocalNotificationDefaultSoundName
+            
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            
+            print("50% mark notification sent")
+            
+        }
     }
     
 }

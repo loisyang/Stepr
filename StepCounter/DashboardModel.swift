@@ -162,7 +162,7 @@ class DashboardModel {
                     return (level: userLevel, percentage: percentage)
                 }
             }
-            return (20, 100)
+            return (20, 1)
         }
         return (0, 0.0)
         
