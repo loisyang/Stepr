@@ -30,7 +30,7 @@ class StepsInWalletTableViewCell: UITableViewCell {
     }
     
     func updateLabels() {
-        self.pointsInWalletLabel.text = "\(self.pointsInWallet) points in your wallet"
+        self.pointsInWalletLabel.text = "\(Int(floor(self.pointsInWallet))) points in your wallet"
     }
 
 }
