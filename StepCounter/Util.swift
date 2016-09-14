@@ -72,6 +72,18 @@ class Util {
         }
     }
     
+    class func updatePointsInWallet(change: Double) {
+        let walletPoints = NSUserDefaults.standardUserDefaults().valueForKey("pointsInWallet") as! Double
+        // NSUserDefaults.standardUserDefaults().setValue(walletPoints + Double(points), forKey: "pointsInWallet")
+        NSUserDefaults.standardUserDefaults().setValue(walletPoints + change, forKey: "pointsInWallet")
+    }
+    
+    class func updateTotalPointsSinceStart(change: Double) {
+        let totalPoints = NSUserDefaults.standardUserDefaults().valueForKey("totalPointsSinceStart") as! Double
+        // NSUserDefaults.standardUserDefaults().setValue(totalPoints + Double(points), forKey: "totalPointsSinceStart")
+        NSUserDefaults.standardUserDefaults().setValue(totalPoints + change, forKey: "totalPointsSinceStart")
+    }
+    
     /**
      This function is what actually calls HealthKit and request thes users steps for that day.
      It uses the start of the day as the anchor point, and requests steps until the current
@@ -127,6 +139,7 @@ class Util {
                     
                     // TODO: call function from Gadgets Model to convert steps to points
                     // let points = GadgetModel.calculatePoints(steps)
+                    let points = Double(steps)
                     
                     // Update the day steps
                     
@@ -158,9 +171,16 @@ class Util {
                         if current.isDateInToday(today.date!) {
                             // History object is for today, so update that object
                             
+                            let previousPointTotal = today.points as! Double
+                            let newPointsQueried = points - previousPointTotal
+                            
                             today.setValue(Int(steps), forKey: "steps")
                             today.setValue(Double(steps), forKey: "points")
                             // today.setValue(Double(points), forKey: "points")
+                            
+                            // update pointsInWallet and totalStepsSinceStart
+                            Util.updatePointsInWallet(newPointsQueried)
+                            Util.updateTotalPointsSinceStart(newPointsQueried)
                         } else {
                             // History object is not for today, so create a new object for today
                             
@@ -169,6 +189,10 @@ class Util {
                             history.steps = Int(steps)
                             history.points = Double(steps)
                             // history.points = Double(points)
+                            
+                            // update pointsInWallet and totalStepsSinceStart
+                            Util.updatePointsInWallet(points)
+                            Util.updateTotalPointsSinceStart(points)
                         }
                         
                         do {
@@ -184,6 +208,10 @@ class Util {
                         history.points = Double(steps)
                         // history.points = Double(points)
                         
+                        // update pointsInWallet and totalStepsSinceStart
+                        Util.updatePointsInWallet(points)
+                        Util.updateTotalPointsSinceStart(points)
+                        
                         do {
                             try context.save()
                         } catch _ {}
@@ -193,7 +221,7 @@ class Util {
                     let notification = UILocalNotification()
                     notification.alertBody = "\(steps) steps so far today!"
                     notification.alertAction = "open"
-                    notification.fireDate = NSDate(timeIntervalSinceNow: 1)
+                    notification.fireDate = NSDate(timeIntervalSinceNow: 60)
                     notification.soundName = UILocalNotificationDefaultSoundName
                     
                     UIApplication.sharedApplication().scheduleLocalNotification(notification)
