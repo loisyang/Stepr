@@ -71,7 +71,7 @@ class Util {
             }
         }
     }
-
+    
     /**
      This function is what actually calls HealthKit and request thes users steps for that day.
      It uses the start of the day as the anchor point, and requests steps until the current
@@ -256,6 +256,10 @@ class Util {
         
     }
     
+    /**
+     This function takes a change in the pointsInWallet variable and adds that change
+     to the NSUserDefaults variable.
+     */
     class func updatePointsInWallet(change: Double) {
         
         let walletPoints = NSUserDefaults.standardUserDefaults().valueForKey("pointsInWallet") as! Double
@@ -264,6 +268,12 @@ class Util {
         NSUserDefaults.standardUserDefaults().setValue(newWalletTotal, forKey: "pointsInWallet")
     }
     
+    /**
+     This function takes a change in the totalPointsSinceStart variable and adds that change
+     to the NSUserDefaults variable. It also fires notifications in two scenarios:
+        1. If the user just unlocked a new level
+        2. If the user has reached the 50% mark for unlocking the next level
+     */
     class func updateTotalPointsSinceStart(change: Double) {
         let dashboard = DashboardModel()
         let oldUserLevel = dashboard.getUserLevel()
