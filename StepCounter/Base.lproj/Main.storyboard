@@ -175,10 +175,10 @@
             </objects>
             <point key="canvasLocation" x="744" y="251"/>
         </scene>
-        <!--View Controller-->
+        <!--Gadget Store View Controller-->
         <scene sceneID="hNC-tK-Gls">
             <objects>
-                <viewController id="hV5-PK-2HY" sceneMemberID="viewController">
+                <viewController id="hV5-PK-2HY" customClass="GadgetStoreViewController" customModule="Stepr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e4j-gq-CNE"/>
                         <viewControllerLayoutGuide type="bottom" id="qcO-6X-J8q"/>
@@ -208,10 +208,10 @@
             </objects>
             <point key="canvasLocation" x="1570" y="251"/>
         </scene>
-        <!--View Controller-->
+        <!--Gadget Description View Controller-->
         <scene sceneID="AGC-ob-VG3">
             <objects>
-                <viewController id="lXF-DC-JDF" sceneMemberID="viewController">
+                <viewController id="lXF-DC-JDF" customClass="GadgetDescriptionViewController" customModule="Stepr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Z73-DH-JGm"/>
                         <viewControllerLayoutGuide type="bottom" id="2IN-GY-oIx"/>
