@@ -130,35 +130,35 @@ class DashboardModel {
      Level 20: 1 quad -
      */
     func getUserLevel() -> (level: Int, percentage: Double) {
-        let pointsRanges : [Range<Int>] = [
-            0..<5000,
-            5000..<20000,
-            20000..<50000,
-            50000..<100000,
-            100000..<200000,
-            200000..<500000,
-            500000..<1000000, // 1 mil
-            1000000..<2000000, // 2 mil
-            2000000..<5000000, // 5 mil
-            5000000..<10000000, // 10 mil
-            10000000..<20000000, // 20 mil
-            20000000..<50000000, // 50 mil
-            50000000..<100000000, // 100 mil
-            100000000..<500000000, // 500 mil
-            500000000..<1000000000, // 1 bil
-            1000000000..<10000000000, // 10 bil
-            10000000000..<100000000000, // 100 bil
-            100000000000..<1000000000000, // 1 tril
-            1000000000000..<1000000000000000, // 1 quad
+        let pointsRanges : [(min: Double, max: Double)] = [
+            (0, 5000),
+            (5000, 20000),
+            (20000, 50000),
+            (50000, 100000),
+            (100000, 200000),
+            (200000, 500000),
+            (500000, 1000000), // 1 mil
+            (1000000, 2000000), // 2 mil
+            (2000000, 5000000), // 5 mil
+            (5000000, 10000000), // 10 mil
+            (10000000, 20000000), // 20 mil
+            (20000000, 50000000), // 50 mil
+            (50000000, 100000000), // 100 mil
+            (100000000, 500000000), // 500 mil
+            (500000000, 1000000000), // 1 bil
+            (1000000000, 10000000000), // 10 bil
+            (10000000000, 100000000000), // 100 bil
+            (100000000000, 1000000000000), // 1 tril
+            (1000000000000, 1000000000000000), // 1 quad
         ]
         
         if let totalPoints = NSUserDefaults.standardUserDefaults().valueForKey("totalPointsSinceStart") {
-            let points = totalPoints as! Int
+            let points = totalPoints as! Double
             for level in 0..<pointsRanges.count {
-                if pointsRanges[level].contains(points) {
+                if pointsRanges[level].min <= points && points < pointsRanges[level].max {
                     let range = pointsRanges[level]
                     let userLevel = level + 1
-                    let percentage = Double((points - range.first!)) / Double(range.last!)
+                    let percentage = Double((points - range.min)) / Double(range.max)
                     return (level: userLevel, percentage: percentage)
                 }
             }
