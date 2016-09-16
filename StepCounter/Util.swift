@@ -42,7 +42,7 @@ class Util {
             let context = app.managedObjectContext
             let gadgets : [(String, Double, Double, Int)] = [
                 ("Protein Bar", 50, 0.0001, 1),
-                ("Gust of wind", 100, 0.2, 2),
+                ("Gust of Wind", 100, 0.2, 2),
                 ("Companion Walker", 500, 1, 3),
                 ("Dog", 10000, 1.5, 4),
                 ("Horse", 2000, 2, 5),
