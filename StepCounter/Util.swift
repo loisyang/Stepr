@@ -38,6 +38,25 @@ class Util {
             NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "pointsInWallet")
             
             // Step 2: Build all gadgets into CoreData
+            let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let context = app.managedObjectContext
+            
+            let gadgets : [(String, Int, Int)] = [
+                ("Sample Gadget 1", 1000, 1),
+                ("Sample Gadget 2", 5000, 2),
+                ("Sample Gadget 3", 1000, 3)
+            ]
+            
+            for gadgetInfo in gadgets {
+                let gadget = NSEntityDescription.insertNewObjectForEntityForName("Gadget", inManagedObjectContext: context) as! Gadget
+                gadget.name = gadgetInfo.0
+                gadget.cost = gadgetInfo.1
+                gadget.unlockLevel = gadgetInfo.2
+            }
+            
+            do {
+                try context.save()
+            } catch _ {}
             
             // Step 3: Set dataStructureInPlace to true
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "dataStructureInPlace")

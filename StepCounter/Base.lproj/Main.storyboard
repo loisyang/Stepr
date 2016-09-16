@@ -189,7 +189,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vi9-9e-3Cf">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GadgetStoreTableViewCell" rowHeight="70" id="fcc-ZP-6KX" customClass="GadgetStoreTableViewCell" customModule="Stepr" customModuleProvider="target">
@@ -200,13 +200,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gadget Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cs-D5-lAg">
-                                                    <rect key="frame" x="17" y="8" width="434" height="36"/>
+                                                    <rect key="frame" x="17" y="8" width="508" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gadget Cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcu-nM-8Z6">
-                                                    <rect key="frame" x="17" y="40" width="434" height="21"/>
+                                                    <rect key="frame" x="17" y="40" width="508" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -222,7 +222,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MBz-qX-a1U" firstAttribute="leading" secondItem="9Cs-D5-lAg" secondAttribute="trailing" constant="82" id="1LF-k4-2Ci"/>
+                                                <constraint firstItem="MBz-qX-a1U" firstAttribute="leading" secondItem="9Cs-D5-lAg" secondAttribute="trailing" constant="8" id="1LF-k4-2Ci"/>
                                                 <constraint firstItem="MBz-qX-a1U" firstAttribute="trailing" secondItem="aHt-Kw-9hF" secondAttribute="trailingMargin" id="4A5-5v-0zk"/>
                                                 <constraint firstItem="9Cs-D5-lAg" firstAttribute="leading" secondItem="aHt-Kw-9hF" secondAttribute="leadingMargin" constant="9" id="Lk5-2O-M0Q"/>
                                                 <constraint firstItem="9Cs-D5-lAg" firstAttribute="trailing" secondItem="rcu-nM-8Z6" secondAttribute="trailing" id="Pc3-3d-KLJ"/>
@@ -246,7 +246,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="vi9-9e-3Cf" secondAttribute="trailing" id="Eu8-oU-0el"/>
                             <constraint firstItem="qcO-6X-J8q" firstAttribute="top" secondItem="vi9-9e-3Cf" secondAttribute="bottom" id="Pgt-98-Uws"/>
-                            <constraint firstItem="vi9-9e-3Cf" firstAttribute="top" secondItem="e4j-gq-CNE" secondAttribute="bottom" id="RGf-YW-YN4"/>
+                            <constraint firstItem="vi9-9e-3Cf" firstAttribute="top" secondItem="e4j-gq-CNE" secondAttribute="bottom" constant="-64" id="RGf-YW-YN4"/>
                             <constraint firstItem="vi9-9e-3Cf" firstAttribute="leading" secondItem="4Sf-jT-hVk" secondAttribute="leading" id="fR7-FB-sTH"/>
                         </constraints>
                     </view>
