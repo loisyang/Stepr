@@ -18,6 +18,7 @@
 		8177073E1D84D022001EAE12 /* GadgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177073D1D84D022001EAE12 /* GadgetTableViewCell.swift */; };
 		817707621D8A3E6B001EAE12 /* GadgetStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707611D8A3E6B001EAE12 /* GadgetStoreViewController.swift */; };
 		817707641D8A3E90001EAE12 /* GadgetDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707631D8A3E90001EAE12 /* GadgetDescriptionViewController.swift */; };
+		817707661D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */; };
 		81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */; };
 		81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */; };
 		81889E291D7A5EAB00A17BF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E271D7A5EAB00A17BF7 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		8177073D1D84D022001EAE12 /* GadgetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetTableViewCell.swift; sourceTree = "<group>"; };
 		817707611D8A3E6B001EAE12 /* GadgetStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetStoreViewController.swift; sourceTree = "<group>"; };
 		817707631D8A3E90001EAE12 /* GadgetDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetDescriptionViewController.swift; sourceTree = "<group>"; };
+		817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetStoreTableViewCell.swift; sourceTree = "<group>"; };
 		81889E201D7A5EAB00A17BF7 /* Stepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */,
 				817707611D8A3E6B001EAE12 /* GadgetStoreViewController.swift */,
 				817707631D8A3E90001EAE12 /* GadgetDescriptionViewController.swift */,
+				817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */,
 				817707341D84CF45001EAE12 /* Dashboard Prototype Cells */,
 				81889E271D7A5EAB00A17BF7 /* Main.storyboard */,
 				81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */,
@@ -221,6 +224,7 @@
 				817707361D84CF80001EAE12 /* StepsInWalletTableViewCell.swift in Sources */,
 				817707321D8474E6001EAE12 /* History.swift in Sources */,
 				8177073A1D84CFDB001EAE12 /* LevelTableViewCell.swift in Sources */,
+				817707661D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift in Sources */,
 				817707311D8474E6001EAE12 /* History+CoreDataProperties.swift in Sources */,
 				8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */,
 				817707621D8A3E6B001EAE12 /* GadgetStoreViewController.swift in Sources */,
