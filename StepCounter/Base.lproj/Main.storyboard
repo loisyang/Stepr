@@ -201,6 +201,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="vi9-9e-3Cf" id="c1e-Ui-pV9"/>
                         <segue destination="lXF-DC-JDF" kind="show" identifier="gadgetStoreToGadgetDescriptionSegue" id="9b4-bM-sxe"/>
                     </connections>
                 </viewController>
