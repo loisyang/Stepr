@@ -42,7 +42,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 + self.activeGadgets.count
+        return 4 + self.activeGadgets.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -66,13 +66,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             let cell = tableView.dequeueReusableCellWithIdentifier("HighScoreTableViewCell") as! HighScoreTableViewCell
             cell.historyObject = self.dashboard.getHighScore()
             return cell
-        case 4:
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "Gadget Store"
-            return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("GadgetTableViewCell") as! GadgetTableViewCell
-            cell.gadget = self.activeGadgets[indexPath.row - 5]
+            cell.gadget = self.activeGadgets[indexPath.row - 4]
             return cell
         }
     }
@@ -81,7 +77,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         switch indexPath.row {
         case 1:
             return CGFloat(100)
-        case let x where x >= 5:
+        case let x where x >= 4:
             return CGFloat(80)
         default:
             return CGFloat(44)
@@ -89,9 +85,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 4 {
-            self.performSegueWithIdentifier("dashboardToGadgetStoreSegue", sender: nil)
-        }
+        self.performSegueWithIdentifier("dashboardToGadgetDescriptionSegue", sender: self.activeGadgets[indexPath.row - 4])
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let gadgetDescriptionVC = segue.destinationViewController as! GadgetDescriptionViewController
+        gadgetDescriptionVC.gadget = sender as? Gadget
     }
 }
 
