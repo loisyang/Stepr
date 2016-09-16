@@ -10,6 +10,8 @@ import UIKit
 
 class GadgetStoreTableViewCell: UITableViewCell {
     
+    let dashboard = DashboardModel()
+    
     var gadget : Gadget? {
         didSet {
             self.updateLabels()
@@ -33,9 +35,24 @@ class GadgetStoreTableViewCell: UITableViewCell {
     
     func updateLabels() {
         if let gadget = self.gadget {
-            self.gadgetNameLabel.text = gadget.name!
-            self.gadgetCostLabel.text = "\(gadget.cost as! Int) points"
-            self.gadgetCountLabel.text = "\(gadget.numActive as! Int)"
+            let userLevel = self.dashboard.getUserLevel()
+            let unlockLevel = gadget.unlockLevel as! Int
+            if (userLevel.level >= unlockLevel) {
+                // gadget is unlocked
+                self.gadgetNameLabel.text = gadget.name!
+                self.gadgetCostLabel.text = "\(gadget.cost as! Int) points"
+                self.gadgetCountLabel.text = "\(gadget.numActive as! Int)"
+            } else if (userLevel.level + 2 >= unlockLevel) {
+                // user will unlock in the next two levels
+                self.gadgetNameLabel.text = gadget.name!
+                self.gadgetCostLabel.text = "\(gadget.cost as! Int) points"
+                self.gadgetCountLabel.text = "--"
+            } else {
+                // user will unlock in the far future
+                self.gadgetNameLabel.text = "??????"
+                self.gadgetCostLabel.text = "??????"
+                self.gadgetCountLabel.text = "--"
+            }
         }
     }
 

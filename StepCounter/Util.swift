@@ -40,17 +40,27 @@ class Util {
             // Step 2: Build all gadgets into CoreData
             let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
             let context = app.managedObjectContext
-            let gadgets : [(String, Int, Int, Int)] = [
-                ("Gust of wind", 100, 1, 1),
-                ("Companion Walker", 500, 2, 0),
-                ("Dog", 10000, 4, 0),
-                ("Moon boots",15000,20, 0),
-                ("Adrenaline Shot",100000,100, 0),
-                ("Bird", 150000,150, 0),
-                ("Wings",500000,500, 0),
-                ("Airplane",1000000,1000, 0),
-                ("Skateboard",200000,300, 0),
-                ("Flying Carpet",100000000,100000, 0),
+            let gadgets : [(String, Double, Double, Int)] = [
+                ("Protein Bar", 50, 0.0001, 1),
+                ("Gust of wind", 100, 0.2, 2),
+                ("Companion Walker", 500, 1, 3),
+                ("Dog", 10000, 1.5, 4),
+                ("Horse", 2000, 2, 5),
+                ("Running Shoes", 50000, 3, 6),
+                ("5 Hour Energy", 15000, 4, 7),
+                ("Moon boots", 25000, 6, 8),
+                ("Bike", 50000, 8, 9),
+                ("Adrenaline Shot",100000, 25, 10),
+                ("Bird", 150000, 75, 11),
+                ("Pogo Stick", 160000, 125, 12),
+                ("Skateboard", 200000, 150, 13),
+                ("Wings", 500000, 200, 14),
+                ("Carrot on a Stick", 750000, 300, 15),
+                ("Thighs of Steel", 800000, 500, 16),
+                ("Airplane", 1000000, 600, 17),
+                ("Flying Carpet", 100000000, 750, 18),
+                ("Family", 1000000000, 1000, 19),
+                ("Marathon", 2500000000, 2500, 20)
             ]
             
             for gadgetInfo in gadgets {
@@ -58,7 +68,7 @@ class Util {
                 gadget.name = gadgetInfo.0
                 gadget.cost = gadgetInfo.1
                 gadget.bonus = gadgetInfo.2
-                gadget.numActive = gadgetInfo.3
+                gadget.unlockLevel = gadgetInfo.3
             }
             
             do {

@@ -32,6 +32,9 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
         let context = app.managedObjectContext
         let request = NSFetchRequest(entityName: "Gadget")
         
+        let sortDescriptor = NSSortDescriptor(key: "unlockLevel", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        
         var results : [AnyObject]?
         
         do {
