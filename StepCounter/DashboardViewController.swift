@@ -12,6 +12,10 @@ import CoreData
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let dashboard = DashboardModel()
+    
+    var activeGadgets : [Gadget] {
+        return Gadget.getActiveGadgets()
+    }
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -38,7 +42,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 5 + self.activeGadgets.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -66,10 +70,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             let cell = UITableViewCell()
             cell.textLabel?.text = "Gadget Store"
             return cell
-
         default:
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "Normal Cell"
+            let cell = tableView.dequeueReusableCellWithIdentifier("GadgetTableViewCell") as! GadgetTableViewCell
+            cell.gadget = self.activeGadgets[indexPath.row - 5]
             return cell
         }
     }
@@ -78,6 +81,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         switch indexPath.row {
         case 1:
             return CGFloat(100)
+        case let x where x >= 5:
+            return CGFloat(80)
         default:
             return CGFloat(44)
         }
