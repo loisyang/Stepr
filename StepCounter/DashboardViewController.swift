@@ -38,7 +38,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -62,6 +62,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             let cell = tableView.dequeueReusableCellWithIdentifier("HighScoreTableViewCell") as! HighScoreTableViewCell
             cell.historyObject = self.dashboard.getHighScore()
             return cell
+        case 4:
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "Gadget Store"
+            return cell
+
         default:
             let cell = UITableViewCell()
             cell.textLabel?.text = "Normal Cell"
@@ -77,6 +82,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             return CGFloat(44)
         }
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 4 {
+            self.performSegueWithIdentifier("dashboardToGadgetStoreSegue", sender: nil)
+        }
+    }
+    
+    
 
 
 }

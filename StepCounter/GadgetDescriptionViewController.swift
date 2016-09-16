@@ -9,11 +9,23 @@
 import UIKit
 
 class GadgetDescriptionViewController: UIViewController {
+    
+    var gadget : Gadget?
 
+    @IBOutlet weak var gadgetNameLabel: UILabel!
+    @IBOutlet weak var gadgetCostLabel: UILabel!
+    @IBOutlet weak var gadgetCountLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if let gadget = self.gadget {
+            self.gadgetNameLabel.text = gadget.name!
+            self.gadgetCostLabel.text = "\(gadget.cost as! Int) points"
+            self.gadgetCountLabel.text = "\(gadget.numActive as! Int) active"
+        }
     }
 
     override func didReceiveMemoryWarning() {
