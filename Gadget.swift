@@ -11,6 +11,12 @@ import CoreData
 import UIKit
 class Gadget: NSManagedObject {
     
+    func isUnlocked() -> Bool {
+        let dashboard = DashboardModel()
+        let userLevel = dashboard.getUserLevel()
+        return userLevel.level >= (self.unlockLevel as! Int)
+    }
+    
     func canPurchase() -> Bool {
         let cost = self.cost as! Double
         let walletPoints = NSUserDefaults.standardUserDefaults().valueForKey("pointsInWallet") as! Double

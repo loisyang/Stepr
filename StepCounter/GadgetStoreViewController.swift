@@ -85,7 +85,11 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("gadgetStoreToGadgetDescriptionSegue", sender: self.gadgetList[indexPath.row])
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let gadget = self.gadgetList[indexPath.row]
+        if gadget.isUnlocked() {
+            self.performSegueWithIdentifier("gadgetStoreToGadgetDescriptionSegue", sender: gadget)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
