@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -25,7 +26,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         // Set a timer to reload the tableView data
         // This must be done because of the asynchronicity of the requests to HealthKit
         NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(DashboardViewController.updateTableData), userInfo: nil, repeats: true)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,9 +88,5 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             self.performSegueWithIdentifier("dashboardToGadgetStoreSegue", sender: nil)
         }
     }
-    
-    
-
-
 }
 
