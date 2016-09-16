@@ -8,8 +8,7 @@
 
 import Foundation
 import CoreData
-
-
+import UIKit
 class Gadget: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
@@ -37,18 +36,31 @@ class Gadget: NSManagedObject {
         //update coredata
     }
     
-    class func calculatePoints(moc: NSManagedObjectContext, newSteps: Int) -> Double {
+    class func calculatePoints(newSteps: Int) -> Double {
         //body
-        var bonus:Int = 0
-        var gadgetsFetch = NSFetchRequest(entityName: "Gadget")
+        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let context = app.managedObjectContext
+        let gadgetsFetch = NSFetchRequest(entityName: "Gadget")
+        var results : [AnyObject]?
         do {
-            let gadgets = try moc.executeFetchRequest(gadgetsFetch) as! [Gadget]
+            // Execute the request
+            try results = context.executeFetchRequest(gadgetsFetch)
+            
+        } catch  {
+            results = nil
+        }
+        if results != nil && results!.count > 0{
+            let gadgets = results! as! [Gadget]
+            var bonus:Int = 0
             for gadget in gadgets {
                 bonus += gadget.bonus as! Int
+                print(bonus)
             }
             return Double(newSteps * bonus)
-        } catch {
-            fatalError("Failed to fetch gadgets: \(error)")
         }
+        else{
+            return 0
+        }
+        
     }
 }

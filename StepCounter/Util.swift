@@ -318,5 +318,21 @@ class Util {
             
         }
     }
+    /**
+     This function is used to set up the gadgets in the CoreData Database
+     */
+    class func setUpGadgets(){
+        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let context = app.managedObjectContext
+        
+        let gadget = NSEntityDescription.insertNewObjectForEntityForName("Gadget", inManagedObjectContext: context) as! Gadget
+        gadget.name = "Gust of wind"
+        gadget.cost = 100
+        gadget.bonus = 0.2
+        do {
+            try context.save()
+        } catch _ {}
+    
+    }
     
 }
