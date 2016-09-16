@@ -7,11 +7,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Dashboard-->
         <scene sceneID="e1E-KQ-djo">
             <objects>
-                <navigationController id="46p-Pc-phY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Fl3-zk-Veb"/>
+                <navigationController title="Dashboard" id="46p-Pc-phY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dashboard" id="Fl3-zk-Veb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="49z-Tv-rBr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -24,11 +24,11 @@
             </objects>
             <point key="canvasLocation" x="46" y="-152"/>
         </scene>
-        <!--Item-->
+        <!--Gadget-->
         <scene sceneID="23B-Zt-Ikf">
             <objects>
-                <navigationController id="Z1F-Yv-2Uj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5Jg-7w-rlh"/>
+                <navigationController title="Gadget" id="Z1F-Yv-2Uj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Gadgets" id="5Jg-7w-rlh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pzA-Ew-zEG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -411,6 +411,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9b4-bM-sxe"/>
+        <segue reference="u5J-UO-Nhf"/>
     </inferredMetricsTieBreakers>
 </document>
