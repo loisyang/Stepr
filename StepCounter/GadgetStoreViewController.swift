@@ -13,6 +13,14 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
     //let gadgetsModel = GadgetsModel()
     let gadgetList = ["test", "test2", "test3"]
     
+    var testGadget : Gadget {
+        let testGadget = Gadget()
+        testGadget.name = "Test Gadget"
+        testGadget.cost = 10000
+        testGadget.numActive = 0
+        return testGadget
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -42,14 +50,18 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
         // let cell = tableView.dequeueReusableCellWithIdentifier(gadgetList[indexPath.row])
         let cell = tableView.dequeueReusableCellWithIdentifier("GadgetStoreTableViewCell") as! GadgetStoreTableViewCell
         
-        let testGadget = Gadget()
-        testGadget.name = "Test Gadget"
-        testGadget.cost = 10000
-        testGadget.numActive = 0
-        
-        cell.gadget = testGadget
+        cell.gadget = self.testGadget
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("gadgetStoreToGadgetDescriptionSegue", sender: self.testGadget)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let gadgetDescriptionVC = segue.destinationViewController as! GadgetDescriptionViewController
+        gadgetDescriptionVC.gadget = sender as? Gadget
     }
     
     

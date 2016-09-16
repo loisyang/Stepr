@@ -9,6 +9,8 @@
 import UIKit
 
 class GadgetDescriptionViewController: UIViewController {
+    
+    var gadget : Gadget?
 
     override func viewDidLoad() {
         super.viewDidLoad()
