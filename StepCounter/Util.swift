@@ -40,18 +40,25 @@ class Util {
             // Step 2: Build all gadgets into CoreData
             let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
             let context = app.managedObjectContext
-            
-            let gadgets : [(String, Int, Int)] = [
-                ("Sample Gadget 1", 1000, 1),
-                ("Sample Gadget 2", 5000, 2),
-                ("Sample Gadget 3", 1000, 3)
+            let gadgets : [(String, Int, Int, Int)] = [
+                ("Gust of wind", 100, 1, 1),
+                ("Companion Walker", 500, 2, 0),
+                ("Dog", 10000, 4, 0),
+                ("Moon boots",15000,20, 0),
+                ("Adrenaline Shot",100000,100, 0),
+                ("Bird", 150000,150, 0),
+                ("Wings",500000,500, 0),
+                ("Airplane",1000000,1000, 0),
+                ("Skateboard",200000,300, 0),
+                ("Flying Carpet",100000000,100000, 0),
             ]
             
             for gadgetInfo in gadgets {
                 let gadget = NSEntityDescription.insertNewObjectForEntityForName("Gadget", inManagedObjectContext: context) as! Gadget
                 gadget.name = gadgetInfo.0
                 gadget.cost = gadgetInfo.1
-                gadget.unlockLevel = gadgetInfo.2
+                gadget.bonus = gadgetInfo.2
+                gadget.numActive = gadgetInfo.3
             }
             
             do {
@@ -336,22 +343,6 @@ class Util {
             print("50% mark notification sent")
             
         }
-    }
-    /**
-     This function is used to set up the gadgets in the CoreData Database
-     */
-    class func setUpGadgets(){
-        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        let context = app.managedObjectContext
-        
-        let gadget = NSEntityDescription.insertNewObjectForEntityForName("Gadget", inManagedObjectContext: context) as! Gadget
-        gadget.name = "Gust of wind"
-        gadget.cost = 100
-        gadget.bonus = 0.2
-        do {
-            try context.save()
-        } catch _ {}
-    
     }
     
 }

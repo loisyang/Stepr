@@ -13,27 +13,29 @@ class Gadget: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
     
-    func unlock(moc: NSManagedObjectContext){
-        //deduct cost from total points
-        //set numActive from 0 to to one
+    func addOne(){
+        
         //update coredata
+        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let context = app.managedObjectContext
         var fetchRequest = NSFetchRequest(entityName: "Gadget")
         fetchRequest.predicate = NSPredicate(format: "name = %@", self.name!)
         do {
-            let gadgets = try moc.executeFetchRequest(fetchRequest) as! [Gadget]
+            let gadgets = try context.executeFetchRequest(fetchRequest) as! [Gadget]
             if gadgets.count != 0 {
                 var gadget = gadgets[0]
-                //var one:NSNumber = NSNumber(unsignedShort: 1)
-                gadget.setValue(1,forKey: "numActive")
-                try moc.save()
+                //increase numActive by one
+                gadget.setValue(Int(gadget.numActive!) + 1 ,forKey: "numActive")
+                try context.save()
+                
+                //deduct cost from total points
+                let walletPoints = NSUserDefaults.standardUserDefaults().valueForKey("pointsInWallet") as! Double
+                let newWalletTotal = walletPoints - Double(gadget.cost!)
+                NSUserDefaults.standardUserDefaults().setValue(newWalletTotal, forKey: "pointsInWallet")
             }
         } catch {
             fatalError("Failed to fetch gadgets: \(error)")
         }
-    }
-    func addOne(){
-        //increment numActive for one
-        //update coredata
     }
     
     class func calculatePoints(newSteps: Int) -> Double {
@@ -51,15 +53,17 @@ class Gadget: NSManagedObject {
         }
         if results != nil && results!.count > 0{
             let gadgets = results! as! [Gadget]
-            var bonus:Int = 0
+            var bonus:Double = 1
             for gadget in gadgets {
-                bonus += gadget.bonus as! Int
-                print(bonus)
+                if (Int(gadget.numActive!) > 0){
+                    bonus += Double(gadget.bonus!)
+                }
+                
             }
-            return Double(newSteps * bonus)
+            return Double(newSteps) * bonus
         }
         else{
-            return 0
+            return Double(newSteps)
         }
         
     }
