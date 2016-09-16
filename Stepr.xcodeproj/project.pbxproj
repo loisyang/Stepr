@@ -90,6 +90,16 @@
 			name = "Dashboard Prototype Cells";
 			sourceTree = "<group>";
 		};
+		817707671D8CB585001EAE12 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				817707341D84CF45001EAE12 /* Dashboard Prototype Cells */,
+				8177072A1D834DED001EAE12 /* DashboardModel.swift */,
+				81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */,
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
 		81889E171D7A5EAB00A17BF7 = {
 			isa = PBXGroup;
 			children = (
@@ -110,22 +120,17 @@
 		81889E221D7A5EAB00A17BF7 /* Stepr */ = {
 			isa = PBXGroup;
 			children = (
+				817707671D8CB585001EAE12 /* Dashboard */,
+				81EF73EC1D81B1F2007C97C0 /* Gadget */,
+				817707331D8474EB001EAE12 /* History */,
 				8177072E1D83548A001EAE12 /* Stepr.entitlements */,
 				81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */,
 				81EF73E61D81ADD4007C97C0 /* Util.swift */,
-				8177072A1D834DED001EAE12 /* DashboardModel.swift */,
-				81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */,
-				817707611D8A3E6B001EAE12 /* GadgetStoreViewController.swift */,
-				817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */,
-				817707631D8A3E90001EAE12 /* GadgetDescriptionViewController.swift */,
-				817707341D84CF45001EAE12 /* Dashboard Prototype Cells */,
 				81889E271D7A5EAB00A17BF7 /* Main.storyboard */,
 				81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */,
 				81889E2F1D7A5EAB00A17BF7 /* LaunchScreen.storyboard */,
 				81889E321D7A5EAB00A17BF7 /* Info.plist */,
 				81889E2A1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld */,
-				81EF73EC1D81B1F2007C97C0 /* Gadget */,
-				817707331D8474EB001EAE12 /* History */,
 			);
 			name = Stepr;
 			path = StepCounter;
@@ -134,6 +139,9 @@
 		81EF73EC1D81B1F2007C97C0 /* Gadget */ = {
 			isa = PBXGroup;
 			children = (
+				817707631D8A3E90001EAE12 /* GadgetDescriptionViewController.swift */,
+				817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */,
+				817707611D8A3E6B001EAE12 /* GadgetStoreViewController.swift */,
 				81EF73E81D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift */,
 				81EF73E91D81B1D7007C97C0 /* Gadget.swift */,
 			);
@@ -354,6 +362,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmsormond.Stepr;
 				PRODUCT_NAME = Stepr;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -369,6 +378,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmsormond.Stepr;
 				PRODUCT_NAME = Stepr;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
