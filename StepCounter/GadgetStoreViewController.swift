@@ -40,8 +40,15 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // let cell = tableView.dequeueReusableCellWithIdentifier(gadgetList[indexPath.row])
-        let cell = UITableViewCell()
-        cell.textLabel?.text = gadgetList[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("GadgetStoreTableViewCell") as! GadgetStoreTableViewCell
+        
+        let testGadget = Gadget()
+        testGadget.name = "Test Gadget"
+        testGadget.cost = 10000
+        testGadget.numActive = 0
+        
+        cell.gadget = testGadget
+        
         return cell
     }
     
