@@ -53,6 +53,10 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
         self.updateTableData()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.updateTableData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
