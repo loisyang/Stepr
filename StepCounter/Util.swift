@@ -154,16 +154,12 @@ class Util {
                     // The query was successful!
                     
                     let steps = quantity.doubleValueForUnit(HKUnit.countUnit())
-                    print(steps)
                     
-                    // Update the NSUserDefault variables
+                    // Convert to points
+                    let points = Gadget.calculatePoints(Int(steps))
                     
                     // Update lastUpdateDate
                     NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: "lastUpdateDate")
-                    
-                    // TODO: call function from Gadgets Model to convert steps to points
-                    // let points = GadgetModel.calculatePoints(steps)
-                    let points = Double(steps)
                     
                     // Update the day steps
                     
@@ -186,6 +182,7 @@ class Util {
                         results = nil
                     }
                     
+                    
                     if results != nil && results!.count > 0 {
                         // There already exists a History object, so check if its for this date
                         
@@ -195,24 +192,28 @@ class Util {
                         if current.isDateInToday(today.date!) {
                             // History object is for today, so update that object
                             
-                            let previousPointTotal = today.points as! Double
-                            let newPointsQueried = points - previousPointTotal
+                            let oldSteps = today.steps as! Int
+                            let newSteps = Int(steps) - oldSteps
+                            
+                            let newPoints = Gadget.calculatePoints(newSteps)
+                            
+                            let previousPoints = today.points as! Double
                             
                             today.setValue(Int(steps), forKey: "steps")
-                            today.setValue(Double(steps), forKey: "points")
-                            // today.setValue(Double(points), forKey: "points")
+                            today.setValue(Double(previousPoints + newPoints), forKey: "points")
                             
                             // update pointsInWallet and totalStepsSinceStart
-                            Util.updatePointsInWallet(newPointsQueried)
-                            Util.updateTotalPointsSinceStart(newPointsQueried)
+                            Util.updatePointsInWallet(newPoints)
+                            Util.updateTotalPointsSinceStart(newPoints)
                         } else {
                             // History object is not for today, so create a new object for today
+                            
+                            
                             
                             let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
                             history.date = NSDate()
                             history.steps = Int(steps)
-                            history.points = Double(steps)
-                            // history.points = Double(points)
+                            history.points = Double(points)
                             
                             // update pointsInWallet and totalStepsSinceStart
                             Util.updatePointsInWallet(points)
@@ -229,8 +230,7 @@ class Util {
                         let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
                         history.date = NSDate()
                         history.steps = Int(steps)
-                        history.points = Double(steps)
-                        // history.points = Double(points)
+                        history.points = Double(points)
                         
                         // update pointsInWallet and totalStepsSinceStart
                         Util.updatePointsInWallet(points)
@@ -319,24 +319,18 @@ class Util {
         
         NSUserDefaults.standardUserDefaults().setValue(newTotal, forKey: "totalPointsSinceStart")
         
-        print("updating \(totalPoints) to \(newTotal)")
-        
         let newUserLevel = dashboard.getUserLevel()
-        
-        print("comparing \(oldUserLevel) with \(newUserLevel)")
         
         if newUserLevel.level > oldUserLevel.level {
             // Create a notification that a new level has been reached!
             
             let notification = UILocalNotification()
-            notification.alertBody = "Congrats! You just leveled up to Level 2! Check out the Gadget store to see what you have unlocked!"
+            notification.alertBody = "Congrats! You just leveled up to Level \(newUserLevel.level)! Check out the Gadget store to see what you have unlocked!"
             notification.alertAction = "open"
             notification.fireDate = NSDate(timeIntervalSinceNow: 60)
             notification.soundName = UILocalNotificationDefaultSoundName
             
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
-            
-            print("level update notification sent")
             
         } else if oldUserLevel.percentage < 0.5 && newUserLevel.percentage >= 0.5 {
             // Create a notification that they just passed 50% completion of the current level
@@ -349,8 +343,6 @@ class Util {
             notification.soundName = UILocalNotificationDefaultSoundName
             
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
-            
-            print("50% mark notification sent")
             
         }
     }
