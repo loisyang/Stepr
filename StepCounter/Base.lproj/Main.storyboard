@@ -22,7 +22,41 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tcq-2q-oOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46" y="-152"/>
+            <point key="canvasLocation" x="40" y="-440"/>
+        </scene>
+        <!--Step History-->
+        <scene sceneID="EMv-9Q-3Do">
+            <objects>
+                <viewController id="N1F-lE-Be9" customClass="HistoryViewController" customModule="Stepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Nj-U8-ZcF"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Fi-15-2qB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j7g-aN-RyE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-JT-AEk">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8UT-JT-AEk" firstAttribute="leading" secondItem="j7g-aN-RyE" secondAttribute="leading" id="Dpw-tJ-ZXR"/>
+                            <constraint firstItem="8Fi-15-2qB" firstAttribute="top" secondItem="8UT-JT-AEk" secondAttribute="bottom" id="ID7-St-qB0"/>
+                            <constraint firstItem="8UT-JT-AEk" firstAttribute="top" secondItem="3Nj-U8-ZcF" secondAttribute="bottom" constant="-20" id="abE-9w-Ly3"/>
+                            <constraint firstAttribute="trailing" secondItem="8UT-JT-AEk" secondAttribute="trailing" id="rn3-vJ-1H1"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Step History" id="FR1-Of-fbK"/>
+                    <connections>
+                        <outlet property="tableView" destination="8UT-JT-AEk" id="kCd-af-0kv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F3A-c4-Zkq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="40" y="898"/>
         </scene>
         <!--Gadget-->
         <scene sceneID="23B-Zt-Ikf">
@@ -39,7 +73,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vb0-yH-fI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46" y="513"/>
+            <point key="canvasLocation" x="40" y="225"/>
         </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="0Sf-6M-C01">
@@ -241,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5s-ai-bfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751" y="-152"/>
+            <point key="canvasLocation" x="745" y="-440"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5WL-VD-DC7">
@@ -255,6 +289,7 @@
                     <connections>
                         <segue destination="46p-Pc-phY" kind="relationship" relationship="viewControllers" id="eiN-nD-ASg"/>
                         <segue destination="Z1F-Yv-2Uj" kind="relationship" relationship="viewControllers" id="LFB-2H-r0A"/>
+                        <segue destination="N1F-lE-Be9" kind="relationship" relationship="viewControllers" id="nol-uk-dEp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0z9-ev-Gw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -343,7 +378,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1H-6q-LTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751" y="513"/>
+            <point key="canvasLocation" x="745" y="225"/>
         </scene>
         <!--Gadget Description View Controller-->
         <scene sceneID="AGC-ob-VG3">
@@ -407,10 +442,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1BV-yl-yW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1516" y="163"/>
+            <point key="canvasLocation" x="1510" y="-125"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="u5J-UO-Nhf"/>
+        <segue reference="9b4-bM-sxe"/>
     </inferredMetricsTieBreakers>
 </document>

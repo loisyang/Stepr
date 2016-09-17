@@ -19,6 +19,7 @@
 		817707621D8A3E6B001EAE12 /* GadgetStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707611D8A3E6B001EAE12 /* GadgetStoreViewController.swift */; };
 		817707641D8A3E90001EAE12 /* GadgetDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707631D8A3E90001EAE12 /* GadgetDescriptionViewController.swift */; };
 		817707661D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */; };
+		81845AA11D8DEB7C00E26800 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81845AA01D8DEB7C00E26800 /* HistoryViewController.swift */; };
 		81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */; };
 		81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */; };
 		81889E291D7A5EAB00A17BF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E271D7A5EAB00A17BF7 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		817707611D8A3E6B001EAE12 /* GadgetStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetStoreViewController.swift; sourceTree = "<group>"; };
 		817707631D8A3E90001EAE12 /* GadgetDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetDescriptionViewController.swift; sourceTree = "<group>"; };
 		817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetStoreTableViewCell.swift; sourceTree = "<group>"; };
+		81845AA01D8DEB7C00E26800 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		81889E201D7A5EAB00A17BF7 /* Stepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				8177072F1D8474E6001EAE12 /* History+CoreDataProperties.swift */,
 				817707301D8474E6001EAE12 /* History.swift */,
+				81845AA01D8DEB7C00E26800 /* HistoryViewController.swift */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				817707381D84CFB5001EAE12 /* TodaysDataTableViewCell.swift in Sources */,
 				81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */,
 				81EF73E71D81ADD4007C97C0 /* Util.swift in Sources */,
+				81845AA11D8DEB7C00E26800 /* HistoryViewController.swift in Sources */,
 				81EF73EB1D81B1D7007C97C0 /* Gadget.swift in Sources */,
 				817707641D8A3E90001EAE12 /* GadgetDescriptionViewController.swift in Sources */,
 			);
