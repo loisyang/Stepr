@@ -45,7 +45,7 @@ class Util {
                 ("Gust of Wind", 100, 0.2, 2),
                 ("Companion Walker", 500, 1, 3),
                 ("Dog", 10000, 1.5, 4),
-                ("Horse", 2000, 2, 5),
+                ("Horse", 20000, 2, 5),
                 ("Running Shoes", 50000, 3, 6),
                 ("5 Hour Energy", 15000, 4, 7),
                 ("Moon boots", 25000, 6, 8),
@@ -344,6 +344,48 @@ class Util {
             
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             
+        }
+    }
+    
+    class func formatNumber(number: Double) -> String {
+        var short = number
+        var string = ""
+        if 1000000 <= number && number < 1000000000 {
+            short = number / 1000000
+            string = " million"
+        } else if 1000000000 <= number && number < 1000000000000 {
+            short = number / 1000000000
+            string = " billion"
+        } else if 1000000000000 <= number && number < 1000000000000000 {
+            short = number / 1000000000000
+            string = " trillion"
+        } else if 1000000000000000 <= number && number < 1000000000000000000 {
+            short = number / 1000000000000000
+            string = " quadrillion"
+        } else if 1000000000000000000 <= number && number < 1000000000000000000000 {
+            short = number / 1000000000000000000
+            string = " quintillion"
+        } else if 1000000000000000000000 <= number && number < 1000000000000000000000000 {
+            short = number / 1000000000000000000000
+            string = " sextillion"
+        } else if 1000000000000000000000000 <= number && number < 1000000000000000000000000000 {
+            short = number / 1000000000000000000000000
+            string = " septillion"
+        } else if 1000000000000000000000000000 <= number && number < 1000000000000000000000000000000 {
+            short = number / 1000000000000000000000000000
+            string = " octillion"
+        } else if 1000000000000000000000000000000 <= number && number < 1000000000000000000000000000000000 {
+            short = number / 1000000000000000000000000000000
+            string = " nonillion"
+        } else if 1000000000000000000000000000000000 <= number && number < 1000000000000000000000000000000000000 {
+            short = number / 1000000000000000000000000000000000
+            string = " decillion"
+        }
+        
+        if short - Double(Int(short)) == 0 {
+            return "\(Int(short))\(string)"
+        } else {
+            return "\(short)\(string)"
         }
     }
     

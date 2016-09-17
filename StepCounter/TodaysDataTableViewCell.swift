@@ -36,7 +36,7 @@ class TodaysDataTableViewCell: UITableViewCell {
     }
     
     func updateLabels() {
-        self.stepsLabel.text = "\(self.steps) steps"
-        self.pointsLabel.text = "\(Int(floor(self.points))) points"
+        self.stepsLabel.text = "\(Util.formatNumber(Double(self.steps))) steps"
+        self.pointsLabel.text = "\(Util.formatNumber(floor(self.points))) points"
     }
 }

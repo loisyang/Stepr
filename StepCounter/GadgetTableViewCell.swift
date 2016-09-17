@@ -36,8 +36,8 @@ class GadgetTableViewCell: UITableViewCell {
         if let gadget = self.gadget {
             self.gadgetName.text = gadget.name!
             
-            let pointsPerStep = (gadget.numActive as! Double) * (gadget.bonus as! Double)
-            self.pointsPerStepsLabel.text = "Each \(gadget.name!) produces \(gadget.bonus as! Double) points per step"
+            let pointsPerStep = Util.formatNumber((gadget.numActive as! Double) * (gadget.bonus as! Double))
+            self.pointsPerStepsLabel.text = "Each \(gadget.name!) produces \(Util.formatNumber(gadget.bonus as! Double)) points per step"
             self.totalActiveLabel.text = "\(gadget.numActive as! Int) active producing \(pointsPerStep) points per step"
             self.activeCountLabel.text = "\(gadget.numActive as! Int)"
         }

@@ -33,7 +33,7 @@ class GadgetDescriptionViewController: UIViewController {
     func updateLabels() {
         if let gadget = self.gadget {
             self.gadgetNameLabel.text = gadget.name!
-            self.gadgetCostLabel.text = "\(gadget.cost as! Int) points"
+            self.gadgetCostLabel.text = "\(Util.formatNumber(gadget.cost as! Double)) points"
             self.gadgetCountLabel.text = "\(gadget.numActive as! Int) active"
             
             if !gadget.canPurchase() {

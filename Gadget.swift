@@ -11,49 +11,6 @@ import CoreData
 import UIKit
 class Gadget: NSManagedObject {
     
-    var formattedCost : String {
-        let cost = self.cost as! Double
-        var short = cost
-        var string = ""
-        if 1000000 <= cost && cost < 1000000000 {
-            short = cost / 1000000
-            string = " million"
-        } else if 1000000000 <= cost && cost < 1000000000000 {
-            short = cost / 1000000000
-            string = " billion"
-        } else if 1000000000000 <= cost && cost < 1000000000000000 {
-            short = cost / 1000000000000
-            string = " trillion"
-        } else if 1000000000000000 <= cost && cost < 1000000000000000000 {
-            short = cost / 1000000000000000
-            string = " quadrillion"
-        } else if 1000000000000000000 <= cost && cost < 1000000000000000000000 {
-            short = cost / 1000000000000000000
-            string = " quintillion"
-        } else if 1000000000000000000000 <= cost && cost < 1000000000000000000000000 {
-            short = cost / 1000000000000000000000
-            string = " sextillion"
-        } else if 1000000000000000000000000 <= cost && cost < 1000000000000000000000000000 {
-            short = cost / 1000000000000000000000000
-            string = " septillion"
-        } else if 1000000000000000000000000000 <= cost && cost < 1000000000000000000000000000000 {
-            short = cost / 1000000000000000000000000000
-            string = " octillion"
-        } else if 1000000000000000000000000000000 <= cost && cost < 1000000000000000000000000000000000 {
-            short = cost / 1000000000000000000000000000000
-            string = " nonillion"
-        } else if 1000000000000000000000000000000000 <= cost && cost < 1000000000000000000000000000000000000 {
-            short = cost / 1000000000000000000000000000000000
-            string = " decillion"
-        }
-        
-        if short - Double(Int(short)) == 0 {
-            return "\(Int(short))\(string)"
-        } else {
-            return "\(short)\(string)"
-        }
-    }
-    
     func isUnlocked() -> Bool {
         let dashboard = DashboardModel()
         let userLevel = dashboard.getUserLevel()

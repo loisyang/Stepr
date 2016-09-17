@@ -40,12 +40,12 @@ class GadgetStoreTableViewCell: UITableViewCell {
             if (userLevel.level >= unlockLevel) {
                 // gadget is unlocked
                 self.gadgetNameLabel.text = gadget.name!
-                self.gadgetCostLabel.text = "\(gadget.formattedCost) points"
+                self.gadgetCostLabel.text = "\(Util.formatNumber(gadget.cost as! Double)) points"
                 self.gadgetCountLabel.text = "\(gadget.numActive as! Int)"
             } else if (userLevel.level + 2 >= unlockLevel) {
                 // user will unlock in the next two levels
                 self.gadgetNameLabel.text = gadget.name!
-                self.gadgetCostLabel.text = "\(gadget.formattedCost) points"
+                self.gadgetCostLabel.text = "\(Util.formatNumber(gadget.cost as! Double)) points"
                 self.gadgetCountLabel.text = "--"
             } else {
                 // user will unlock in the far future
