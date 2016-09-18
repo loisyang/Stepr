@@ -21,6 +21,7 @@
 		817707661D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */; };
 		81845AA11D8DEB7C00E26800 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81845AA01D8DEB7C00E26800 /* HistoryViewController.swift */; };
 		81845AA31D8DEE9500E26800 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81845AA21D8DEE9500E26800 /* SettingsViewController.swift */; };
+		81845AA71D8E337F00E26800 /* AchievemntsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81845AA61D8E337F00E26800 /* AchievemntsViewController.swift */; };
 		81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */; };
 		81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */; };
 		81889E291D7A5EAB00A17BF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E271D7A5EAB00A17BF7 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetStoreTableViewCell.swift; sourceTree = "<group>"; };
 		81845AA01D8DEB7C00E26800 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		81845AA21D8DEE9500E26800 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		81845AA61D8E337F00E26800 /* AchievemntsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievemntsViewController.swift; sourceTree = "<group>"; };
 		81889E201D7A5EAB00A17BF7 /* Stepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81889E251D7A5EAB00A17BF7 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,22 @@
 			name = Dashboard;
 			sourceTree = "<group>";
 		};
+		81845AA41D8E32F900E26800 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				81845AA21D8DEE9500E26800 /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		81845AA51D8E330900E26800 /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				81845AA61D8E337F00E26800 /* AchievemntsViewController.swift */,
+			);
+			name = Achievements;
+			sourceTree = "<group>";
+		};
 		81889E171D7A5EAB00A17BF7 = {
 			isa = PBXGroup;
 			children = (
@@ -128,10 +146,11 @@
 				817707671D8CB585001EAE12 /* Dashboard */,
 				81EF73EC1D81B1F2007C97C0 /* Gadget */,
 				817707331D8474EB001EAE12 /* History */,
+				81845AA51D8E330900E26800 /* Achievements */,
+				81845AA41D8E32F900E26800 /* Settings */,
 				8177072E1D83548A001EAE12 /* Stepr.entitlements */,
 				81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */,
 				81EF73E61D81ADD4007C97C0 /* Util.swift */,
-				81845AA21D8DEE9500E26800 /* SettingsViewController.swift */,
 				81889E271D7A5EAB00A17BF7 /* Main.storyboard */,
 				81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */,
 				81889E2F1D7A5EAB00A17BF7 /* LaunchScreen.storyboard */,
@@ -231,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81845AA71D8E337F00E26800 /* AchievemntsViewController.swift in Sources */,
 				817707361D84CF80001EAE12 /* StepsInWalletTableViewCell.swift in Sources */,
 				817707321D8474E6001EAE12 /* History.swift in Sources */,
 				8177073A1D84CFDB001EAE12 /* LevelTableViewCell.swift in Sources */,

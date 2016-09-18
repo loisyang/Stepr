@@ -353,6 +353,25 @@
             </objects>
             <point key="canvasLocation" x="745" y="-440"/>
         </scene>
+        <!--Achievements-->
+        <scene sceneID="rhT-95-a20">
+            <objects>
+                <viewController id="XGV-ZM-WNf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pt8-14-i7g"/>
+                        <viewControllerLayoutGuide type="bottom" id="DnN-Bm-FvV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bs0-DN-dzw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Achievements" id="H8a-IH-I2E"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0be-1K-UJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-711" y="-513"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5WL-VD-DC7">
             <objects>
@@ -364,8 +383,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="46p-Pc-phY" kind="relationship" relationship="viewControllers" id="eiN-nD-ASg"/>
-                        <segue destination="Z1F-Yv-2Uj" kind="relationship" relationship="viewControllers" id="LFB-2H-r0A"/>
                         <segue destination="N1F-lE-Be9" kind="relationship" relationship="viewControllers" id="nol-uk-dEp"/>
+                        <segue destination="Z1F-Yv-2Uj" kind="relationship" relationship="viewControllers" id="LFB-2H-r0A"/>
+                        <segue destination="XGV-ZM-WNf" kind="relationship" relationship="viewControllers" id="pV7-2e-9qy"/>
                         <segue destination="zqb-Yi-UGI" kind="relationship" relationship="viewControllers" id="pdv-H9-JC3"/>
                     </connections>
                 </tabBarController>
