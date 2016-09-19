@@ -32,6 +32,7 @@
 		81EF73E71D81ADD4007C97C0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF73E61D81ADD4007C97C0 /* Util.swift */; };
 		81EF73EA1D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF73E81D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift */; };
 		81EF73EB1D81B1D7007C97C0 /* Gadget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF73E91D81B1D7007C97C0 /* Gadget.swift */; };
+		BC5CC6251D90A10F0092039C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5CC6241D90A10F0092039C /* HistoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		81EF73E61D81ADD4007C97C0 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		81EF73E81D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Gadget+CoreDataProperties.swift"; path = "../Gadget+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		81EF73E91D81B1D7007C97C0 /* Gadget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gadget.swift; path = ../Gadget.swift; sourceTree = "<group>"; };
+		BC5CC6241D90A10F0092039C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				8177072F1D8474E6001EAE12 /* History+CoreDataProperties.swift */,
 				817707301D8474E6001EAE12 /* History.swift */,
 				81845AA01D8DEB7C00E26800 /* HistoryViewController.swift */,
+				BC5CC6241D90A10F0092039C /* HistoryTableViewCell.swift */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				817707311D8474E6001EAE12 /* History+CoreDataProperties.swift in Sources */,
 				81845AA31D8DEE9500E26800 /* SettingsViewController.swift in Sources */,
 				8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */,
+				BC5CC6251D90A10F0092039C /* HistoryTableViewCell.swift in Sources */,
 				817707621D8A3E6B001EAE12 /* GadgetStoreViewController.swift in Sources */,
 				81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */,
 				81EF73EA1D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift in Sources */,
