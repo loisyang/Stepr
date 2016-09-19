@@ -42,6 +42,7 @@ class GadgetStoreTableViewCell: UITableViewCell {
     
     func updateLabels() {
         if let gadget = self.gadget {
+            
             let userLevel = self.dashboard.getUserLevel()
             let unlockLevel = gadget.unlockLevel as! Int
             if (userLevel.level >= unlockLevel) {
@@ -52,6 +53,15 @@ class GadgetStoreTableViewCell: UITableViewCell {
                 let pointsPerStep = Util.formatNumber((gadget.numActive as! Double) * (gadget.bonus as! Double))
                 self.activeCountLabel.text = "\(gadget.numActive as! Int) active producing \(pointsPerStep) points per step"
                 self.pointsPerStepLabel.text = "Each \(gadget.name!) produces \(Util.formatNumber(gadget.bonus as! Double)) points per step"
+                
+                if gadget.canPurchase() {
+                    self.purchaseButton.hidden = true
+                    self.gadgetCostLabel.textColor = UIColor.greenColor()
+                } else {
+                    self.purchaseButton.hidden = false
+                    self.gadgetCostLabel.textColor = UIColor.redColor()
+                }
+                
             } else if (userLevel.level + 2 >= unlockLevel) {
                 // user will unlock in the next two levels
                 self.gadgetNameLabel.text = gadget.name!
@@ -75,7 +85,6 @@ class GadgetStoreTableViewCell: UITableViewCell {
         self.gadgetCostLabel.hidden = false
         self.activeCountLabel.hidden = false
         self.pointsPerStepLabel.hidden = false
-        self.purchaseButton.hidden = false
     }
     
     @IBAction func purchaseButtonPressed(sender: AnyObject) {
