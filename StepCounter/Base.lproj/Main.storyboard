@@ -167,73 +167,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StepsInWalletTableViewCell" id="PHy-SW-aHx" customClass="StepsInWalletTableViewCell" customModule="Stepr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PHy-SW-aHx" id="fdf-Aj-ilw">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eL-ig-3qa">
-                                                    <rect key="frame" x="8" y="12" width="584" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="7eL-ig-3qa" firstAttribute="centerX" secondItem="fdf-Aj-ilw" secondAttribute="centerX" id="U6F-cd-Zv1"/>
-                                                <constraint firstItem="7eL-ig-3qa" firstAttribute="centerY" secondItem="fdf-Aj-ilw" secondAttribute="centerY" id="aWt-5m-Eu9"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="7eL-ig-3qa" secondAttribute="trailing" id="quG-Rw-oQT"/>
-                                                <constraint firstItem="7eL-ig-3qa" firstAttribute="leading" secondItem="fdf-Aj-ilw" secondAttribute="leadingMargin" id="y8F-aD-Zh5"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="pointsInWalletLabel" destination="7eL-ig-3qa" id="PKq-Qg-iZG"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodaysDataTableViewCell" rowHeight="100" id="LDN-gS-FVo" customClass="TodaysDataTableViewCell" customModule="Stepr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="136" width="600" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LDN-gS-FVo" id="n36-CB-2U9">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SV2-W9-60z">
-                                                    <rect key="frame" x="8" y="58" width="584" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLr-h3-FmH">
-                                                    <rect key="frame" x="8" y="16" width="584" height="41"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="top" secondItem="n36-CB-2U9" secondAttribute="topMargin" constant="8" id="K83-8f-A2X"/>
-                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="leading" secondItem="n36-CB-2U9" secondAttribute="leadingMargin" id="LkJ-iX-jvh"/>
-                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="trailing" secondItem="n36-CB-2U9" secondAttribute="trailingMargin" id="fU7-H9-nwi"/>
-                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="leading" secondItem="SV2-W9-60z" secondAttribute="leading" id="gAX-VI-hlm"/>
-                                                <constraint firstItem="SV2-W9-60z" firstAttribute="top" secondItem="vLr-h3-FmH" secondAttribute="bottom" constant="1" id="kGJ-Oq-1vV"/>
-                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="trailing" secondItem="SV2-W9-60z" secondAttribute="trailing" id="uRs-o4-lX7"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="pointsLabel" destination="vLr-h3-FmH" id="SxO-gj-KP1"/>
-                                            <outlet property="stepsLabel" destination="SV2-W9-60z" id="oiu-np-BOZ"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LevelTableViewCell" id="KCh-Za-UM4" customClass="LevelTableViewCell" customModule="Stepr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="236" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KCh-Za-UM4" id="pJu-fc-bhN">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlD-mY-Jj9">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlD-mY-Jj9">
                                                     <rect key="frame" x="8" y="12" width="584" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -250,14 +191,52 @@
                                             <outlet property="levelLabel" destination="WlD-mY-Jj9" id="ZYH-qh-mRh"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodaysDataTableViewCell" rowHeight="100" id="LDN-gS-FVo" customClass="TodaysDataTableViewCell" customModule="Stepr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="136" width="600" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LDN-gS-FVo" id="n36-CB-2U9">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Steps Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SV2-W9-60z">
+                                                    <rect key="frame" x="8" y="8" width="584" height="41"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="7cR-4l-4Ze"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLr-h3-FmH">
+                                                    <rect key="frame" x="8" y="51" width="584" height="41"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SV2-W9-60z" firstAttribute="trailing" secondItem="n36-CB-2U9" secondAttribute="trailingMargin" id="1CV-HI-W8k"/>
+                                                <constraint firstItem="SV2-W9-60z" firstAttribute="top" secondItem="n36-CB-2U9" secondAttribute="topMargin" id="A8y-4z-0cd"/>
+                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="top" secondItem="SV2-W9-60z" secondAttribute="bottom" constant="8" symbolic="YES" id="HcL-NQ-Qgb"/>
+                                                <constraint firstItem="SV2-W9-60z" firstAttribute="leading" secondItem="vLr-h3-FmH" secondAttribute="leading" id="NEa-0j-zEi"/>
+                                                <constraint firstItem="vLr-h3-FmH" firstAttribute="bottom" secondItem="n36-CB-2U9" secondAttribute="bottomMargin" id="VGp-D3-h9v"/>
+                                                <constraint firstItem="SV2-W9-60z" firstAttribute="leading" secondItem="n36-CB-2U9" secondAttribute="leadingMargin" id="bg2-Df-2QW"/>
+                                                <constraint firstItem="SV2-W9-60z" firstAttribute="trailing" secondItem="vLr-h3-FmH" secondAttribute="trailing" id="z5l-2b-g4P"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="pointsLabel" destination="vLr-h3-FmH" id="SxO-gj-KP1"/>
+                                            <outlet property="stepsLabel" destination="SV2-W9-60z" id="oiu-np-BOZ"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HighScoreTableViewCell" id="Tgl-9I-WPO" customClass="HighScoreTableViewCell" customModule="Stepr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="280" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="236" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tgl-9I-WPO" id="kYy-gB-9Aw">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gf4-hx-TOJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gf4-hx-TOJ">
                                                     <rect key="frame" x="8" y="12" width="584" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -275,7 +254,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GadgetTableViewCell" rowHeight="80" id="ueF-w8-PZQ" customClass="GadgetTableViewCell" customModule="Stepr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="324" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="280" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ueF-w8-PZQ" id="MEQ-8n-LCs">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
@@ -543,6 +522,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9b4-bM-sxe"/>
+        <segue reference="u5J-UO-Nhf"/>
     </inferredMetricsTieBreakers>
 </document>
