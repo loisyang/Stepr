@@ -356,7 +356,7 @@
         <!--Achievements-->
         <scene sceneID="rhT-95-a20">
             <objects>
-                <viewController id="XGV-ZM-WNf" sceneMemberID="viewController">
+                <viewController id="XGV-ZM-WNf" customClass="AchievemntsViewController" customModule="Stepr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pt8-14-i7g"/>
                         <viewControllerLayoutGuide type="bottom" id="DnN-Bm-FvV"/>
