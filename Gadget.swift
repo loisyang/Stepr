@@ -115,4 +115,28 @@ class Gadget: NSManagedObject {
             return []
         }
     }
+    
+    class func getAllGadgets() -> [Gadget] {
+        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let context = app.managedObjectContext
+        let request = NSFetchRequest(entityName: "Gadget")
+        
+        let sortDescriptor = NSSortDescriptor(key: "unlockLevel", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        
+        var results : [AnyObject]?
+        
+        do {
+            // Execute the request
+            try results = context.executeFetchRequest(request)
+        } catch _ {
+            results = nil
+        }
+        
+        if results != nil && results!.count > 0 {
+            return results as! [Gadget]
+        } else {
+            return []
+        }
+    }
 }

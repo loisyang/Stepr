@@ -10,12 +10,10 @@ import UIKit
 import CoreData
 
 class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     //let gadgetsModel = GadgetsModel()
-    var gadgetList : [Gadget] = [] {
-        didSet {
-            self.updateTableData()
-        }
+    var gadgetList : [Gadget] {
+        return Gadget.getAllGadgets()
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -27,28 +25,6 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
         // Designate this class as the tableView delegate and data source
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        let context = app.managedObjectContext
-        let request = NSFetchRequest(entityName: "Gadget")
-        
-        let sortDescriptor = NSSortDescriptor(key: "unlockLevel", ascending: true)
-        request.sortDescriptors = [sortDescriptor]
-        
-        var results : [AnyObject]?
-        
-        do {
-            // Execute the request
-            try results = context.executeFetchRequest(request)
-        } catch _ {
-            results = nil
-        }
-        
-        if results != nil && results!.count > 0 {
-            self.gadgetList = results as! [Gadget]
-        } else {
-            self.gadgetList = []
-        }
         
         self.updateTableData()
     }
@@ -68,25 +44,37 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return self.gadgetModel.numberOfGadgetsAvailable()
-        return self.gadgetList.count
+        return 1 + self.gadgetList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // let cell = tableView.dequeueReusableCellWithIdentifier(gadgetList[indexPath.row])
-        let cell = tableView.dequeueReusableCellWithIdentifier("GadgetStoreTableViewCell") as! GadgetStoreTableViewCell
-        
-        cell.gadget = self.gadgetList[indexPath.row]
-        
-        return cell
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("PointsInWalletTableViewCell") as! PointsInWalletTableViewCell
+            cell.pointsInWallet = DashboardModel().getPointsInWallet()
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("GadgetStoreTableViewCell") as! GadgetStoreTableViewCell
+            cell.gadget = self.gadgetList[indexPath.row - 1]
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CGFloat(70)
+        if indexPath.row > 0 {
+            let gadget = self.gadgetList[indexPath.row - 1]
+            if gadget.isUnlocked() {
+                return CGFloat(85)
+            }
+            return CGFloat(40)
+        } else {
+            return CGFloat(50)
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let gadget = self.gadgetList[indexPath.row]
+        let gadget = self.gadgetList[indexPath.row - 1]
         if gadget.isUnlocked() {
             self.performSegueWithIdentifier("gadgetStoreToGadgetDescriptionSegue", sender: gadget)
         }
@@ -98,5 +86,5 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
-
+    
 }

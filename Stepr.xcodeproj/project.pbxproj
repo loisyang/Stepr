@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8104CFD51D903B4800CF37E9 /* PointsInWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8104CFD41D903B4800CF37E9 /* PointsInWalletTableViewCell.swift */; };
 		8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177072A1D834DED001EAE12 /* DashboardModel.swift */; };
 		8177072D1D83548A001EAE12 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8177072C1D83548A001EAE12 /* HealthKit.framework */; };
 		817707311D8474E6001EAE12 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177072F1D8474E6001EAE12 /* History+CoreDataProperties.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8104CFD41D903B4800CF37E9 /* PointsInWalletTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsInWalletTableViewCell.swift; sourceTree = "<group>"; };
 		8177072A1D834DED001EAE12 /* DashboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		8177072C1D83548A001EAE12 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		8177072E1D83548A001EAE12 /* Stepr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Stepr.entitlements; sourceTree = SOURCE_ROOT; };
@@ -75,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8104CFD31D903B2D00CF37E9 /* Gadget Store Prototype Cells */ = {
+			isa = PBXGroup;
+			children = (
+				817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */,
+				8104CFD41D903B4800CF37E9 /* PointsInWalletTableViewCell.swift */,
+			);
+			name = "Gadget Store Prototype Cells";
+			sourceTree = "<group>";
+		};
 		817707331D8474EB001EAE12 /* History */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,8 +175,8 @@
 		81EF73EC1D81B1F2007C97C0 /* Gadget */ = {
 			isa = PBXGroup;
 			children = (
+				8104CFD31D903B2D00CF37E9 /* Gadget Store Prototype Cells */,
 				817707631D8A3E90001EAE12 /* GadgetDescriptionViewController.swift */,
-				817707651D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift */,
 				817707611D8A3E6B001EAE12 /* GadgetStoreViewController.swift */,
 				81EF73E81D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift */,
 				81EF73E91D81B1D7007C97C0 /* Gadget.swift */,
@@ -266,6 +277,7 @@
 				8177073E1D84D022001EAE12 /* GadgetTableViewCell.swift in Sources */,
 				817707381D84CFB5001EAE12 /* TodaysDataTableViewCell.swift in Sources */,
 				81889E241D7A5EAB00A17BF7 /* AppDelegate.swift in Sources */,
+				8104CFD51D903B4800CF37E9 /* PointsInWalletTableViewCell.swift in Sources */,
 				81EF73E71D81ADD4007C97C0 /* Util.swift in Sources */,
 				81845AA11D8DEB7C00E26800 /* HistoryViewController.swift in Sources */,
 				81EF73EB1D81B1D7007C97C0 /* Gadget.swift in Sources */,
