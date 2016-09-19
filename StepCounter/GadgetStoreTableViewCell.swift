@@ -55,10 +55,10 @@ class GadgetStoreTableViewCell: UITableViewCell {
                 self.pointsPerStepLabel.text = "Each \(gadget.name!) produces \(Util.formatNumber(gadget.bonus as! Double)) points per step"
                 
                 if gadget.canPurchase() {
-                    self.purchaseButton.hidden = true
+                    self.purchaseButton.hidden = false
                     self.gadgetCostLabel.textColor = UIColor.greenColor()
                 } else {
-                    self.purchaseButton.hidden = false
+                    self.purchaseButton.hidden = true
                     self.gadgetCostLabel.textColor = UIColor.redColor()
                 }
                 
