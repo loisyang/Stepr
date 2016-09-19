@@ -81,7 +81,11 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CGFloat(70)
+        let gadget = self.gadgetList[indexPath.row]
+        if gadget.isUnlocked() {
+            return CGFloat(85)
+        }
+        return CGFloat(40)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

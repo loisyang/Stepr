@@ -42,42 +42,38 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4 + self.activeGadgets.count
+        return 3 + self.activeGadgets.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("StepsInWalletTableViewCell") as! StepsInWalletTableViewCell
-            cell.pointsInWallet = self.dashboard.getPointsInWallet()
-            return cell
-        case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("TodaysDataTableViewCell") as! TodaysDataTableViewCell
             cell.steps = self.dashboard.getStepsForToday()
             cell.points = self.dashboard.getPointsForToday()
             return cell
-        case 2:
+        case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("LevelTableViewCell") as! LevelTableViewCell
             let levelInfo = self.dashboard.getUserLevel()
             cell.level = levelInfo.level
             cell.percentage = levelInfo.percentage
             return cell
-        case 3:
+        case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("HighScoreTableViewCell") as! HighScoreTableViewCell
             cell.historyObject = self.dashboard.getHighScore()
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("GadgetTableViewCell") as! GadgetTableViewCell
-            cell.gadget = self.activeGadgets[indexPath.row - 4]
+            cell.gadget = self.activeGadgets[indexPath.row - 3]
             return cell
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.row {
-        case 1:
+        case 0:
             return CGFloat(100)
-        case let x where x >= 4:
+        case let x where x >= 3:
             return CGFloat(80)
         default:
             return CGFloat(44)
@@ -85,8 +81,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row >= 4 {
-            self.performSegueWithIdentifier("dashboardToGadgetDescriptionSegue", sender: self.activeGadgets[indexPath.row - 4])
+        if indexPath.row >= 3 {
+            self.performSegueWithIdentifier("dashboardToGadgetDescriptionSegue", sender: self.activeGadgets[indexPath.row - 3])
         }
     }
     
