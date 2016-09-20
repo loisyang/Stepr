@@ -39,7 +39,9 @@ class HistoryTableViewCell: UITableViewCell {
     }
     func updateLabels() {
         if let history = self.histroy {
-            self.date.text = String(history.date!)
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            self.date.text = String(dateFormatter.stringFromDate(history.date!))
             self.steps.text = "\(history.steps as! Int) steps"
             self.points.text = "\(history.points as! Int) points"
         }
