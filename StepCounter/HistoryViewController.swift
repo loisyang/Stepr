@@ -10,46 +10,27 @@ import CoreData
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //let gadgetsModel = GadgetsModel()
-    var historyList : [History] = [] {
-        didSet {
-            self.updateTableData()
-        }
+    var historyList : [History] {
+        return History.getAllHistory()
     }
-    
-    
     @IBOutlet weak var tableView: UITableView!
-    func updateTableData() {
-        self.tableView.reloadData()
-    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        let context = app.managedObjectContext
-        let request = NSFetchRequest(entityName: "History")
-        
-        var results : [AnyObject]?
-        
-        do {
-            // Execute the request
-            try results = context.executeFetchRequest(request)
-        } catch _ {
-            results = nil
-        }
-        
-        if results != nil && results!.count > 0 {
-            self.historyList = results as! [History]
-        } else {
-            self.historyList = []
-        }
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        print(self.historyList)
         self.updateTableData()
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func updateTableData() {
+        self.tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

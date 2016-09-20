@@ -70,6 +70,10 @@ class Util {
                 gadget.bonus = gadgetInfo.2
                 gadget.unlockLevel = gadgetInfo.3
             }
+            let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
+            history.date = NSDate()
+            history.steps = Int(200)
+            history.points = Double(200)
             
             do {
                 try context.save()

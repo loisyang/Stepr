@@ -116,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4Td-h1-05b" customClass="HistoryTableViewCell" customModule="Stepr" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" id="4Td-h1-05b" customClass="HistoryTableViewCell" customModule="Stepr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Td-h1-05b" id="u8j-Dl-5XV">
@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3A-c4-Zkq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="898"/>
+            <point key="canvasLocation" x="71" y="1011"/>
         </scene>
         <!--Gadget-->
         <scene sceneID="23B-Zt-Ikf">
