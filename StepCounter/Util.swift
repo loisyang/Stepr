@@ -385,7 +385,7 @@ class Util {
         if short - Double(Int(short)) == 0 {
             return "\(Int(short))\(string)"
         } else {
-            return "\(short)\(string)"
+            return "\(Double(round(1000*short)/1000))\(string)"
         }
     }
     
