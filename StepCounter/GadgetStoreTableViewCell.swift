@@ -94,5 +94,6 @@ class GadgetStoreTableViewCell: UITableViewCell {
                 self.updateLabels()
             }
         }
+        NSNotificationCenter.defaultCenter().postNotificationName("refreshGadgetStore", object: nil, userInfo: nil)
     }
 }

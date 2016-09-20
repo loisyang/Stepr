@@ -26,6 +26,8 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GadgetStoreViewController.updateTableData), name: "refreshGadgetStore", object: nil)
+        
         self.updateTableData()
     }
     
@@ -52,6 +54,7 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("PointsInWalletTableViewCell") as! PointsInWalletTableViewCell
             cell.pointsInWallet = DashboardModel().getPointsInWallet()
+            cell
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("GadgetStoreTableViewCell") as! GadgetStoreTableViewCell
