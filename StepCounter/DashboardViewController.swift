@@ -73,6 +73,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         switch indexPath.row {
         case 0:
             return CGFloat(100)
+        case 1:
+            return CGFloat(90)
         case let x where x >= 3:
             return CGFloat(45)
         default:
