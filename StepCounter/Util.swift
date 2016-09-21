@@ -70,7 +70,6 @@ class Util {
                 gadget.bonus = gadgetInfo.2
                 gadget.unlockLevel = gadgetInfo.3
             }
-            
             do {
                 try context.save()
             } catch _ {}

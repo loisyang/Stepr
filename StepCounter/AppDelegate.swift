@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         Util.initiateDataStructure()
-        print(Gadget.calculatePoints(20))
         Util.authorizeHealthKit { (authorized,  error) -> Void in
             if authorized {
                 print("HealthKit authorization accepted!")
