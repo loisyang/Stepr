@@ -371,7 +371,23 @@
                     <view key="view" contentMode="scaleToFill" id="bs0-DN-dzw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eby-W8-GTU">
+                                <rect key="frame" x="153" y="241" width="294" height="117"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="294" id="ZGG-RY-zT3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eby-W8-GTU" firstAttribute="centerY" secondItem="bs0-DN-dzw" secondAttribute="centerY" id="U7f-vK-Lqg"/>
+                            <constraint firstItem="eby-W8-GTU" firstAttribute="centerX" secondItem="bs0-DN-dzw" secondAttribute="centerX" id="Y6W-2s-x3n"/>
+                            <constraint firstItem="DnN-Bm-FvV" firstAttribute="top" secondItem="eby-W8-GTU" secondAttribute="bottom" constant="193" id="YRP-K3-9Rd"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Achievements" id="H8a-IH-I2E"/>
                 </viewController>
