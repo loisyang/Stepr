@@ -174,21 +174,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlD-mY-Jj9">
-                                                    <rect key="frame" x="8" y="12" width="584" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ukj-zS-mKf">
+                                                    <rect key="frame" x="8" y="8" width="584" height="36"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="WlD-mY-Jj9" secondAttribute="trailing" id="3xO-3P-dK8"/>
-                                                <constraint firstItem="WlD-mY-Jj9" firstAttribute="leading" secondItem="pJu-fc-bhN" secondAttribute="leadingMargin" id="78y-bW-ynn"/>
-                                                <constraint firstItem="WlD-mY-Jj9" firstAttribute="centerY" secondItem="pJu-fc-bhN" secondAttribute="centerY" id="GD6-SF-VsD"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="levelLabel" destination="WlD-mY-Jj9" id="ZYH-qh-mRh"/>
+                                            <outlet property="levelProgressBar" destination="Ukj-zS-mKf" id="gSa-5q-x2Y"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodaysDataTableViewCell" rowHeight="100" id="LDN-gS-FVo" customClass="TodaysDataTableViewCell" customModule="Stepr" customModuleProvider="target">
@@ -392,7 +385,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fcc-ZP-6KX" id="aHt-Kw-9hF">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="84.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points In Wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLF-Bi-KkZ">
@@ -570,6 +563,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9b4-bM-sxe"/>
+        <segue reference="u5J-UO-Nhf"/>
     </inferredMetricsTieBreakers>
 </document>
