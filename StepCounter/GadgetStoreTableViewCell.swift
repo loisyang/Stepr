@@ -66,6 +66,7 @@ class GadgetStoreTableViewCell: UITableViewCell {
                 // user will unlock in the next two levels
                 self.gadgetNameLabel.text = gadget.name!
                 self.gadgetCostLabel.text = "\(Util.formatNumber(gadget.cost as! Double)) points"
+                self.gadgetCostLabel.textColor = UIColor.blackColor()
                 self.activeCountLabel.hidden = true
                 self.pointsPerStepLabel.hidden = true
                 self.purchaseButton.hidden = true
