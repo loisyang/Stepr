@@ -74,7 +74,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         case 0:
             return CGFloat(100)
         case let x where x >= 3:
-            return CGFloat(80)
+            return CGFloat(45)
         default:
             return CGFloat(44)
         }

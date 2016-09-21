@@ -293,33 +293,21 @@
                                             <outlet property="highScoreLabel" destination="Gf4-hx-TOJ" id="mfF-CB-6Yc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GadgetTableViewCell" rowHeight="80" id="ueF-w8-PZQ" customClass="GadgetTableViewCell" customModule="Stepr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="280" width="600" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GadgetTableViewCell" rowHeight="45" id="ueF-w8-PZQ" customClass="GadgetTableViewCell" customModule="Stepr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="280" width="600" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ueF-w8-PZQ" id="MEQ-8n-LCs">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gadget Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKK-ao-8jM">
-                                                    <rect key="frame" x="8" y="0.0" width="508" height="36"/>
+                                                    <rect key="frame" x="8" y="5" width="508" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gadget Desc 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4V-W0-8PX">
-                                                    <rect key="frame" x="8" y="39" width="508" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gadget Desc 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jG8-pl-bXK">
-                                                    <rect key="frame" x="8" y="57" width="508" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaH-1C-3qq">
-                                                    <rect key="frame" x="533" y="0.0" width="59" height="80"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaH-1C-3qq">
+                                                    <rect key="frame" x="533" y="5" width="59" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="59" id="etT-Zf-9RJ"/>
                                                     </constraints>
@@ -329,25 +317,17 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="QKK-ao-8jM" firstAttribute="top" secondItem="MEQ-8n-LCs" secondAttribute="top" id="AkO-1g-UV6"/>
-                                                <constraint firstItem="HaH-1C-3qq" firstAttribute="leading" secondItem="M4V-W0-8PX" secondAttribute="trailing" constant="17" id="CVh-FY-6MT"/>
-                                                <constraint firstItem="HaH-1C-3qq" firstAttribute="centerY" secondItem="MEQ-8n-LCs" secondAttribute="centerY" id="ETj-44-xhE"/>
-                                                <constraint firstItem="M4V-W0-8PX" firstAttribute="leading" secondItem="jG8-pl-bXK" secondAttribute="leading" id="Idr-KB-Bho"/>
+                                                <constraint firstItem="QKK-ao-8jM" firstAttribute="top" secondItem="MEQ-8n-LCs" secondAttribute="top" constant="5" id="AkO-1g-UV6"/>
+                                                <constraint firstItem="HaH-1C-3qq" firstAttribute="centerY" secondItem="MEQ-8n-LCs" secondAttribute="centerY" constant="0.5" id="ETj-44-xhE"/>
                                                 <constraint firstItem="QKK-ao-8jM" firstAttribute="firstBaseline" secondItem="HaH-1C-3qq" secondAttribute="firstBaseline" id="Nh2-43-bfW"/>
                                                 <constraint firstItem="HaH-1C-3qq" firstAttribute="leading" secondItem="QKK-ao-8jM" secondAttribute="trailing" constant="17" id="YTX-ei-FNA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="HaH-1C-3qq" secondAttribute="trailing" id="eAP-hq-euW"/>
                                                 <constraint firstItem="QKK-ao-8jM" firstAttribute="leading" secondItem="MEQ-8n-LCs" secondAttribute="leadingMargin" id="hv6-CP-xln"/>
-                                                <constraint firstItem="HaH-1C-3qq" firstAttribute="leading" secondItem="jG8-pl-bXK" secondAttribute="trailing" constant="17" id="oP5-cl-MAY"/>
-                                                <constraint firstItem="jG8-pl-bXK" firstAttribute="top" secondItem="M4V-W0-8PX" secondAttribute="bottom" constant="3" id="qOq-Oa-F5Y"/>
-                                                <constraint firstItem="QKK-ao-8jM" firstAttribute="leading" secondItem="M4V-W0-8PX" secondAttribute="leading" id="uPA-Xb-PmM"/>
-                                                <constraint firstItem="M4V-W0-8PX" firstAttribute="top" secondItem="QKK-ao-8jM" secondAttribute="bottom" constant="3" id="xTw-ge-g4G"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="activeCountLabel" destination="HaH-1C-3qq" id="khG-fQ-8J5"/>
                                             <outlet property="gadgetName" destination="QKK-ao-8jM" id="cBl-Xa-yBv"/>
-                                            <outlet property="pointsPerStepsLabel" destination="M4V-W0-8PX" id="nRa-vC-8f0"/>
-                                            <outlet property="totalActiveLabel" destination="jG8-pl-bXK" id="TC1-1l-alo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
