@@ -72,6 +72,16 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TQC-R4-bc0">
                                 <rect key="frame" x="481" y="278" width="51" height="31"/>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMc-SG-xKB">
+                                <rect key="frame" x="153" y="348" width="294" height="117"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="117" id="LRU-UH-PWy"/>
+                                    <constraint firstAttribute="width" constant="294" id="mEi-Lm-f2J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -91,6 +101,8 @@
                             <constraint firstItem="Xxt-wr-Nqy" firstAttribute="leading" secondItem="X2h-s2-pVC" secondAttribute="leadingMargin" constant="50" id="oNa-Uh-Sbl"/>
                             <constraint firstItem="B2j-DE-hN7" firstAttribute="top" secondItem="vWf-h8-jCm" secondAttribute="bottom" constant="45" id="tT7-9c-6Ht"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Sn-hU-Wja" secondAttribute="trailing" constant="50" id="tm0-GW-i0n"/>
+                            <constraint firstItem="dMc-SG-xKB" firstAttribute="centerX" secondItem="X2h-s2-pVC" secondAttribute="centerX" id="vUF-tJ-zbe"/>
+                            <constraint firstItem="uXC-GQ-1nE" firstAttribute="top" secondItem="dMc-SG-xKB" secondAttribute="bottom" constant="86" id="whe-Z0-SDy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="B2j-DE-hN7" secondAttribute="trailing" constant="50" id="ysi-6c-AaC"/>
                         </constraints>
                     </view>
