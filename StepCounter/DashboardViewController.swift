@@ -81,6 +81,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.row >= 3 {
             self.performSegueWithIdentifier("dashboardToGadgetDescriptionSegue", sender: self.activeGadgets[indexPath.row - 3])
         }

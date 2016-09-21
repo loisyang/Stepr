@@ -198,7 +198,7 @@
             </objects>
             <point key="canvasLocation" x="40" y="225"/>
         </scene>
-        <!--Dashboard View Controller-->
+        <!--Dashboard-->
         <scene sceneID="0Sf-6M-C01">
             <objects>
                 <viewController id="kKT-y3-v0Q" customClass="DashboardViewController" customModule="Stepr" customModuleProvider="target" sceneMemberID="viewController">
@@ -362,7 +362,7 @@
                             <constraint firstItem="IHQ-Cv-FnI" firstAttribute="top" secondItem="3PH-0K-lnS" secondAttribute="top" id="XNb-Gz-zxS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="CpT-dr-4zN"/>
+                    <navigationItem key="navigationItem" title="Dashboard" id="CpT-dr-4zN"/>
                     <connections>
                         <outlet property="tableView" destination="IHQ-Cv-FnI" id="f7c-3Y-2Sv"/>
                         <segue destination="lXF-DC-JDF" kind="show" identifier="dashboardToGadgetDescriptionSegue" id="u5J-UO-Nhf"/>
@@ -428,7 +428,7 @@
             </objects>
             <point key="canvasLocation" x="-711" y="225"/>
         </scene>
-        <!--Gadget Store View Controller-->
+        <!--Gadget Store-->
         <scene sceneID="hNC-tK-Gls">
             <objects>
                 <viewController id="hV5-PK-2HY" customClass="GadgetStoreViewController" customModule="Stepr" customModuleProvider="target" sceneMemberID="viewController">
@@ -550,7 +550,7 @@
                             <constraint firstItem="vi9-9e-3Cf" firstAttribute="leading" secondItem="4Sf-jT-hVk" secondAttribute="leading" id="fR7-FB-sTH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1aI-fo-OAH"/>
+                    <navigationItem key="navigationItem" title="Gadget Store" id="1aI-fo-OAH"/>
                     <connections>
                         <outlet property="tableView" destination="vi9-9e-3Cf" id="c1e-Ui-pV9"/>
                         <segue destination="lXF-DC-JDF" kind="show" identifier="gadgetStoreToGadgetDescriptionSegue" id="9b4-bM-sxe"/>
