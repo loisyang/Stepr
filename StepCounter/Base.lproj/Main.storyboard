@@ -125,35 +125,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="107" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-JT-AEk">
-                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" rowHeight="107" id="4Td-h1-05b" customClass="HistoryTableViewCell" customModule="Stepr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Td-h1-05b" id="u8j-Dl-5XV">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="106.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCt-s7-f8E">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCt-s7-f8E">
                                                     <rect key="frame" x="8" y="40" width="584" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJj-nI-NYt">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJj-nI-NYt">
                                                     <rect key="frame" x="8" y="69" width="584" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45S-ez-XpY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45S-ez-XpY">
                                                     <rect key="frame" x="8" y="11" width="584" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gJj-nI-NYt" firstAttribute="top" secondItem="aCt-s7-f8E" secondAttribute="bottom" constant="8" symbolic="YES" id="1Pf-Da-eQl"/>
+                                                <constraint firstItem="45S-ez-XpY" firstAttribute="trailing" secondItem="u8j-Dl-5XV" secondAttribute="trailingMargin" id="5AS-BE-fII"/>
+                                                <constraint firstItem="aCt-s7-f8E" firstAttribute="top" secondItem="45S-ez-XpY" secondAttribute="bottom" constant="8" symbolic="YES" id="CFO-Ig-ADD"/>
+                                                <constraint firstItem="aCt-s7-f8E" firstAttribute="leading" secondItem="gJj-nI-NYt" secondAttribute="leading" id="ExI-D8-tPw"/>
+                                                <constraint firstItem="45S-ez-XpY" firstAttribute="trailing" secondItem="aCt-s7-f8E" secondAttribute="trailing" id="T7x-wx-LO6"/>
+                                                <constraint firstItem="45S-ez-XpY" firstAttribute="leading" secondItem="aCt-s7-f8E" secondAttribute="leading" id="gSe-SL-erc"/>
+                                                <constraint firstItem="aCt-s7-f8E" firstAttribute="trailing" secondItem="gJj-nI-NYt" secondAttribute="trailing" id="w0q-ny-bfv"/>
+                                                <constraint firstItem="45S-ez-XpY" firstAttribute="top" secondItem="u8j-Dl-5XV" secondAttribute="topMargin" constant="3" id="wVS-4O-h7r"/>
+                                                <constraint firstItem="45S-ez-XpY" firstAttribute="leading" secondItem="u8j-Dl-5XV" secondAttribute="leadingMargin" id="xdt-lu-aoh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="date" destination="45S-ez-XpY" id="hQc-70-aA8"/>
@@ -163,12 +174,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axt-yt-gN6">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Step History" id="xdX-Eq-dwH"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8UT-JT-AEk" firstAttribute="leading" secondItem="j7g-aN-RyE" secondAttribute="leading" id="Dpw-tJ-ZXR"/>
                             <constraint firstItem="8Fi-15-2qB" firstAttribute="top" secondItem="8UT-JT-AEk" secondAttribute="bottom" id="ID7-St-qB0"/>
-                            <constraint firstItem="8UT-JT-AEk" firstAttribute="top" secondItem="3Nj-U8-ZcF" secondAttribute="bottom" id="abE-9w-Ly3"/>
+                            <constraint firstItem="axt-yt-gN6" firstAttribute="trailing" secondItem="8UT-JT-AEk" secondAttribute="trailing" id="JDm-13-cDc"/>
+                            <constraint firstItem="axt-yt-gN6" firstAttribute="leading" secondItem="8UT-JT-AEk" secondAttribute="leading" id="UOd-sC-kP5"/>
+                            <constraint firstItem="axt-yt-gN6" firstAttribute="top" secondItem="3Nj-U8-ZcF" secondAttribute="bottom" id="Zdc-c3-DUE"/>
+                            <constraint firstItem="8UT-JT-AEk" firstAttribute="top" secondItem="3Nj-U8-ZcF" secondAttribute="bottom" constant="44" id="abE-9w-Ly3"/>
                             <constraint firstAttribute="trailing" secondItem="8UT-JT-AEk" secondAttribute="trailing" id="rn3-vJ-1H1"/>
                         </constraints>
                     </view>
@@ -1034,6 +1054,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cdp-ZG-SQi"/>
-        <segue reference="u5J-UO-Nhf"/>
+        <segue reference="9b4-bM-sxe"/>
     </inferredMetricsTieBreakers>
 </document>
