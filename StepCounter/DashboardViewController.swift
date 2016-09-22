@@ -54,9 +54,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("LevelTableViewCell") as! LevelTableViewCell
-            let levelInfo = self.dashboard.getUserLevel()
-            cell.level = levelInfo.level
-            cell.percentage = levelInfo.percentage
+            cell.levelInfo = self.dashboard.getUserLevel()
             return cell
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("HighScoreTableViewCell") as! HighScoreTableViewCell

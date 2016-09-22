@@ -129,7 +129,7 @@ class DashboardModel {
      Level 19: 1 tril - 1 quad
      Level 20: 1 quad -
      */
-    func getUserLevel() -> (level: Int, percentage: Double) {
+    func getUserLevel() -> (level: Int, percentage: Double, pointsToGo: Double) {
         let pointsRanges : [(min: Double, max: Double)] = [
             (0, 5000),
             (5000, 20000),
@@ -159,12 +159,13 @@ class DashboardModel {
                     let range = pointsRanges[level]
                     let userLevel = level + 1
                     let percentage = Double((points - range.min)) / Double(range.max)
-                    return (level: userLevel, percentage: percentage)
+                    let pointsToGo = range.max - points
+                    return (level: userLevel, percentage: percentage, pointsToGo: pointsToGo)
                 }
             }
-            return (20, 1)
+            return (20, 1, 0.0)
         }
-        return (0, 0.0)
+        return (0, 0.0, 0.0)
         
     }
     

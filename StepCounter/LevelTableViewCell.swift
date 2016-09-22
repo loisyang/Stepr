@@ -10,14 +10,9 @@ import UIKit
 
 class LevelTableViewCell: UITableViewCell {
     
-    var level : Int = 0 {
+    var levelInfo : (level: Int, percentage: Double, pointsToGo: Double) = (0, 0.0, 0.0) {
         didSet {
             self.updateLabels()
-        }
-    }
-    
-    var percentage : Double = 0 {
-        didSet {
             self.fillLevelBar()
         }
     }
@@ -39,13 +34,14 @@ class LevelTableViewCell: UITableViewCell {
     }
     
     func updateLabels() {
-        self.lowLevelLabel.text = "Level \(self.level)"
-        self.highLevelLabel.text = "Level \(self.level + 1)"
+        self.lowLevelLabel.text = "Level \(self.levelInfo.level)"
+        self.highLevelLabel.text = "Level \(self.levelInfo.level + 1)"
+        self.pointsToGoLabel.text = "\(Util.formatNumber(self.levelInfo.pointsToGo)) points to go"
     }
     
     func fillLevelBar() {
         self.percentageSlider.setThumbImage(UIImage.init(), forState: UIControlState.Normal)
-        self.percentageSlider.setValue(Float(self.percentage), animated: true)
+        self.percentageSlider.setValue(Float(self.levelInfo.percentage), animated: true)
     }
 
 }
