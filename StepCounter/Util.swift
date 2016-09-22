@@ -37,6 +37,8 @@ class Util {
             NSUserDefaults.standardUserDefaults().setValue(0, forKey: "totalPointsSinceStart")
             NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "pointsInWallet")
             
+            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasWatchedTutorial")
+            
             // Step 2: Build all gadgets into CoreData
             let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
             let context = app.managedObjectContext

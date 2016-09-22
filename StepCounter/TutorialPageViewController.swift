@@ -25,6 +25,8 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
 
         // Do any additional setup after loading the view.
         
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasWatchedTutorial")
+        
         dataSource = self
         
         if let firstViewController = orderedViewControllers.first {

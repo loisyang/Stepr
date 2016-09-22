@@ -184,7 +184,11 @@
         <!--Tutorial Page View Controller-->
         <scene sceneID="0BN-En-6AH">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="b2Z-7E-0WF" customClass="TutorialPageViewController" customModule="Stepr" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="TutorialViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="b2Z-7E-0WF" customClass="TutorialPageViewController" customModule="Stepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="gCJ-YL-7xl" kind="show" identifier="tutorialToDashboardSegue" id="cdp-ZG-SQi"/>
+                    </connections>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fp7-Gf-QR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2272" y="232"/>
@@ -809,7 +813,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="5WL-VD-DC7">
             <objects>
-                <tabBarController id="gCJ-YL-7xl" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="gCJ-YL-7xl" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="OUF-Nq-p1k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -872,7 +876,7 @@
                                         <rect key="frame" x="0.0" y="177" width="600" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sh5-wf-GO5" id="tiy-Hg-9pT">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="84.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gadget Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbA-9n-OoR">
@@ -1029,7 +1033,7 @@
         <image name="GadgetStoreScreenShot" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZiS-8G-N9I"/>
+        <segue reference="cdp-ZG-SQi"/>
         <segue reference="u5J-UO-Nhf"/>
     </inferredMetricsTieBreakers>
 </document>

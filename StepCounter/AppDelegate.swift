@@ -21,6 +21,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Request permission from user to recieve notifications
         // types are UIUserNotificationType values
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if (defaults.boolForKey("hasWatchedTutorial")) {
+            // This gets executed if the app has ALREADY been launched
+            let rootViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+            self.window?.rootViewController = rootViewController
+        } else {
+            // This gets executed if the app has NEVER been launched
+            defaults.setBool(true, forKey: "hasWatchedTutorial")
+            defaults.synchronize()
+            
+            let rootViewController = storyboard.instantiateViewControllerWithIdentifier("TutorialViewController") as! TutorialPageViewController
+            self.window?.rootViewController = rootViewController
+        }
+        
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
