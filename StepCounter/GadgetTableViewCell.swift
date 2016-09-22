@@ -36,7 +36,7 @@ class GadgetTableViewCell: UITableViewCell {
     func updateLabels() {
         if let gadget = self.gadget {
             self.gadgetName.text = gadget.name!
-            self.activeCountLabel.text = "\(Util.formatNumber(gadget.numActive as! Double))"
+            self.activeCountLabel.text = "\(Util.formatNumber(gadget.numActive as! Double)) qty."
         }
     }
 

@@ -29,6 +29,7 @@
 		81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81889E2A1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld */; };
 		81889E2E1D7A5EAB00A17BF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */; };
 		81889E311D7A5EAB00A17BF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E2F1D7A5EAB00A17BF7 /* LaunchScreen.storyboard */; };
+		81EC96031D9365FC007A4364 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC96021D9365FC007A4364 /* TutorialPageViewController.swift */; };
 		81EF73E71D81ADD4007C97C0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF73E61D81ADD4007C97C0 /* Util.swift */; };
 		81EF73EA1D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF73E81D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift */; };
 		81EF73EB1D81B1D7007C97C0 /* Gadget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF73E91D81B1D7007C97C0 /* Gadget.swift */; };
@@ -61,6 +62,7 @@
 		81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81889E301D7A5EAB00A17BF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81889E321D7A5EAB00A17BF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81EC96021D9365FC007A4364 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		81EF73E61D81ADD4007C97C0 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		81EF73E81D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Gadget+CoreDataProperties.swift"; path = "../Gadget+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		81EF73E91D81B1D7007C97C0 /* Gadget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gadget.swift; path = ../Gadget.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				817707331D8474EB001EAE12 /* History */,
 				81845AA51D8E330900E26800 /* Achievements */,
 				81845AA41D8E32F900E26800 /* Settings */,
+				81EC96041D936F8B007A4364 /* Tutorial */,
 				8177072E1D83548A001EAE12 /* Stepr.entitlements */,
 				81889E231D7A5EAB00A17BF7 /* AppDelegate.swift */,
 				81EF73E61D81ADD4007C97C0 /* Util.swift */,
@@ -173,6 +176,14 @@
 			);
 			name = Stepr;
 			path = StepCounter;
+			sourceTree = "<group>";
+		};
+		81EC96041D936F8B007A4364 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				81EC96021D9365FC007A4364 /* TutorialPageViewController.swift */,
+			);
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		81EF73EC1D81B1F2007C97C0 /* Gadget */ = {
@@ -274,6 +285,7 @@
 				8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */,
 				BC5CC6251D90A10F0092039C /* HistoryTableViewCell.swift in Sources */,
 				817707621D8A3E6B001EAE12 /* GadgetStoreViewController.swift in Sources */,
+				81EC96031D9365FC007A4364 /* TutorialPageViewController.swift in Sources */,
 				81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */,
 				81EF73EA1D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift in Sources */,
 				81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */,
