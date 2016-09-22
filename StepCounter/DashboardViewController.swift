@@ -54,9 +54,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("LevelTableViewCell") as! LevelTableViewCell
-            let levelInfo = self.dashboard.getUserLevel()
-            cell.level = levelInfo.level
-            cell.percentage = levelInfo.percentage
+            cell.levelInfo = self.dashboard.getUserLevel()
             return cell
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("HighScoreTableViewCell") as! HighScoreTableViewCell
@@ -73,14 +71,17 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         switch indexPath.row {
         case 0:
             return CGFloat(100)
+        case 1:
+            return CGFloat(90)
         case let x where x >= 3:
-            return CGFloat(80)
+            return CGFloat(45)
         default:
             return CGFloat(44)
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.row >= 3 {
             self.performSegueWithIdentifier("dashboardToGadgetDescriptionSegue", sender: self.activeGadgets[indexPath.row - 3])
         }

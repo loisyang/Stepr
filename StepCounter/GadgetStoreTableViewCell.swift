@@ -43,10 +43,13 @@ class GadgetStoreTableViewCell: UITableViewCell {
     func updateLabels() {
         if let gadget = self.gadget {
             
+            self.allBlackFont()
+            
             let userLevel = self.dashboard.getUserLevel()
             let unlockLevel = gadget.unlockLevel as! Int
             if (userLevel.level >= unlockLevel) {
                 // gadget is unlocked
+                
                 self.showAllLabels()
                 self.gadgetNameLabel.text = gadget.name!
                 self.gadgetCostLabel.text = "\(Util.formatNumber(gadget.cost as! Double)) points"
@@ -64,19 +67,26 @@ class GadgetStoreTableViewCell: UITableViewCell {
                 
             } else if (userLevel.level + 2 >= unlockLevel) {
                 // user will unlock in the next two levels
+                
                 self.gadgetNameLabel.text = gadget.name!
                 self.gadgetCostLabel.text = "\(Util.formatNumber(gadget.cost as! Double)) points"
-                self.gadgetCostLabel.textColor = UIColor.blackColor()
                 self.activeCountLabel.hidden = true
                 self.pointsPerStepLabel.hidden = true
                 self.purchaseButton.hidden = true
+                
+                self.gadgetNameLabel.textColor = UIColor.grayColor()
+                self.gadgetCostLabel.textColor = UIColor.grayColor()
+                
             } else {
                 // user will unlock in the far future
-                self.gadgetNameLabel.text = "??????"
+                
+                self.gadgetNameLabel.text = "Unlock at Level \(gadget.unlockLevel as! Int)"
                 self.gadgetCostLabel.hidden = true
                 self.activeCountLabel.hidden = true
                 self.pointsPerStepLabel.hidden = true
                 self.purchaseButton.hidden = true
+                
+                self.gadgetNameLabel.textColor = UIColor.lightGrayColor()
             }
         }
     }
@@ -86,6 +96,13 @@ class GadgetStoreTableViewCell: UITableViewCell {
         self.gadgetCostLabel.hidden = false
         self.activeCountLabel.hidden = false
         self.pointsPerStepLabel.hidden = false
+    }
+    
+    func allBlackFont() {
+        self.gadgetNameLabel.textColor = UIColor.blackColor()
+        self.gadgetCostLabel.textColor = UIColor.blackColor()
+        self.activeCountLabel.textColor = UIColor.blackColor()
+        self.pointsPerStepLabel.textColor = UIColor.blackColor()
     }
     
     @IBAction func purchaseButtonPressed(sender: AnyObject) {

@@ -17,13 +17,14 @@ class GadgetTableViewCell: UITableViewCell {
     }
 
     @IBOutlet weak var gadgetName: UILabel!
-    @IBOutlet weak var pointsPerStepsLabel: UILabel!
-    @IBOutlet weak var totalActiveLabel: UILabel!
     @IBOutlet weak var activeCountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.gadgetName.adjustsFontSizeToFitWidth = true
+        self.activeCountLabel.adjustsFontSizeToFitWidth = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -35,11 +36,7 @@ class GadgetTableViewCell: UITableViewCell {
     func updateLabels() {
         if let gadget = self.gadget {
             self.gadgetName.text = gadget.name!
-            
-            let pointsPerStep = Util.formatNumber((gadget.numActive as! Double) * (gadget.bonus as! Double))
-            self.pointsPerStepsLabel.text = "Each \(gadget.name!) produces \(Util.formatNumber(gadget.bonus as! Double)) points per step"
-            self.totalActiveLabel.text = "\(gadget.numActive as! Int) active producing \(pointsPerStep) points per step"
-            self.activeCountLabel.text = "\(gadget.numActive as! Int)"
+            self.activeCountLabel.text = "\(Util.formatNumber(gadget.numActive as! Double)) qty."
         }
     }
 
