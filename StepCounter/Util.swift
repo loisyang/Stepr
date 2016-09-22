@@ -41,12 +41,12 @@ class Util {
             let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
             let context = app.managedObjectContext
             let gadgets : [(String, Double, Double, Int)] = [
-                ("Protein Bar",         50,         0.0001,     1),
+                ("Protein Bar",         50,         0.1,     1),
                 ("Gust of Wind",        1000,       0.2,        2),
                 ("Companion Walker",    5000,       1,          3),
                 ("Dog",                 250000,     1.5,        4),//2.5 * 10^5
                 ("Horse",               500000,      2,         5),//5 * 10^5
-                ("Running Shoes",       1000000,      3,         6),//10 * 10^5
+                ("Running Shoes",       1000000,     3,         6),//10 * 10^5
                 ("5 Hour Energy",       1500000,     4,         7),//15 * 10^5
                 ("Moon boots",          2500000,     6,         8),//25 * 10^5
                 ("Bike",                5000000,     8,         9),//50 * 10^5
