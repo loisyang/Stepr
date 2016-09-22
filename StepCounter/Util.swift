@@ -41,26 +41,26 @@ class Util {
             let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
             let context = app.managedObjectContext
             let gadgets : [(String, Double, Double, Int)] = [
-                ("Protein Bar", 50, 0.0001, 1),
-                ("Gust of Wind", 100, 0.2, 2),
-                ("Companion Walker", 500, 1, 3),
-                ("Dog", 10000, 1.5, 4),
-                ("Horse", 20000, 2, 5),
-                ("Running Shoes", 50000, 3, 6),
-                ("5 Hour Energy", 15000, 4, 7),
-                ("Moon boots", 25000, 6, 8),
-                ("Bike", 50000, 8, 9),
-                ("Adrenaline Shot",100000, 25, 10),
-                ("Bird", 150000, 75, 11),
-                ("Pogo Stick", 160000, 125, 12),
-                ("Skateboard", 200000, 150, 13),
-                ("Wings", 500000, 200, 14),
-                ("Carrot on a Stick", 750000, 300, 15),
-                ("Thighs of Steel", 800000, 500, 16),
-                ("Airplane", 1000000, 600, 17),
-                ("Flying Carpet", 100000000, 750, 18),
-                ("Family", 1000000000, 1000, 19),
-                ("Marathon", 2500000000, 2500, 20)
+                ("Protein Bar",         50,         0.0001,     1),
+                ("Gust of Wind",        1000,       0.2,        2),
+                ("Companion Walker",    5000,       1,          3),
+                ("Dog",                 250000,     1.5,        4),//2.5 * 10^5
+                ("Horse",               500000,      2,         5),//5 * 10^5
+                ("Running Shoes",       1000000,      3,         6),//10 * 10^5
+                ("5 Hour Energy",       1500000,     4,         7),//15 * 10^5
+                ("Moon boots",          2500000,     6,         8),//25 * 10^5
+                ("Bike",                5000000,     8,         9),//50 * 10^5
+                ("Adrenaline Shot",     100000000,   25,        10),//10 * 10^7
+                ("Bird",                150000000,   75,        11),// 15 * 10^7
+                ("Pogo Stick",          160000000,   125,       12),//16 * 10^7
+                ("Skateboard",          200000000,   150,       13),//20 * 10^7
+                ("Wings",               500000000,   200,       14),//50 * 10^7
+                ("Carrot on a Stick",   750000000,   300,       15),//75 * 10^7
+                ("Thighs of Steel",     900000000,   500,       16),//90 * 10^7
+                ("Airplane",            1000000000,  600,       17),// 10 * 10^8
+                ("Flying Carpet",       1500000000,  750,       18),// 15 * 10^8
+                ("Family",              2000000000,  1000,      19),// 20 * 10^8
+                ("Marathon",            3000000000,  2500,      20) //30 * 10^8
             ]
             
             for gadgetInfo in gadgets {

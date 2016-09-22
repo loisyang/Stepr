@@ -48,7 +48,7 @@ class Gadget: NSManagedObject {
                     // increase numActive by one
                     gadget.setValue(Int(gadget.numActive!) + 1 ,forKey: "numActive")
                     // increase cost by 1.2x
-                    gadget.setValue(Int(floor((gadget.cost as! Double) * 1.2)), forKey:  "cost")
+                    gadget.setValue(Int(floor((gadget.cost as! Double) * 1.5)), forKey:  "cost")
                     
                     try context.save()
                 }
