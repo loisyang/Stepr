@@ -36,7 +36,8 @@ class LevelTableViewCell: UITableViewCell {
     func updateLabels() {
         self.lowLevelLabel.text = "Level \(self.levelInfo.level)"
         self.highLevelLabel.text = "Level \(self.levelInfo.level + 1)"
-        self.pointsToGoLabel.text = "\(Util.formatNumber(self.levelInfo.pointsToGo)) points to go"
+        let ptg = floor(self.levelInfo.pointsToGo)
+        self.pointsToGoLabel.text = "\(Util.formatNumber(ptg)) points to go"
     }
     
     func fillLevelBar() {
