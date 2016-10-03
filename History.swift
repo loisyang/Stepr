@@ -14,9 +14,9 @@ import CoreData
 class History: NSManagedObject {
 
     class func getAllHistory() -> [History]{
-        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let app = (UIApplication.shared.delegate as! AppDelegate)
         let context = app.managedObjectContext
-        let request = NSFetchRequest(entityName: "History")
+        let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "History")
         
         // Add the sortDescriptor so that CoreData returns them ordered by points
         // This makes results[0] the highest score
@@ -27,7 +27,7 @@ class History: NSManagedObject {
         
         do {
             // Execute the request
-            try results = context.executeFetchRequest(request)
+            try results = context.fetch(request)
         } catch _ {
             results = nil
         }

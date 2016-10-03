@@ -32,16 +32,16 @@ class HistoryTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }
     func updateLabels() {
         if let history = self.histroy {
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-            self.date.text = String(dateFormatter.stringFromDate(history.date!))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = DateFormatter.Style.full
+            self.date.text = String(dateFormatter.string(from: history.date! as Date))
             self.steps.text = "\(Util.formatNumber(history.steps as! Double)) steps"
             self.points.text = "\(Util.formatNumber(history.points as! Double)) points"
         }

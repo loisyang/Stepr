@@ -34,7 +34,7 @@ class GadgetStoreTableViewCell: UITableViewCell {
         gadgetCostLabel.adjustsFontSizeToFitWidth = true
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
@@ -58,11 +58,11 @@ class GadgetStoreTableViewCell: UITableViewCell {
                 self.pointsPerStepLabel.text = "Each \(gadget.name!) produces \(Util.formatNumber(gadget.bonus as! Double)) points per step"
                 
                 if gadget.canPurchase() {
-                    self.purchaseButton.hidden = false
-                    self.gadgetCostLabel.textColor = UIColor.greenColor()
+                    self.purchaseButton.isHidden = false
+                    self.gadgetCostLabel.textColor = UIColor.green
                 } else {
-                    self.purchaseButton.hidden = true
-                    self.gadgetCostLabel.textColor = UIColor.redColor()
+                    self.purchaseButton.isHidden = true
+                    self.gadgetCostLabel.textColor = UIColor.red
                 }
                 
             } else if (userLevel.level + 2 >= unlockLevel) {
@@ -70,48 +70,48 @@ class GadgetStoreTableViewCell: UITableViewCell {
                 
                 self.gadgetNameLabel.text = gadget.name!
                 self.gadgetCostLabel.text = "\(Util.formatNumber(gadget.cost as! Double)) points"
-                self.activeCountLabel.hidden = true
-                self.pointsPerStepLabel.hidden = true
-                self.purchaseButton.hidden = true
+                self.activeCountLabel.isHidden = true
+                self.pointsPerStepLabel.isHidden = true
+                self.purchaseButton.isHidden = true
                 
-                self.gadgetNameLabel.textColor = UIColor.grayColor()
-                self.gadgetCostLabel.textColor = UIColor.grayColor()
+                self.gadgetNameLabel.textColor = UIColor.gray
+                self.gadgetCostLabel.textColor = UIColor.gray
                 
             } else {
                 // user will unlock in the far future
                 
                 self.gadgetNameLabel.text = "Unlock at Level \(gadget.unlockLevel as! Int)"
-                self.gadgetCostLabel.hidden = true
-                self.activeCountLabel.hidden = true
-                self.pointsPerStepLabel.hidden = true
-                self.purchaseButton.hidden = true
+                self.gadgetCostLabel.isHidden = true
+                self.activeCountLabel.isHidden = true
+                self.pointsPerStepLabel.isHidden = true
+                self.purchaseButton.isHidden = true
                 
-                self.gadgetNameLabel.textColor = UIColor.lightGrayColor()
+                self.gadgetNameLabel.textColor = UIColor.lightGray
             }
         }
     }
     
     func showAllLabels() {
-        self.gadgetNameLabel.hidden = false
-        self.gadgetCostLabel.hidden = false
-        self.activeCountLabel.hidden = false
-        self.pointsPerStepLabel.hidden = false
+        self.gadgetNameLabel.isHidden = false
+        self.gadgetCostLabel.isHidden = false
+        self.activeCountLabel.isHidden = false
+        self.pointsPerStepLabel.isHidden = false
     }
     
     func allBlackFont() {
-        self.gadgetNameLabel.textColor = UIColor.blackColor()
-        self.gadgetCostLabel.textColor = UIColor.blackColor()
-        self.activeCountLabel.textColor = UIColor.blackColor()
-        self.pointsPerStepLabel.textColor = UIColor.blackColor()
+        self.gadgetNameLabel.textColor = UIColor.black
+        self.gadgetCostLabel.textColor = UIColor.black
+        self.activeCountLabel.textColor = UIColor.black
+        self.pointsPerStepLabel.textColor = UIColor.black
     }
     
-    @IBAction func purchaseButtonPressed(sender: AnyObject) {
+    @IBAction func purchaseButtonPressed(_ sender: AnyObject) {
         if let gadget = self.gadget {
             if gadget.canPurchase() {
                 gadget.addOne()
                 self.updateLabels()
             }
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("refreshGadgetStore", object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "refreshGadgetStore"), object: nil, userInfo: nil)
     }
 }

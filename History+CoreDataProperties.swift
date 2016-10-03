@@ -14,7 +14,7 @@ import CoreData
 
 extension History {
 
-    @NSManaged var date: NSDate?
+    @NSManaged var date: Date?
     @NSManaged var steps: NSNumber?
     @NSManaged var points: NSNumber?
 

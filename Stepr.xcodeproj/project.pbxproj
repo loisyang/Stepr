@@ -29,6 +29,8 @@
 		81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81889E2A1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld */; };
 		81889E2E1D7A5EAB00A17BF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */; };
 		81889E311D7A5EAB00A17BF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889E2F1D7A5EAB00A17BF7 /* LaunchScreen.storyboard */; };
+		81C3A32E1DA2DCA400191411 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C3A32D1DA2DCA400191411 /* Achievement.swift */; };
+		81C3A3301DA2DCF800191411 /* Achievement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C3A32F1DA2DCF800191411 /* Achievement+CoreDataProperties.swift */; };
 		81EC96031D9365FC007A4364 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC96021D9365FC007A4364 /* TutorialPageViewController.swift */; };
 		81EF73E71D81ADD4007C97C0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF73E61D81ADD4007C97C0 /* Util.swift */; };
 		81EF73EA1D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF73E81D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift */; };
@@ -62,6 +64,9 @@
 		81889E2D1D7A5EAB00A17BF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81889E301D7A5EAB00A17BF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81889E321D7A5EAB00A17BF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81C3A31A1DA2DBB400191411 /* Stepr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stepr-Bridging-Header.h"; sourceTree = "<group>"; };
+		81C3A32D1DA2DCA400191411 /* Achievement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		81C3A32F1DA2DCF800191411 /* Achievement+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Achievement+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		81EC96021D9365FC007A4364 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		81EF73E61D81ADD4007C97C0 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		81EF73E81D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Gadget+CoreDataProperties.swift"; path = "../Gadget+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -135,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				81845AA61D8E337F00E26800 /* AchievemntsViewController.swift */,
+				81C3A32D1DA2DCA400191411 /* Achievement.swift */,
+				81C3A32F1DA2DCF800191411 /* Achievement+CoreDataProperties.swift */,
 			);
 			name = Achievements;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 				8177072C1D83548A001EAE12 /* HealthKit.framework */,
 				81889E221D7A5EAB00A17BF7 /* Stepr */,
 				81889E211D7A5EAB00A17BF7 /* Products */,
+				81C3A31A1DA2DBB400191411 /* Stepr-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,6 +239,7 @@
 					81889E1F1D7A5EAB00A17BF7 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = S4362VH5CT;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -280,6 +289,7 @@
 				817707321D8474E6001EAE12 /* History.swift in Sources */,
 				8177073A1D84CFDB001EAE12 /* LevelTableViewCell.swift in Sources */,
 				817707661D8B76ED001EAE12 /* GadgetStoreTableViewCell.swift in Sources */,
+				81C3A32E1DA2DCA400191411 /* Achievement.swift in Sources */,
 				817707311D8474E6001EAE12 /* History+CoreDataProperties.swift in Sources */,
 				81845AA31D8DEE9500E26800 /* SettingsViewController.swift in Sources */,
 				8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */,
@@ -287,6 +297,7 @@
 				817707621D8A3E6B001EAE12 /* GadgetStoreViewController.swift in Sources */,
 				81EC96031D9365FC007A4364 /* TutorialPageViewController.swift in Sources */,
 				81889E2C1D7A5EAB00A17BF7 /* Stepr.xcdatamodeld in Sources */,
+				81C3A3301DA2DCF800191411 /* Achievement+CoreDataProperties.swift in Sources */,
 				81EF73EA1D81B1D7007C97C0 /* Gadget+CoreDataProperties.swift in Sources */,
 				81889E261D7A5EAB00A17BF7 /* DashboardViewController.swift in Sources */,
 				8177073C1D84CFFF001EAE12 /* HighScoreTableViewCell.swift in Sources */,
@@ -417,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Stepr.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -425,6 +437,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmsormond.Stepr;
 				PRODUCT_NAME = Stepr;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Stepr-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -433,6 +448,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Stepr.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -441,6 +457,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmsormond.Stepr;
 				PRODUCT_NAME = Stepr;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Stepr-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

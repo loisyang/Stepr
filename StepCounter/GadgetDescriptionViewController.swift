@@ -37,13 +37,13 @@ class GadgetDescriptionViewController: UIViewController {
             self.gadgetCountLabel.text = "\(gadget.numActive as! Int) active"
             
             if !gadget.canPurchase() {
-                self.purchaseButton.hidden = true
+                self.purchaseButton.isHidden = true
             }
         }
         
     }
     
-    @IBAction func purchasePressed(sender: AnyObject) {
+    @IBAction func purchasePressed(_ sender: AnyObject) {
         if let gadget = self.gadget {
             if gadget.canPurchase() {
                 gadget.addOne()

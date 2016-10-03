@@ -20,7 +20,7 @@ class Util {
      */
     class func initiateDataStructure() {
         // check if data structure has been established
-        let established = NSUserDefaults.standardUserDefaults().objectForKey("dataStructureInPlace")
+        let established = UserDefaults.standard.object(forKey: "dataStructureInPlace")
         
         if established == nil {
             // data structure has not been established
@@ -30,17 +30,17 @@ class Util {
             // let currentDate = NSDate()
             
             // use yesterday's data for testing purposes
-            let startOfDay = NSCalendar.currentCalendar().startOfDayForDate(NSDate())
+            let startOfDay = Calendar.current.startOfDay(for: Date())
             
-            NSUserDefaults.standardUserDefaults().setObject(startOfDay, forKey: "downloadDate")
+            UserDefaults.standard.set(startOfDay, forKey: "downloadDate")
             
-            NSUserDefaults.standardUserDefaults().setValue(0, forKey: "totalPointsSinceStart")
-            NSUserDefaults.standardUserDefaults().setValue(0.0, forKey: "pointsInWallet")
+            UserDefaults.standard.setValue(0, forKey: "totalPointsSinceStart")
+            UserDefaults.standard.setValue(0.0, forKey: "pointsInWallet")
             
-            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasWatchedTutorial")
+            UserDefaults.standard.set(false, forKey: "hasWatchedTutorial")
             
             // Step 2: Build all gadgets into CoreData
-            let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let app = (UIApplication.shared.delegate as! AppDelegate)
             let context = app.managedObjectContext
             let gadgets : [(String, Double, Double, Int)] = [
                 ("Protein Bar",         50,          0.1,       1),
@@ -66,18 +66,18 @@ class Util {
             ]
             
             for gadgetInfo in gadgets {
-                let gadget = NSEntityDescription.insertNewObjectForEntityForName("Gadget", inManagedObjectContext: context) as! Gadget
+                let gadget = NSEntityDescription.insertNewObject(forEntityName: "Gadget", into: context) as! Gadget
                 gadget.name = gadgetInfo.0
-                gadget.cost = gadgetInfo.1
-                gadget.bonus = gadgetInfo.2
-                gadget.unlockLevel = gadgetInfo.3
+                gadget.cost = gadgetInfo.1 as NSNumber?
+                gadget.bonus = gadgetInfo.2 as NSNumber?
+                gadget.unlockLevel = gadgetInfo.3 as NSNumber?
             }
             do {
                 try context.save()
             } catch _ {}
             
             // Step 3: Set dataStructureInPlace to true
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "dataStructureInPlace")
+            UserDefaults.standard.set(true, forKey: "dataStructureInPlace")
         }
     }
     
@@ -85,26 +85,26 @@ class Util {
      This function requests reading access from Apple HealthKit. It only requests reading access
      for step count; no writing requests are made.
      */
-    class func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!) {
+    class func authorizeHealthKit(_ completion: ((_ success:Bool, _ error:NSError?) -> Void)!) {
         
         let healthKitTypesToRead : Set<HKObjectType> = [
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
         ]
         
         // check to see if the HealthKit data is available; if not, return completion is false
         if !HKHealthStore.isHealthDataAvailable() {
             let error = NSError(domain: "com.jmsormond.Stepr", code: 2, userInfo: [NSLocalizedDescriptionKey:"HealthKit is not available in this Device"])
             if completion != nil {
-                completion(success:false, error:error)
+                completion?(false, error)
             }
             return
         }
         
         // make the actual request to HealthKit for the read data
-        HKHealthStore().requestAuthorizationToShareTypes(nil, readTypes: healthKitTypesToRead) { (success, error) -> Void in
+        HKHealthStore().requestAuthorization(toShare: nil, read: healthKitTypesToRead) { (success, error) -> Void in
             
             if completion != nil {
-                completion(success:success,error:error)
+                completion?(success, error as NSError?)
             }
         }
     }
@@ -124,18 +124,18 @@ class Util {
         // from the previous day. Fix this in the future.
         
         // Get NSDate for start of current day
-        let startOfDay = NSCalendar.currentCalendar().startOfDayForDate(NSDate())
-        let currentDate = NSDate()
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        let currentDate = Date()
         
         // The type of data we are requesting
-        let type = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+        let type = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
         
         //  Set the Interval
-        let interval: NSDateComponents = NSDateComponents()
+        var interval: DateComponents = DateComponents()
         interval.day = 1
         
         // Build the query
-        let query = HKStatisticsCollectionQuery(quantityType: type!, quantitySamplePredicate: nil, options: [.CumulativeSum], anchorDate: startOfDay, intervalComponents:interval)
+        let query = HKStatisticsCollectionQuery(quantityType: type!, quantitySamplePredicate: nil, options: [.cumulativeSum], anchorDate: startOfDay, intervalComponents:interval)
         
         // Give the query a callback function
         query.initialResultsHandler = { query, results, error in
@@ -146,7 +146,7 @@ class Util {
                 return
             }
             
-            results?.enumerateStatisticsFromDate(startOfDay, toDate: currentDate, withBlock: {
+            results?.enumerateStatistics(from: startOfDay, to: currentDate, with: {
                 results, error in
                 
                 // TODO: add in the edge case where the lastDate and currentDate pass through midnight (2 days)
@@ -154,20 +154,20 @@ class Util {
                 if let quantity = results.sumQuantity() {
                     // The query was successful!
                     
-                    let steps = quantity.doubleValueForUnit(HKUnit.countUnit())
+                    let steps = quantity.doubleValue(for: HKUnit.count())
                     
                     // Convert to points
                     let points = Gadget.calculatePoints(Int(steps))
                     
                     // Update lastUpdateDate
-                    NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: "lastUpdateDate")
+                    UserDefaults.standard.set(currentDate, forKey: "lastUpdateDate")
                     
                     // Update the day steps
                     
                     // Create the context
-                    let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+                    let app = (UIApplication.shared.delegate as! AppDelegate)
                     let context = app.managedObjectContext
-                    let request = NSFetchRequest(entityName: "History")
+                    let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "History")
                     
                     // Add the sortDescriptor so that CoreData returns them ordered by points
                     // This makes results[0] the highest score
@@ -178,7 +178,7 @@ class Util {
                     
                     do {
                         // Execute the request
-                        try results = context.executeFetchRequest(request)
+                        try results = context.fetch(request)
                     } catch _ {
                         results = nil
                     }
@@ -188,9 +188,9 @@ class Util {
                         // There already exists a History object, so check if its for this date
                         
                         let today = results!.first as! History
-                        let current = NSCalendar.currentCalendar()
+                        let current = Calendar.current
                         
-                        if current.isDateInToday(today.date!) {
+                        if current.isDateInToday(today.date! as Date) {
                             // History object is for today, so update that object
                             
                             let oldSteps = today.steps as! Int
@@ -211,10 +211,10 @@ class Util {
                             
                             
                             
-                            let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
-                            history.date = NSDate()
-                            history.steps = Int(steps)
-                            history.points = Double(points)
+                            let history = NSEntityDescription.insertNewObject(forEntityName: "History", into: context) as! History
+                            history.date = Date()
+                            history.steps = Int(steps) as NSNumber?
+                            history.points = Double(points) as NSNumber?
                             
                             // update pointsInWallet and totalStepsSinceStart
                             Util.updatePointsInWallet(points)
@@ -228,10 +228,10 @@ class Util {
                     } else {
                         // There does not exist a History object for this date, so create it
                         
-                        let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: context) as! History
-                        history.date = NSDate()
-                        history.steps = Int(steps)
-                        history.points = Double(points)
+                        let history = NSEntityDescription.insertNewObject(forEntityName: "History", into: context) as! History
+                        history.date = Date()
+                        history.steps = Int(steps) as NSNumber?
+                        history.points = Double(points) as NSNumber?
                         
                         // update pointsInWallet and totalStepsSinceStart
                         Util.updatePointsInWallet(points)
@@ -248,7 +248,7 @@ class Util {
         }
         
         // Execute the query
-        HKHealthStore().executeQuery(query)
+        HKHealthStore().execute(query)
         
     }
     
@@ -258,7 +258,7 @@ class Util {
      this function gets called. It calls self.executeHealthKitRequest() to make
      the actual request for the data.
      */
-    class func stepChangedHandler(query: HKObserverQuery, completionHandler: HKObserverQueryCompletionHandler, error: NSError?) {
+    class func stepChangedHandler(_ query: HKObserverQuery, completionHandler: HKObserverQueryCompletionHandler, error: Error?) {
         
         // Call the function to actually query HealthKit for the new data
         Util.executeHealthKitRequest()
@@ -274,12 +274,12 @@ class Util {
      */
     class func setUpObserverQuery() {
         
-        let sampleType =  HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+        let sampleType =  HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
         
         let query: HKObserverQuery = HKObserverQuery(sampleType: sampleType!, predicate: nil, updateHandler: Util.stepChangedHandler)
         
-        HKHealthStore().executeQuery(query)
-        HKHealthStore().enableBackgroundDeliveryForType(sampleType!, frequency: .Immediate, withCompletion: {(succeeded: Bool, error: NSError?) in
+        HKHealthStore().execute(query)
+        HKHealthStore().enableBackgroundDelivery(for: sampleType!, frequency: .immediate, withCompletion: {(succeeded: Bool, error: Error?) in
             
             if succeeded {
                 print("Enabled background delivery of step changes")
@@ -297,12 +297,12 @@ class Util {
      This function takes a change in the pointsInWallet variable and adds that change
      to the NSUserDefaults variable.
      */
-    class func updatePointsInWallet(change: Double) {
+    class func updatePointsInWallet(_ change: Double) {
         
-        let walletPoints = NSUserDefaults.standardUserDefaults().valueForKey("pointsInWallet") as! Double
+        let walletPoints = UserDefaults.standard.value(forKey: "pointsInWallet") as! Double
         let newWalletTotal = walletPoints + change
         
-        NSUserDefaults.standardUserDefaults().setValue(newWalletTotal, forKey: "pointsInWallet")
+        UserDefaults.standard.setValue(newWalletTotal, forKey: "pointsInWallet")
     }
     
     /**
@@ -311,14 +311,14 @@ class Util {
         1. If the user just unlocked a new level
         2. If the user has reached the 50% mark for unlocking the next level
      */
-    class func updateTotalPointsSinceStart(change: Double) {
+    class func updateTotalPointsSinceStart(_ change: Double) {
         let dashboard = DashboardModel()
         let oldUserLevel = dashboard.getUserLevel()
         
-        let totalPoints = NSUserDefaults.standardUserDefaults().valueForKey("totalPointsSinceStart") as! Double
+        let totalPoints = UserDefaults.standard.value(forKey: "totalPointsSinceStart") as! Double
         let newTotal = totalPoints + change
         
-        NSUserDefaults.standardUserDefaults().setValue(newTotal, forKey: "totalPointsSinceStart")
+        UserDefaults.standard.setValue(newTotal, forKey: "totalPointsSinceStart")
         
         let newUserLevel = dashboard.getUserLevel()
         
@@ -328,10 +328,10 @@ class Util {
             let notification = UILocalNotification()
             notification.alertBody = "Congrats! You just leveled up to Level \(newUserLevel.level)! Check out the Gadget store to see what you have unlocked!"
             notification.alertAction = "open"
-            notification.fireDate = NSDate(timeIntervalSinceNow: 60)
+            notification.fireDate = Date(timeIntervalSinceNow: 60)
             notification.soundName = UILocalNotificationDefaultSoundName
             
-            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            UIApplication.shared.scheduleLocalNotification(notification)
             
         } else if oldUserLevel.percentage < 0.5 && newUserLevel.percentage >= 0.5 {
             // Create a notification that they just passed 50% completion of the current level
@@ -340,15 +340,15 @@ class Util {
             let notification = UILocalNotification()
             notification.alertBody = "You're on a roll! You just reached the half way point to Level \(newUserLevel.level + 1). Keep up the good work!"
             notification.alertAction = "open"
-            notification.fireDate = NSDate(timeIntervalSinceNow: 60)
+            notification.fireDate = Date(timeIntervalSinceNow: 60)
             notification.soundName = UILocalNotificationDefaultSoundName
             
-            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            UIApplication.shared.scheduleLocalNotification(notification)
             
         }
     }
     
-    class func formatNumber(number: Double) -> String {
+    class func formatNumber(_ number: Double) -> String {
         var short = number
         var string = ""
         if 1000000 <= number && number < 1000000000 {

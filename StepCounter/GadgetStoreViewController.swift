@@ -26,12 +26,12 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GadgetStoreViewController.updateTableData), name: "refreshGadgetStore", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GadgetStoreViewController.updateTableData), name: NSNotification.Name(rawValue: "refreshGadgetStore"), object: nil)
         
         self.updateTableData()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.updateTableData()
     }
     
@@ -44,26 +44,25 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.reloadData()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return self.gadgetModel.numberOfGadgetsAvailable()
         return 1 + self.gadgetList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("PointsInWalletTableViewCell") as! PointsInWalletTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PointsInWalletTableViewCell") as! PointsInWalletTableViewCell
             cell.pointsInWallet = DashboardModel().getPointsInWallet()
-            cell
             return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("GadgetStoreTableViewCell") as! GadgetStoreTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GadgetStoreTableViewCell") as! GadgetStoreTableViewCell
             cell.gadget = self.gadgetList[indexPath.row - 1]
             return cell
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row > 0 {
             let gadget = self.gadgetList[indexPath.row - 1]
             if gadget.isUnlocked() {
@@ -75,18 +74,18 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         if indexPath.row > 0 {
             let gadget = self.gadgetList[indexPath.row - 1]
             if gadget.isUnlocked() {
-                self.performSegueWithIdentifier("gadgetStoreToGadgetDescriptionSegue", sender: gadget)
+                self.performSegue(withIdentifier: "gadgetStoreToGadgetDescriptionSegue", sender: gadget)
             }
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let gadgetDescriptionVC = segue.destinationViewController as! GadgetDescriptionViewController
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let gadgetDescriptionVC = segue.destination as! GadgetDescriptionViewController
         gadgetDescriptionVC.gadget = sender as? Gadget
     }
     

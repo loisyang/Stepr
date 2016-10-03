@@ -27,7 +27,7 @@ class LevelTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -41,7 +41,7 @@ class LevelTableViewCell: UITableViewCell {
     }
     
     func fillLevelBar() {
-        self.percentageSlider.setThumbImage(UIImage.init(), forState: UIControlState.Normal)
+        self.percentageSlider.setThumbImage(UIImage.init(), for: UIControlState())
         self.percentageSlider.setValue(Float(self.levelInfo.percentage), animated: true)
     }
 

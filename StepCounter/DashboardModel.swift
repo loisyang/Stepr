@@ -25,9 +25,9 @@ class DashboardModel {
         //        }
         
         // Create the context
-        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let app = (UIApplication.shared.delegate as! AppDelegate)
         let context = app.managedObjectContext
-        let request = NSFetchRequest(entityName: "History")
+        let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "History")
         
         // Add the sortDescriptor so that CoreData returns them ordered by points
         // This makes results[0] the highest score
@@ -38,7 +38,7 @@ class DashboardModel {
         
         do {
             // Execute the request
-            try results = context.executeFetchRequest(request)
+            try results = context.fetch(request)
         } catch _ {
             results = nil
         }
@@ -63,9 +63,9 @@ class DashboardModel {
         //        return 0
         
         // Create the context
-        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let app = (UIApplication.shared.delegate as! AppDelegate)
         let context = app.managedObjectContext
-        let request = NSFetchRequest(entityName: "History")
+        let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "History")
         
         // Add the sortDescriptor so that CoreData returns them ordered by points
         // This makes results[0] the highest score
@@ -76,7 +76,7 @@ class DashboardModel {
         
         do {
             // Execute the request
-            try results = context.executeFetchRequest(request)
+            try results = context.fetch(request)
         } catch _ {
             results = nil
         }
@@ -95,7 +95,7 @@ class DashboardModel {
      whole number. It returns the points as a Double.
      */
     func getPointsInWallet() -> Double {
-        if let points = NSUserDefaults.standardUserDefaults().objectForKey("pointsInWallet") as? Double {
+        if let points = UserDefaults.standard.object(forKey: "pointsInWallet") as? Double {
             return floor(points)
         }
         return 0
@@ -152,7 +152,7 @@ class DashboardModel {
             (124580000000000000, 2661000000000000000), // 124.58 quadrillion - 2.661 quintillion
         ]
         
-        if let totalPoints = NSUserDefaults.standardUserDefaults().valueForKey("totalPointsSinceStart") {
+        if let totalPoints = UserDefaults.standard.value(forKey: "totalPointsSinceStart") {
             let points = totalPoints as! Double
             for level in 0..<pointsRanges.count {
                 if pointsRanges[level].min <= points && points < pointsRanges[level].max {
@@ -177,9 +177,9 @@ class DashboardModel {
     func getHighScore() -> History? {
         
         // Create the context
-        let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let app = (UIApplication.shared.delegate as! AppDelegate)
         let context = app.managedObjectContext
-        let request = NSFetchRequest(entityName: "History")
+        let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "History")
         
         // Add the sortDescriptor so that CoreData returns them ordered by points
         // This makes results[0] the highest score
@@ -190,7 +190,7 @@ class DashboardModel {
         
         do {
             // Execute the request
-            try results = context.executeFetchRequest(request)
+            try results = context.fetch(request)
         } catch _ {
             results = nil
         }

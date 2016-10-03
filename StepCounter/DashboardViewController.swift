@@ -29,7 +29,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Set a timer to reload the tableView data
         // This must be done because of the asynchronicity of the requests to HealthKit
-        NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(DashboardViewController.updateTableData), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(DashboardViewController.updateTableData), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,34 +41,34 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.reloadData()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3 + self.activeGadgets.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.row {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch (indexPath as NSIndexPath).row {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("TodaysDataTableViewCell") as! TodaysDataTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TodaysDataTableViewCell") as! TodaysDataTableViewCell
             cell.steps = self.dashboard.getStepsForToday()
             cell.points = self.dashboard.getPointsForToday()
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("LevelTableViewCell") as! LevelTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LevelTableViewCell") as! LevelTableViewCell
             cell.levelInfo = self.dashboard.getUserLevel()
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("HighScoreTableViewCell") as! HighScoreTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HighScoreTableViewCell") as! HighScoreTableViewCell
             cell.historyObject = self.dashboard.getHighScore()
             return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("GadgetTableViewCell") as! GadgetTableViewCell
-            cell.gadget = self.activeGadgets[indexPath.row - 3]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GadgetTableViewCell") as! GadgetTableViewCell
+            cell.gadget = self.activeGadgets[(indexPath as NSIndexPath).row - 3]
             return cell
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch indexPath.row {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch (indexPath as NSIndexPath).row {
         case 0:
             return CGFloat(100)
         case 1:
@@ -80,15 +80,15 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.row >= 3 {
-            self.performSegueWithIdentifier("dashboardToGadgetDescriptionSegue", sender: self.activeGadgets[indexPath.row - 3])
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if (indexPath as NSIndexPath).row >= 3 {
+            self.performSegue(withIdentifier: "dashboardToGadgetDescriptionSegue", sender: self.activeGadgets[(indexPath as NSIndexPath).row - 3])
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let gadgetDescriptionVC = segue.destinationViewController as! GadgetDescriptionViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let gadgetDescriptionVC = segue.destination as! GadgetDescriptionViewController
         gadgetDescriptionVC.gadget = sender as? Gadget
     }
 }
