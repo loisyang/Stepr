@@ -30,8 +30,7 @@ class Gadget: NSManagedObject {
         if self.canPurchase() {
             
             //update coredata
-            let app = (UIApplication.shared.delegate as! AppDelegate)
-            let context = app.managedObjectContext
+            let context = Gadget.getContext()
             let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Gadget")
             fetchRequest.predicate = NSPredicate(format: "name = %@", self.name!)
             do {
@@ -62,8 +61,7 @@ class Gadget: NSManagedObject {
     
     class func calculatePoints(_ newSteps: Int) -> Double {
         //body
-        let app = (UIApplication.shared.delegate as! AppDelegate)
-        let context = app.managedObjectContext
+        let context = Gadget.getContext()
         let gadgetsFetch : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Gadget")
         var results : [AnyObject]?
         do {
@@ -91,8 +89,7 @@ class Gadget: NSManagedObject {
     }
     
     class func getActiveGadgets() -> [Gadget] {
-        let app = (UIApplication.shared.delegate as! AppDelegate)
-        let context = app.managedObjectContext
+        let context = Gadget.getContext()
         let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Gadget")
         
         let sortDescriptor = NSSortDescriptor(key: "unlockLevel", ascending: true)
@@ -117,8 +114,7 @@ class Gadget: NSManagedObject {
     }
     
     class func getAllGadgets() -> [Gadget] {
-        let app = (UIApplication.shared.delegate as! AppDelegate)
-        let context = app.managedObjectContext
+        let context = Gadget.getContext()
         let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Gadget")
         
         let sortDescriptor = NSSortDescriptor(key: "unlockLevel", ascending: true)

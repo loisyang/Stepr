@@ -40,8 +40,7 @@ class Util {
             UserDefaults.standard.set(false, forKey: "hasWatchedTutorial")
             
             // Step 2: Build all gadgets into CoreData
-            let app = (UIApplication.shared.delegate as! AppDelegate)
-            let context = app.managedObjectContext
+            let context = Gadget.getContext()
             let gadgets : [(String, Double, Double, Int)] = [
                 ("Protein Bar",         500,                  0.1,       1),
                 ("Gust of Wind",        5000,                 0.2,       2),
@@ -77,6 +76,7 @@ class Util {
             } catch _ {}
             
             // Step 3: Build all Achievements
+            
             
             // Step 4: Set dataStructureInPlace to true
             UserDefaults.standard.set(true, forKey: "dataStructureInPlace")
@@ -167,8 +167,7 @@ class Util {
                     // Update the day steps
                     
                     // Create the context
-                    let app = (UIApplication.shared.delegate as! AppDelegate)
-                    let context = app.managedObjectContext
+                    let context = History.getContext()
                     let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "History")
                     
                     // Add the sortDescriptor so that CoreData returns them ordered by points
