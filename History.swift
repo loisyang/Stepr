@@ -14,8 +14,7 @@ import CoreData
 class History: NSManagedObject {
 
     class func getAllHistory() -> [History]{
-        let app = (UIApplication.shared.delegate as! AppDelegate)
-        let context = app.managedObjectContext
+        let context = History.getContext()
         let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "History")
         
         // Add the sortDescriptor so that CoreData returns them ordered by points

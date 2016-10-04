@@ -37,11 +37,12 @@ class Util {
             UserDefaults.standard.setValue(0, forKey: "totalPointsSinceStart")
             UserDefaults.standard.setValue(0.0, forKey: "pointsInWallet")
             
+            UserDefaults.standard.setValue(0, forKey: "totalStepsSinceStart")
+            
             UserDefaults.standard.set(false, forKey: "hasWatchedTutorial")
             
             // Step 2: Build all gadgets into CoreData
-            let app = (UIApplication.shared.delegate as! AppDelegate)
-            let context = app.managedObjectContext
+            let gadgetContext = Gadget.getContext()
             let gadgets : [(String, Double, Double, Int)] = [
                 ("Protein Bar",         500,                  0.1,       1),
                 ("Gust of Wind",        5000,                 0.2,       2),
@@ -66,17 +67,57 @@ class Util {
             ]
             
             for gadgetInfo in gadgets {
-                let gadget = NSEntityDescription.insertNewObject(forEntityName: "Gadget", into: context) as! Gadget
+                let gadget = NSEntityDescription.insertNewObject(forEntityName: "Gadget", into: gadgetContext) as! Gadget
                 gadget.name = gadgetInfo.0
                 gadget.cost = gadgetInfo.1 as NSNumber?
                 gadget.bonus = gadgetInfo.2 as NSNumber?
                 gadget.unlockLevel = gadgetInfo.3 as NSNumber?
             }
             do {
-                try context.save()
+                try gadgetContext.save()
             } catch _ {}
             
             // Step 3: Build all Achievements
+            
+            let achievementsContext = Achievement.getContext()
+            let achievements : [(String, String, Double)] = [
+                ("Celery Sticks", "steps", 22727),
+                ("Grapes", "steps", 45454),
+                ("Goldfish", "steps", 56818),
+                ("Carrot Sticks", "steps", 113636),
+                ("Almonds", "steps", 159090),
+                ("Hershey's Kisses", "steps", 500000),
+                ("Tomatoes", "steps", 568181),
+                ("Clementines", "steps", 795454),
+                ("Bacon Strips", "steps", 977272),
+                ("Oreos", "steps", 1022727),
+                ("Grilled Cheese", "steps", 1613636),
+                ("Servings of Pasta", "steps", 1704545),
+                ("Scrambled Eggs", "steps", 2068181),
+                ("Gatorade Bottles", "steps", 2840909),
+                ("Coca Cola Cans", "steps", 3181818),
+                ("Bags of Doritos", "steps", 3863636),
+                ("PB&J's", "steps", 4295454),
+                ("Glasses of Chocolate Milk", "steps", 4750000),
+                ("Hershey's Bars", "steps", 4863636),
+                ("Slices of Cheese Pizza", "steps", 6181818),
+                ("Cheeseburgers", "steps", 6636363),
+                ("Bagels with Cream Cheese", "steps", 7954545),
+                ("Venti Chocolate Chip Frappiccinos", "steps", 11818181),
+                ("Crunchwrap Supremes", "steps", 12272727),
+                ("Large Chocolate Chip Cookie Dough Blizzards", "steps", 30000000)
+            ]
+            
+            for achievementInfo in achievements {
+                let achievement = Achievement.getNewObject(context: achievementsContext)
+                achievement.name = achievementInfo.0
+                achievement.measure = achievementInfo.1
+                achievement.value = achievementInfo.2 as NSNumber?
+                achievement.bonus = achievementInfo.2 as NSNumber?
+            }
+            do {
+                try achievementsContext.save()
+            } catch _ {}
             
             // Step 4: Set dataStructureInPlace to true
             UserDefaults.standard.set(true, forKey: "dataStructureInPlace")
@@ -167,8 +208,7 @@ class Util {
                     // Update the day steps
                     
                     // Create the context
-                    let app = (UIApplication.shared.delegate as! AppDelegate)
-                    let context = app.managedObjectContext
+                    let context = History.getContext()
                     let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "History")
                     
                     // Add the sortDescriptor so that CoreData returns them ordered by points
@@ -208,6 +248,7 @@ class Util {
                             // update pointsInWallet and totalStepsSinceStart
                             Util.updatePointsInWallet(newPoints)
                             Util.updateTotalPointsSinceStart(newPoints)
+                            Util.updateTotalStepsSinceStart(newSteps)
                         } else {
                             // History object is not for today, so create a new object for today
                             
@@ -314,15 +355,14 @@ class Util {
         2. If the user has reached the 50% mark for unlocking the next level
      */
     class func updateTotalPointsSinceStart(_ change: Double) {
-        let dashboard = DashboardModel()
-        let oldUserLevel = dashboard.getUserLevel()
+        let oldUserLevel = User.getUserLevel()
         
         let totalPoints = UserDefaults.standard.value(forKey: "totalPointsSinceStart") as! Double
         let newTotal = totalPoints + change
         
         UserDefaults.standard.setValue(newTotal, forKey: "totalPointsSinceStart")
         
-        let newUserLevel = dashboard.getUserLevel()
+        let newUserLevel = User.getUserLevel()
         
         if newUserLevel.level > oldUserLevel.level {
             // Create a notification that a new level has been reached!
@@ -348,6 +388,11 @@ class Util {
             UIApplication.shared.scheduleLocalNotification(notification)
             
         }
+    }
+    
+    class func updateTotalStepsSinceStart(_ change: Int) {
+        let oldSteps = User.getTotalStepsSinceStart()
+        UserDefaults.standard.set(oldSteps + change, forKey: "totalStepsSinceStart")
     }
     
     class func formatNumber(_ number: Double) -> String {

@@ -11,6 +11,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension Gadget {
 
@@ -21,5 +22,10 @@ extension Gadget {
     @NSManaged var unlockLevel: NSNumber?
     @NSManaged var upgradeCost: NSNumber?
     @NSManaged var upgradeLevel: NSNumber?
+    
+    class func getContext() -> NSManagedObjectContext {
+        let app = (UIApplication.shared.delegate as! AppDelegate)
+        return app.managedObjectContext
+    }
 
 }

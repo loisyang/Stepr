@@ -11,11 +11,17 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension History {
 
     @NSManaged var date: Date?
     @NSManaged var steps: NSNumber?
     @NSManaged var points: NSNumber?
+    
+    class func getContext() -> NSManagedObjectContext {
+        let app = (UIApplication.shared.delegate as! AppDelegate)
+        return app.managedObjectContext
+    }
 
 }
