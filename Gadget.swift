@@ -13,8 +13,7 @@ import UIKit
 class Gadget: NSManagedObject {
     
     func isUnlocked() -> Bool {
-        let dashboard = DashboardModel()
-        let userLevel = dashboard.getUserLevel()
+        let userLevel = User.getUserLevel()
         return userLevel.level >= (self.unlockLevel as! Int)
     }
     

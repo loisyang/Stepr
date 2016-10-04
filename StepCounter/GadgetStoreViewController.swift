@@ -53,7 +53,7 @@ class GadgetStoreViewController: UIViewController, UITableViewDelegate, UITableV
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PointsInWalletTableViewCell") as! PointsInWalletTableViewCell
-            cell.pointsInWallet = DashboardModel().getPointsInWallet()
+            cell.pointsInWallet = User.getPointsInWallet()
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "GadgetStoreTableViewCell") as! GadgetStoreTableViewCell

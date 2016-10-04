@@ -10,8 +10,6 @@ import UIKit
 
 class GadgetStoreTableViewCell: UITableViewCell {
     
-    let dashboard = DashboardModel()
-    
     var gadget : Gadget? {
         didSet {
             self.updateLabels()
@@ -45,7 +43,7 @@ class GadgetStoreTableViewCell: UITableViewCell {
             
             self.allBlackFont()
             
-            let userLevel = self.dashboard.getUserLevel()
+            let userLevel = User.getUserLevel()
             let unlockLevel = gadget.unlockLevel as! Int
             if (userLevel.level >= unlockLevel) {
                 // gadget is unlocked

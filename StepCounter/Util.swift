@@ -355,15 +355,14 @@ class Util {
         2. If the user has reached the 50% mark for unlocking the next level
      */
     class func updateTotalPointsSinceStart(_ change: Double) {
-        let dashboard = DashboardModel()
-        let oldUserLevel = dashboard.getUserLevel()
+        let oldUserLevel = User.getUserLevel()
         
         let totalPoints = UserDefaults.standard.value(forKey: "totalPointsSinceStart") as! Double
         let newTotal = totalPoints + change
         
         UserDefaults.standard.setValue(newTotal, forKey: "totalPointsSinceStart")
         
-        let newUserLevel = dashboard.getUserLevel()
+        let newUserLevel = User.getUserLevel()
         
         if newUserLevel.level > oldUserLevel.level {
             // Create a notification that a new level has been reached!
