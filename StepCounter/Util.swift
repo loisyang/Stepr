@@ -37,6 +37,8 @@ class Util {
             UserDefaults.standard.setValue(0, forKey: "totalPointsSinceStart")
             UserDefaults.standard.setValue(0.0, forKey: "pointsInWallet")
             
+            UserDefaults.standard.setValue(0, forKey: "totalStepsSinceStart")
+            
             UserDefaults.standard.set(false, forKey: "hasWatchedTutorial")
             
             // Step 2: Build all gadgets into CoreData
@@ -246,6 +248,7 @@ class Util {
                             // update pointsInWallet and totalStepsSinceStart
                             Util.updatePointsInWallet(newPoints)
                             Util.updateTotalPointsSinceStart(newPoints)
+                            Util.updateTotalStepsSinceStart(newSteps)
                         } else {
                             // History object is not for today, so create a new object for today
                             
@@ -386,6 +389,11 @@ class Util {
             UIApplication.shared.scheduleLocalNotification(notification)
             
         }
+    }
+    
+    class func updateTotalStepsSinceStart(_ change: Int) {
+        let oldSteps = User.getTotalStepsSinceStart()
+        UserDefaults.standard.set(oldSteps + change, forKey: "totalStepsSinceStart")
     }
     
     class func formatNumber(_ number: Double) -> String {

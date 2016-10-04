@@ -31,6 +31,7 @@ class AchievementTableViewCell: UITableViewCell {
     }
     
     func updateLabels() {
+        self.nameLabel.adjustsFontSizeToFitWidth = true
         if let achievement = achievement {
             self.nameLabel.text = achievement.name
             if achievement.isAchieved() {

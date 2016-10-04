@@ -37,7 +37,8 @@ class Achievement: NSManagedObject {
     }
     
     func isAchieved() -> Bool {
-        return true
+        let totalSteps = User.getTotalStepsSinceStart()
+        return totalSteps >= self.value as! Int
     }
     
 }
