@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G1004" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="Achievement" representedClassName="Achievement" syncable="YES">
+    <entity name="Achievement" representedClassName=".Achievement" syncable="YES">
+        <attribute name="bonus" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="measure" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
@@ -22,6 +23,6 @@
     <elements>
         <element name="Gadget" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="History" positionX="-227" positionY="36" width="128" height="90"/>
-        <element name="Achievement" positionX="-135" positionY="45" width="128" height="88"/>
+        <element name="Achievement" positionX="-135" positionY="45" width="128" height="103"/>
     </elements>
 </model>

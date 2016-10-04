@@ -40,7 +40,7 @@ class Util {
             UserDefaults.standard.set(false, forKey: "hasWatchedTutorial")
             
             // Step 2: Build all gadgets into CoreData
-            let context = Gadget.getContext()
+            let gadgetContext = Gadget.getContext()
             let gadgets : [(String, Double, Double, Int)] = [
                 ("Protein Bar",         500,                  0.1,       1),
                 ("Gust of Wind",        5000,                 0.2,       2),
@@ -65,18 +65,57 @@ class Util {
             ]
             
             for gadgetInfo in gadgets {
-                let gadget = NSEntityDescription.insertNewObject(forEntityName: "Gadget", into: context) as! Gadget
+                let gadget = NSEntityDescription.insertNewObject(forEntityName: "Gadget", into: gadgetContext) as! Gadget
                 gadget.name = gadgetInfo.0
                 gadget.cost = gadgetInfo.1 as NSNumber?
                 gadget.bonus = gadgetInfo.2 as NSNumber?
                 gadget.unlockLevel = gadgetInfo.3 as NSNumber?
             }
             do {
-                try context.save()
+                try gadgetContext.save()
             } catch _ {}
             
             // Step 3: Build all Achievements
             
+            let achievementsContext = Achievement.getContext()
+            let achievements : [(String, String, Double)] = [
+                ("Celery Sticks", "steps", 22727),
+                ("Grapes", "steps", 45454),
+                ("Goldfish", "steps", 56818),
+                ("Carrot Sticks", "steps", 113636),
+                ("Almonds", "steps", 159090),
+                ("Hershey's Kisses", "steps", 500000),
+                ("Tomatoes", "steps", 568181),
+                ("Clementines", "steps", 795454),
+                ("Bacon Strips", "steps", 977272),
+                ("Oreos", "steps", 1022727),
+                ("Grilled Cheese", "steps", 1613636),
+                ("Servings of Pasta", "steps", 1704545),
+                ("Scrambled Eggs", "steps", 2068181),
+                ("Gatorade Bottles", "steps", 2840909),
+                ("Coca Cola Cans", "steps", 3181818),
+                ("Bags of Doritos", "steps", 3863636),
+                ("PB&J's", "steps", 4295454),
+                ("Glasses of Chocolate Milk", "steps", 4750000),
+                ("Hershey's Bars", "steps", 4863636),
+                ("Slices of Cheese Pizza", "steps", 6181818),
+                ("Cheeseburgers", "steps", 6636363),
+                ("Bagels with Cream Cheese", "steps", 7954545),
+                ("Venti Chocolate Chip Frappiccinos", "steps", 11818181),
+                ("Crunchwrap Supremes", "steps", 12272727),
+                ("Large Chocolate Chip Cookie Dough Blizzards", "steps", 30000000)
+            ]
+            
+            for achievementInfo in achievements {
+                let achievement = Achievement.getNewObject(context: achievementsContext)
+                achievement.name = achievementInfo.0
+                achievement.measure = achievementInfo.1
+                achievement.value = achievementInfo.2 as NSNumber?
+                achievement.bonus = achievementInfo.2 as NSNumber?
+            }
+            do {
+                try achievementsContext.save()
+            } catch _ {}
             
             // Step 4: Set dataStructureInPlace to true
             UserDefaults.standard.set(true, forKey: "dataStructureInPlace")

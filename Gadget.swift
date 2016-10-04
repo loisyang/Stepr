@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+
 class Gadget: NSManagedObject {
     
     func isUnlocked() -> Bool {
