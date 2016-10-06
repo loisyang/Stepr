@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		475359A91326BE7ADFA98741 /* Pods_Stepr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CB4B013E6F3B7E3D04E75F /* Pods_Stepr.framework */; };
 		8104CFD51D903B4800CF37E9 /* PointsInWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8104CFD41D903B4800CF37E9 /* PointsInWalletTableViewCell.swift */; };
 		8177072B1D834DED001EAE12 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177072A1D834DED001EAE12 /* DashboardModel.swift */; };
 		8177072D1D83548A001EAE12 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8177072C1D83548A001EAE12 /* HealthKit.framework */; };
@@ -41,6 +42,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37C1BFE8733A7ED84330F126 /* Pods-Stepr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stepr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stepr/Pods-Stepr.release.xcconfig"; sourceTree = "<group>"; };
+		59422953CF3F086A706A2177 /* Pods-Stepr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stepr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stepr/Pods-Stepr.debug.xcconfig"; sourceTree = "<group>"; };
+		78CB4B013E6F3B7E3D04E75F /* Pods_Stepr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stepr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8104CFD41D903B4800CF37E9 /* PointsInWalletTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsInWalletTableViewCell.swift; sourceTree = "<group>"; };
 		8177072A1D834DED001EAE12 /* DashboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		8177072C1D83548A001EAE12 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -84,12 +88,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				8177072D1D83548A001EAE12 /* HealthKit.framework in Frameworks */,
+				475359A91326BE7ADFA98741 /* Pods_Stepr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CDCA6FA8E88ECC735D9138E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78CB4B013E6F3B7E3D04E75F /* Pods_Stepr.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8104CFD31D903B2D00CF37E9 /* Gadget Store Prototype Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +171,8 @@
 				81889E221D7A5EAB00A17BF7 /* Stepr */,
 				81889E211D7A5EAB00A17BF7 /* Products */,
 				81C3A31A1DA2DBB400191411 /* Stepr-Bridging-Header.h */,
+				9DDD077E4232082D39AE28AD /* Pods */,
+				2CDCA6FA8E88ECC735D9138E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -220,6 +235,15 @@
 			name = Gadget;
 			sourceTree = "<group>";
 		};
+		9DDD077E4232082D39AE28AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59422953CF3F086A706A2177 /* Pods-Stepr.debug.xcconfig */,
+				37C1BFE8733A7ED84330F126 /* Pods-Stepr.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -227,9 +251,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81889E351D7A5EAB00A17BF7 /* Build configuration list for PBXNativeTarget "Stepr" */;
 			buildPhases = (
+				AD7FF2E5D33F91E35A21860B /* [CP] Check Pods Manifest.lock */,
 				81889E1C1D7A5EAB00A17BF7 /* Sources */,
 				81889E1D1D7A5EAB00A17BF7 /* Frameworks */,
 				81889E1E1D7A5EAB00A17BF7 /* Resources */,
+				26B76C02ECD1B64D2A21FCD7 /* [CP] Embed Pods Frameworks */,
+				8930FDB2E605D8B5AEC426BC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -292,6 +319,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26B76C02ECD1B64D2A21FCD7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stepr/Pods-Stepr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8930FDB2E605D8B5AEC426BC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stepr/Pods-Stepr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD7FF2E5D33F91E35A21860B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		81889E1C1D7A5EAB00A17BF7 /* Sources */ = {
@@ -442,6 +517,7 @@
 		};
 		81889E361D7A5EAB00A17BF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59422953CF3F086A706A2177 /* Pods-Stepr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -462,6 +538,7 @@
 		};
 		81889E371D7A5EAB00A17BF7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37C1BFE8733A7ED84330F126 /* Pods-Stepr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
